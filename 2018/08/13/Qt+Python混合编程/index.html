@@ -134,7 +134,7 @@
 <meta property="og:description" content="项目使用Qt搭建了一个数据库软件，这个软件还需要有一些数据分析、特征重要度计算、性能预测等功能，而python的机器学习第三方库比较成熟，使用起来也比较便捷，因此这里需要用到Qt(c++)+python混合编程，在此记录一下相关方法与问题，以方便自己与他人。 本项目使用的是QtCreator(Qt5.5.0)+VisualStudio2013+python3.6.5搭建。其他版本只要版本是正确对应">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/QtPython/Figure_1.jpg">
-<meta property="og:updated_time" content="2018-08-13T11:20:35.348Z">
+<meta property="og:updated_time" content="2018-08-13T11:22:56.223Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Qt+Python混合编程">
 <meta name="twitter:description" content="项目使用Qt搭建了一个数据库软件，这个软件还需要有一些数据分析、特征重要度计算、性能预测等功能，而python的机器学习第三方库比较成熟，使用起来也比较便捷，因此这里需要用到Qt(c++)+python混合编程，在此记录一下相关方法与问题，以方便自己与他人。 本项目使用的是QtCreator(Qt5.5.0)+VisualStudio2013+python3.6.5搭建。其他版本只要版本是正确对应">
@@ -502,7 +502,7 @@
 <h1 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h1><p>这里列写一下软件搭建过程中遇到的问题，以供参考。  </p>
 <ul>
 <li>重装python的话别忘了修改<code>.pro</code>文件中的python路径；  </li>
-<li>importError:dll not load<br>常见的matplotlib,numpy等DLL加载错误，通常是由python与对应的第三方包的版本不一致导致的。将anaconda文件下的python.dll和python3.dll文件拷贝到qt可执行文件exe同级目录下并覆盖。  </li>
+<li>importError:dll not load<br>常见的matplotlib,numpy等DLL加载错误，通常是由python与对应的第三方包的版本不一致导致的。将anaconda文件下的<code>python.dll</code>和<code>python3.dll</code>文件拷贝到qt可执行文件exe同级目录下并覆盖。  </li>
 </ul>
 <hr>
 <h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h1><p>[1] QT与Python混合编程经验记录：<a href="http://www.cnblogs.com/jiaping/p/6321859.html" target="_blank" rel="external">http://www.cnblogs.com/jiaping/p/6321859.html</a><br>[2] C++调用python浅析：<a href="https://blog.csdn.net/magictong/article/details/8947892" target="_blank" rel="external">https://blog.csdn.net/magictong/article/details/8947892</a></p>
