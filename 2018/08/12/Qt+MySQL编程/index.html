@@ -1,0 +1,1372 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "e77a7f88"
+    });
+  daovoice('update');
+  </script>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="-MySQL -c++ -Qt," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="项目需要开发一个数据库软件，并且整个软件都是使用Qt搭建的，数据库选用的是MySQL，因此需要使用Qt调用MySQL，在此记录一下相关方法与问题，以方便自己与他人。   本项目使用的是QtCreator(Qt5.5.0)+VisualStudio2013+MySQL5.7.17.0搭建。其他版本只要版本是正确对应的，都大同小异。">
+<meta name="keywords" content="-MySQL -c++ -Qt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Qt+MySQL编程">
+<meta property="og:url" content="http://yoursite.com/2018/08/12/Qt+MySQL编程/index.html">
+<meta property="og:site_name" content="KunBB&#39;s blog">
+<meta property="og:description" content="项目需要开发一个数据库软件，并且整个软件都是使用Qt搭建的，数据库选用的是MySQL，因此需要使用Qt调用MySQL，在此记录一下相关方法与问题，以方便自己与他人。   本项目使用的是QtCreator(Qt5.5.0)+VisualStudio2013+MySQL5.7.17.0搭建。其他版本只要版本是正确对应的，都大同小异。">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-08-13T07:22:04.705Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Qt+MySQL编程">
+<meta name="twitter:description" content="项目需要开发一个数据库软件，并且整个软件都是使用Qt搭建的，数据库选用的是MySQL，因此需要使用Qt调用MySQL，在此记录一下相关方法与问题，以方便自己与他人。   本项目使用的是QtCreator(Qt5.5.0)+VisualStudio2013+MySQL5.7.17.0搭建。其他版本只要版本是正确对应的，都大同小异。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/08/12/Qt+MySQL编程/"/>
+
+
+
+
+
+  <title>Qt+MySQL编程 | KunBB's blog</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?d76fd55ad2c6a913abb69c04b4c9aadf";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">KunBB's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">The only time you should ever look back is to see how far you've come.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+			
+		  
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/12/Qt+MySQL编程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yunkun Xu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1505221430290&amp;di=5d6a88d013890d4f520618b024b4aaed&amp;imgtype=0&amp;src=http%3A%2F%2Fimg3.duitang.com%2Fuploads%2Fitem%2F201601%2F03%2F20160103085338_eyBCL.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="KunBB's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Qt+MySQL编程</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-12T18:19:00+08:00">
+                2018-08-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Qt/" itemprop="url" rel="index">
+                    <span itemprop="name">Qt</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/08/12/Qt+MySQL编程/" class="leancloud_visitors" data-flag-title="Qt+MySQL编程">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Heat&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+				 <span>℃</span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  2,069
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  10
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>项目需要开发一个数据库软件，并且整个软件都是使用Qt搭建的，数据库选用的是MySQL，因此需要使用Qt调用MySQL，在此记录一下相关方法与问题，以方便自己与他人。  </p>
+<p>本项目使用的是QtCreator(Qt5.5.0)+VisualStudio2013+MySQL5.7.17.0搭建。其他版本只要版本是正确对应的，都大同小异。<br><a id="more"></a></p>
+<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><p>假设你已经正确安装了Qt和MySQL，并且已经将文件<code>../MySQL/MySQL Server 5.7/lib/libmysql.dll</code>复制到文件夹<code>../Qt5.5.0/5.5/msvc2013_64/bin</code>中，将文件<code>../MySQL/MySQL Server 5.7/lib/libmysql.lib</code>复制到文件夹<code>../Qt5.5.0/5.5/msvc2013_64/lib</code>中。<br>之前遇到过MySQL安装过程中卡在MySQL Serve加载处，网络上的各种方法都没用，最后发现可能是使用了XX-Net等网络代理工具的问题，解决方法是<strong>关闭网络防火墙</strong>。</p>
+<h1 id="Qt链接MySQL数据库"><a href="#Qt链接MySQL数据库" class="headerlink" title="Qt链接MySQL数据库"></a>Qt链接MySQL数据库</h1><p>首先在xxx.pro工程文件中添加：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">QT       += sql</div></pre></td></tr></table></figure></p>
+<p>在mainwindow.h文件的构造函数中添加：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">QString hostName;</div><div class="line">QString dbName;</div><div class="line">QString userName;</div><div class="line">QString password;</div><div class="line">QSqlDatabase dbconn;</div></pre></td></tr></table></figure></p>
+<p>在mainwindow.cpp文件的构造函数中添加：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">hostName = <span class="string">"localhost"</span>;   <span class="comment">// 主机名</span></div><div class="line">dbName = <span class="string">"wbq"</span>;   <span class="comment">// 数据库名称</span></div><div class="line">userName = <span class="string">"root"</span>;   <span class="comment">// 用户名</span></div><div class="line">password = <span class="string">"helloworld"</span>;   <span class="comment">// 密码</span></div><div class="line"></div><div class="line">dbconn = QSqlDatabase::addDatabase(<span class="string">"QMYSQL"</span>);</div><div class="line">dbconn.setHostName(hostName);</div><div class="line">dbconn.setDatabaseName(dbName);</div><div class="line">dbconn.setUserName(userName);</div><div class="line">dbconn.setPassword(password);</div><div class="line"></div><div class="line">qDebug(<span class="string">"database open status: %d\n"</span>, dbconn.open());</div><div class="line"></div><div class="line">QSqlError error = dbconn.lastError();</div><div class="line">qDebug() &lt;&lt; error.text();</div><div class="line"></div><div class="line">dbconn.close();</div></pre></td></tr></table></figure></p>
+<p>如果数据库能够成功打开则调试窗口会出现以下信息：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">database open status: 1</div><div class="line"></div><div class="line">&quot; &quot;</div></pre></td></tr></table></figure></p>
+<p>主界面创建了数据库<code>dbconn</code>后，其他界面若需调用数据库只用定义一个子类成员函数：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">void</span> subwindow::setDbconn(QSqlDatabase *dbconn)</div><div class="line">&#123;</div><div class="line">    <span class="keyword">this</span>-&gt;dbconn = dbconn;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>然后在mainwindow.cpp文件对应处调用该函数。</p>
+<h1 id="Qt的MySQL数据库操作"><a href="#Qt的MySQL数据库操作" class="headerlink" title="Qt的MySQL数据库操作"></a>Qt的MySQL数据库操作</h1><h2 id="读取MySQL数据并输入到TableView中"><a href="#读取MySQL数据并输入到TableView中" class="headerlink" title="读取MySQL数据并输入到TableView中"></a>读取MySQL数据并输入到TableView中</h2><p>MySQL数据库中数据可以看成一个model。假设要读取<code>wbq</code>数据库中的<code>cursheet</code>表，读取方式如下：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">dbconn-&gt;open();</div><div class="line">QSqlQueryModel *model = <span class="keyword">new</span> QSqlQueryModel;</div><div class="line">model-&gt;setQuery(QString(<span class="string">"SELECT * FROM %1"</span>).arg(<span class="string">"wbq.cursheet"</span>));</div><div class="line">ui-&gt;tableView-&gt;setModel(model);</div><div class="line">dbconn-&gt;close();</div></pre></td></tr></table></figure></p>
+<h2 id="读取MySQL多个表并根据主键值匹配融合成一个表"><a href="#读取MySQL多个表并根据主键值匹配融合成一个表" class="headerlink" title="读取MySQL多个表并根据主键值匹配融合成一个表"></a>读取MySQL多个表并根据主键值匹配融合成一个表</h2><p>通常在读入数据后可能需要对多附表进行匹配操作，此时需要读取表中具体元素的数据，方法如下：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment">定义一个用于存储匹配结果的model</span></div><div class="line"><span class="comment">*/</span></div><div class="line">QStandardItemModel model_merge = <span class="keyword">new</span> QStandardItemModel(ui-&gt;tableView)</div><div class="line"></div><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment">从wbq数据库中读取两个表进行匹配</span></div><div class="line"><span class="comment">*/</span></div><div class="line">dbconn-&gt;open();</div><div class="line">QSqlQueryModel *model_1 = <span class="keyword">new</span> QSqlQueryModel;</div><div class="line">model_1-&gt;setQuery(QString(<span class="string">"SELECT * FROM wbq.sheet1"</span>));</div><div class="line">QSqlQueryModel *model_2 = <span class="keyword">new</span> QSqlQueryModel;</div><div class="line">model_2-&gt;setQuery(QString(<span class="string">"SELECT * FROM wbq.sheet2"</span>));</div><div class="line"></div><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment">将model_1中数据输入到model_merge中</span></div><div class="line"><span class="comment">*/</span></div><div class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;model_1-&gt;rowCount();i++)&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;model_1-&gt;columnCount();j++)&#123;</div><div class="line">        QModelIndex index = model_1-&gt;index(i,j);</div><div class="line">        model_merge-&gt;setItem(i,j,<span class="keyword">new</span> QStandardItem(model_1-&gt;data(index).toString()));</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment">将model_2中的数据与model_merge进行匹配</span></div><div class="line"><span class="comment">(算法未优化，还望各位多包涵)</span></div><div class="line"><span class="comment">*/</span></div><div class="line">QVector&lt;<span class="keyword">int</span>&gt; nullRow_2; <span class="comment">// 用于记录空值</span></div><div class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;model_merge-&gt;rowCount();i++)&#123;</div><div class="line">    QModelIndex index_m = model_merge-&gt;index(i,<span class="number">1</span>);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;model_2-&gt;rowCount();j++)&#123;</div><div class="line">        QModelIndex index_2 = model_2-&gt;index(j,<span class="number">0</span>);</div><div class="line"></div><div class="line">        <span class="comment">// 若两组数据键值相等，则将model_2数据扩展到model_merge已有列之后</span></div><div class="line">        <span class="keyword">if</span>(model_merge-&gt;data(index_m).toString()==model_2-&gt;data(index_2).toString())&#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">1</span>;k&lt;model_2-&gt;columnCount();k++)&#123;</div><div class="line">                QModelIndex index_m2 = model_2-&gt;index(j,k);</div><div class="line">                model_merge-&gt;setItem(i,k+<span class="number">22</span>,<span class="keyword">new</span> QStandardItem(model_2-&gt;data(index_m2).toString()));</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="comment">// 如果遍历完依然没有匹配上则存入nullRow_2</span></div><div class="line">        <span class="keyword">if</span>(j==(model_2-&gt;rowCount()<span class="number">-1</span>))&#123;</div><div class="line">            nullRow_2.append(i);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 删除nullRow_2中存放的无法匹配的数据</span></div><div class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=nullRow_2.size();i&gt;<span class="number">0</span>;i--)&#123;</div><div class="line">    model_merge-&gt;removeRow(nullRow_2[i<span class="number">-1</span>]);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="增加操作"><a href="#增加操作" class="headerlink" title="增加操作"></a>增加操作</h2><p>假设要向<code>wbq</code>数据库中的<code>cursheet</code>表增加数据,<code>QVector&lt;QString&gt; validStringVect</code>为数据名称，<code>QVector&lt;QLineEdit*&gt; validLineEditVect</code>为数据值：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment">创建语句头</span></div><div class="line"><span class="comment">*/</span></div><div class="line">QString sqlStr = <span class="string">""</span>;</div><div class="line">sqlStr += QString(<span class="string">"INSERT INTO wbq.%1 SET"</span>).arg(curSheet);</div><div class="line"></div><div class="line">dbconn-&gt;open();</div><div class="line"></div><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment">为每一组数据在sqlstr中扩充相应的语句</span></div><div class="line"><span class="comment">*/</span></div><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; validStringVect.size(); ++i) &#123;</div><div class="line">    sqlStr += QString(<span class="string">" `%1`='%2'"</span>).arg(validStringVect.at(i)).arg(validLineEditVect.at(i)-&gt;text());</div><div class="line">    <span class="keyword">if</span> (i &lt; validStringVect.size()<span class="number">-1</span>) &#123;</div><div class="line">        sqlStr += <span class="string">","</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 中文的话需要注意sqlstr的编码问题</span></div><div class="line"></div><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment">将语句sqlstr发送到MySQL，进行相应的操作</span></div><div class="line"><span class="comment">*/</span></div><div class="line">QSqlQueryModel *model = <span class="keyword">new</span> QSqlQueryModel;</div><div class="line">model-&gt;setQuery(sqlStr);</div><div class="line">model-&gt;setQuery(QString(<span class="string">"SELECT * FROM %1"</span>).arg(<span class="string">"wbq.cursheet"</span>)); <span class="comment">// 刷新表格</span></div><div class="line">dbconn-&gt;close();</div></pre></td></tr></table></figure></p>
+<h2 id="删除操作"><a href="#删除操作" class="headerlink" title="删除操作"></a>删除操作</h2><p>删除操作通过寻找主键完成对某一组数据的删除工作，具体实现如下所示：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment">获取表格中的选中行索引（可为多行）</span></div><div class="line"><span class="comment">*/</span></div><div class="line"><span class="built_in">std</span>::<span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt; rowSet;</div><div class="line">QModelIndexList indexList = ui-&gt;tableView-&gt;getSelectedIndexs();</div><div class="line"><span class="keyword">int</span> indexNum = indexList.size();</div><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; indexNum; ++i) &#123;</div><div class="line">    rowSet.insert(indexList.at(i).row());</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment">根据主键值遍历删除选中行</span></div><div class="line"><span class="comment">*/</span></div><div class="line"><span class="keyword">for</span> (iter = rowSet.begin(); iter != rowSet.end(); ++iter) &#123;</div><div class="line">    QModelIndex indexToDel = model-&gt;index((*iter), <span class="number">0</span>);</div><div class="line">    QString tmpSql;</div><div class="line">    tmpSql = QString(QStringLiteral(<span class="string">"DELETE FROM wbq.%1 WHERE index='%2'"</span>)).arg(curSheet).arg(indexToDel.data().toString());</div><div class="line">    dbconn-&gt;open();</div><div class="line">    QSqlQueryModel *model = <span class="keyword">new</span> QSqlQueryModel;</div><div class="line">    model-&gt;setQuery(tmpSql);</div><div class="line">    dbconn-&gt;close();</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment">刷新表格</span></div><div class="line"><span class="comment">*/</span></div><div class="line">dbconn-&gt;open();</div><div class="line">QSqlQueryModel *model = <span class="keyword">new</span> QSqlQueryModel;</div><div class="line">model-&gt;setQuery(QString(<span class="string">"SELECT * FROM %1"</span>).arg(<span class="string">"wbq.cursheet"</span>));</div><div class="line">ui-&gt;tableView-&gt;setModel(model);</div><div class="line">dbconn-&gt;close();</div></pre></td></tr></table></figure></p>
+<h2 id="编辑操作"><a href="#编辑操作" class="headerlink" title="编辑操作"></a>编辑操作</h2><p>通过对TableView中某item数据修改完成对MySQL对应元素数据的修改，具体方法如下：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">QString column_en[<span class="number">8</span>] = &#123;......&#125; <span class="comment">// 存储表格中的所有可编辑列列名</span></div><div class="line"></div><div class="line">QModelIndex curIndex = ui-&gt;tableView-&gt;currentIndex(); <span class="comment">// 获取当前选中的item的index</span></div><div class="line">QAbstractItemModel *model = ui-&gt;tableView-&gt;model();</div><div class="line">QModelIndex primaryIndex = model-&gt;index(curIndex.row(), <span class="number">0</span>); <span class="comment">// 获取选中行第一列的index(主键值)</span></div><div class="line">QString primaryKey = primaryIndex.data().toString(); <span class="comment">// 获取选中行的主键值</span></div><div class="line">QString editColumn = pColumn[curIndex.column()]; <span class="comment">// 获取选中列列名</span></div><div class="line"></div><div class="line">QString editStr = tmpLineEdit-&gt;text(); <span class="comment">// item修改后的值</span></div><div class="line"></div><div class="line">QString updateStr;</div><div class="line">updateStr = QString(QStringLiteral(<span class="string">"UPDATE wbq.%1 SET %2='%3' WHERE 主键值='%4'"</span>)).arg(<span class="keyword">this</span>-&gt;curSheet).arg(editColumn).arg(editStr).arg(primaryKey);</div><div class="line"></div><div class="line">dbconn-&gt;open();</div><div class="line">QSqlQueryModel *model = <span class="keyword">new</span> QSqlQueryModel;</div><div class="line">model-&gt;setQuery(updateStr);</div><div class="line">model-&gt;setQuery(QString(<span class="string">"SELECT * FROM %1"</span>).arg(<span class="string">"wbq.cursheet"</span>)); <span class="comment">// 刷新表格</span></div><div class="line">ui-&gt;tableView-&gt;setModel(model);</div><div class="line">dbconn-&gt;close();</div></pre></td></tr></table></figure></p>
+<h2 id="查询操作"><a href="#查询操作" class="headerlink" title="查询操作"></a>查询操作</h2><p>软件中输入某列或某几列数据的上下限，完成查询功能。具体方法如下：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">QString sqlStr = <span class="string">""</span>;</div><div class="line">sqlStr += QString(<span class="string">"SELECT * FROM wbq.%1 WHERE "</span>).arg(curSheet);</div><div class="line"></div><div class="line"><span class="comment">// 遍历各列数据的上下限</span></div><div class="line"><span class="keyword">bool</span> first = <span class="literal">true</span>;</div><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; searchField.size(); ++i) &#123;</div><div class="line">    <span class="keyword">if</span> (!<span class="keyword">this</span>-&gt;startLineEdit.at(i)-&gt;text().isEmpty()) &#123;</div><div class="line">        <span class="keyword">if</span> (!first)</div><div class="line">            sqlStr += QString(<span class="string">" AND "</span>);</div><div class="line">        sqlStr += QString(<span class="string">" `%1` &gt; %2 "</span>).arg(searchField.at(i)).arg(startLineEdit.at(i)-&gt;text());</div><div class="line">        first = <span class="literal">false</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (!<span class="keyword">this</span>-&gt;endLineEdit.at(i)-&gt;text().isEmpty()) &#123;</div><div class="line">        <span class="keyword">if</span> (!first)</div><div class="line">            sqlStr += QString(<span class="string">" AND "</span>);</div><div class="line">        sqlStr += QString(<span class="string">" `%1` &lt; %2 "</span>).arg(searchField.at(i)).arg(endLineEdit.at(i)-&gt;text());</div><div class="line">            first = <span class="literal">false</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">if</span> (first) <span class="comment">// 防止出现所有列上下限都没有设置的情况</span></div><div class="line">    sqlStr += QString(<span class="string">"1=1"</span>);</div><div class="line">    dbconn-&gt;open();</div><div class="line"></div><div class="line">QSqlQueryModel *model = <span class="keyword">new</span> QSqlQueryModel;</div><div class="line">model-&gt;setQuery(sqlStr);</div><div class="line">ui-&gt;tableView-&gt;setModel(model);</div><div class="line">dbconn-&gt;close();</div></pre></td></tr></table></figure></p>
+<h2 id="统计计算"><a href="#统计计算" class="headerlink" title="统计计算"></a>统计计算</h2><p>项目要求软件实现对数据统计特征的计算功能，此处也是直接调用MySQL语句进行操作。具体方法如下：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">dbconn-&gt;open();</div><div class="line">QVector&lt;QString&gt; calStr = &#123;<span class="string">"AVG"</span>, <span class="string">"STD"</span>, <span class="string">"MAX"</span>, <span class="string">"MIN"</span>&#125;; <span class="comment">// 四种统计属性</span></div><div class="line">QSqlQueryModel *queryModel = <span class="keyword">new</span> QSqlQueryModel; <span class="comment">// 获取各列统计信息的model</span></div><div class="line">QVector&lt;QVector&lt;QString&gt;&gt; gVect; <span class="comment">// 存储各列统计信息</span></div><div class="line"></div><div class="line">QVector&lt;QString&gt; fieldStr; <span class="comment">// 需要统计的列名(假设已赋值)</span></div><div class="line"></div><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment">获取queryModel</span></div><div class="line"><span class="comment">*/</span></div><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; calStr.size(); ++i) &#123;</div><div class="line">    QString queryStr = QString(<span class="string">"SELECT "</span>);</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; fieldStr.size(); ++j) &#123;</div><div class="line">        queryStr.append(QString(<span class="string">"%1(CAST(`%2` AS DECIMAL(8, 2)))"</span>).arg(calStr[i]).arg(fieldStr[j])); <span class="comment">// 8代表数值长度，2代表小数位数</span></div><div class="line">        <span class="keyword">if</span> (j &lt; fieldStr.size()<span class="number">-1</span>)</div><div class="line">            queryStr.append(QString(<span class="string">","</span>));</div><div class="line">    &#125;</div><div class="line">    queryStr.append(QString(<span class="string">" FROM wbq.%1"</span>).arg(<span class="keyword">this</span>-&gt;curSheet));</div><div class="line">    queryModel-&gt;setQuery(queryStr);</div><div class="line"></div><div class="line">    <span class="comment">/*</span></div><div class="line"><span class="comment">    queryModel读取到gVect中</span></div><div class="line"><span class="comment">    */</span></div><div class="line">    <span class="keyword">int</span> colCount = queryModel-&gt;columnCount();</div><div class="line">    QVector&lt;QString&gt; rowVect;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; colCount; ++j) &#123;</div><div class="line">        rowVect.push_back(QString(<span class="string">"%1"</span>).arg(queryModel-&gt;index(<span class="number">0</span>, j).data().toFloat()));</div><div class="line">    &#125;</div><div class="line">    gVect.push_back(rowVect);</div><div class="line">&#125;</div><div class="line"></div><div class="line">dbconn-&gt;close();</div><div class="line"></div><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment">显示各列统计信息</span></div><div class="line"><span class="comment">*/</span></div><div class="line">QAbstractTableModel *model = <span class="keyword">new</span> QAbstractTableModel；</div><div class="line">model-&gt;setDataVect(gVect);</div><div class="line">QVector&lt;QString&gt; calStr_cn = &#123;QStringLiteral(<span class="string">"平均数"</span>), QStringLiteral(<span class="string">"方差"</span>), QStringLiteral(<span class="string">"最大值"</span>), QStringLiteral(<span class="string">"最小值"</span>)&#125;;</div><div class="line">model-&gt;setHeaderVect(fieldStr, calStr_cn);</div><div class="line">ui-&gt;tableView-&gt;setModel(model)； <span class="comment">// 刷新表格</span></div></pre></td></tr></table></figure></p>
+<h1 id="Qt-MySQL发布"><a href="#Qt-MySQL发布" class="headerlink" title="Qt+MySQL发布"></a>Qt+MySQL发布</h1><p>此步同样适用于一般的Qt软件发布。<br>1). 单独将.exe执行程序放到一个空文件夹；<br>2). 在<code>开始菜单</code>打开<code>Qt5.5 64-bit for Desktop (msvc 2013)</code>并<code>cd</code>命令到此文件夹；<br>3). 运行命令<code>windeployqt 文件名.exe</code>，将生成的所有文件复制到<code>release</code>文件夹中；<br>4). 将<code>libmysql.dll</code>复制到<code>release</code>文件夹中。</p>
+<p>使用该软件的主机需要安装对应版本的MySQL，并将已存在的数据库导入。</p>
+<h1 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h1><p>这里列写一下软件搭建过程中遇到的问题，以供参考。  </p>
+<ul>
+<li><p>重装Qt后数据库无法连上：<br>将<code>release文件夹</code>中Qt的<code>.dll</code>用新装的Qt替代，哪怕Qt版本一致。</p>
+</li>
+<li><p>出现错误<code>cant connect mysql server on 127.0.0.1(10060)</code>，mysql workbench无法连接，但MySQL Serve显示正在运行：<br>关闭网络防火墙。</p>
+</li>
+<li><p>QT移植无法启动<code>This application failed to start because it could not find or load the Qt platform plugin</code>：<br>1). 将<code>../Qt5.5.0/5.5/msvc2013_64/bin</code>中的所有<code>.dll</code>复制到.exe目录下，尽管右下可能用不到；<br>2). 将文件夹<code>../Qt5.5.0/5.5/msvc2013_64/plugins/platforms</code>直接复制到.exe目录下。</p>
+</li>
+</ul>
+<hr>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h1><p>[1] 在QT中使用MySQL数据库：<a href="https://blog.csdn.net/yunzhifeiti/article/details/72709140" target="_blank" rel="external">https://blog.csdn.net/yunzhifeiti/article/details/72709140</a><br>[2] QT移植无法启动 This application failed to start because it could not find or load the Qt platform plugin：<a href="https://blog.csdn.net/jzwong/article/details/71479691" target="_blank" rel="external">https://blog.csdn.net/jzwong/article/details/71479691</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Donate comment here</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/wechatpay.jpg" alt="Yunkun Xu WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/alipay.jpg" alt="Yunkun Xu Alipay"/>
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MySQL-c-Qt/" rel="tag"># -MySQL -c++ -Qt</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/11/Hexo+GitHub搭建私人博客/" rel="next" title="Hexo+GitHub搭建私人博客">
+                <i class="fa fa-chevron-left"></i> Hexo+GitHub搭建私人博客
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/13/Qt+Python混合编程/" rel="prev" title="Qt+Python混合编程">
+                Qt+Python混合编程 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMDg2NC83NDEz"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          
+            <img class="site-author-image" itemprop="image"
+              src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1505221430290&amp;di=5d6a88d013890d4f520618b024b4aaed&amp;imgtype=0&amp;src=http%3A%2F%2Fimg3.duitang.com%2Fuploads%2Fitem%2F201601%2F03%2F20160103085338_eyBCL.jpeg"
+              alt="Yunkun Xu" />
+          
+            <p class="site-author-name" itemprop="name">Yunkun Xu</p>
+            <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives/">
+            
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#准备工作"><span class="nav-number">1.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Qt链接MySQL数据库"><span class="nav-number">2.</span> <span class="nav-text">Qt链接MySQL数据库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Qt的MySQL数据库操作"><span class="nav-number">3.</span> <span class="nav-text">Qt的MySQL数据库操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#读取MySQL数据并输入到TableView中"><span class="nav-number">3.1.</span> <span class="nav-text">读取MySQL数据并输入到TableView中</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#读取MySQL多个表并根据主键值匹配融合成一个表"><span class="nav-number">3.2.</span> <span class="nav-text">读取MySQL多个表并根据主键值匹配融合成一个表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#增加操作"><span class="nav-number">3.3.</span> <span class="nav-text">增加操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除操作"><span class="nav-number">3.4.</span> <span class="nav-text">删除操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编辑操作"><span class="nav-number">3.5.</span> <span class="nav-text">编辑操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查询操作"><span class="nav-number">3.6.</span> <span class="nav-text">查询操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#统计计算"><span class="nav-number">3.7.</span> <span class="nav-text">统计计算</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Qt-MySQL发布"><span class="nav-number">4.</span> <span class="nav-text">Qt+MySQL发布</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#注意事项"><span class="nav-number">5.</span> <span class="nav-text">注意事项</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">6.</span> <span class="nav-text">Reference:</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+<div class="powered-by">
+ | 
+<i class="fa fa-bullseye"></i><span id="busuanzi_container_site_pv">
+  本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+</div>
+
+<div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yunkun Xu</span>
+
+  
+</div>
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("QhaBjkfW4URLRbhgJHxDwlLS-gzGzoHsz", "lMWD4RO6uM9qzr8tTOVVb70w");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+  
+
+  
+
+  
+  
+
+
+  
+
+  
+
+  
+  
+</body>
+</html>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
