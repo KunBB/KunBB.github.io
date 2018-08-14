@@ -109,7 +109,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="KunBB, Blog" />
+  <meta name="keywords" content="-多线程 -Qt -webservice -xml -gsoap," />
 
 
 
@@ -125,13 +125,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="KunBB&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/archives/2018/01/index.html">
+<meta name="description" content="项目使用Qt搭建了一个数据库软件，需要远程访问公司的MES系统，使用webservice技术进行通信并以XML格式传输数据，为了使网络监听过程中不影响主线程程序的正常运行，我们需要将webservice相关功能放在新开的独立线程中。 本项目使用的是QtCreator(Qt5.5.0)+VisualStudio2013+gSOAP2.8搭建。其他版本只要版本是正确对应的，都大同小异。">
+<meta name="keywords" content="-多线程 -Qt -webservice -xml -gsoap">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Qt+webservice的多线程实现">
+<meta property="og:url" content="http://yoursite.com/2018/08/13/Qt+webservice的多线程实现/index.html">
 <meta property="og:site_name" content="KunBB&#39;s blog">
+<meta property="og:description" content="项目使用Qt搭建了一个数据库软件，需要远程访问公司的MES系统，使用webservice技术进行通信并以XML格式传输数据，为了使网络监听过程中不影响主线程程序的正常运行，我们需要将webservice相关功能放在新开的独立线程中。 本项目使用的是QtCreator(Qt5.5.0)+VisualStudio2013+gSOAP2.8搭建。其他版本只要版本是正确对应的，都大同小异。">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-08-14T05:54:08.421Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="KunBB&#39;s blog">
+<meta name="twitter:title" content="Qt+webservice的多线程实现">
+<meta name="twitter:description" content="项目使用Qt搭建了一个数据库软件，需要远程访问公司的MES系统，使用webservice技术进行通信并以XML格式传输数据，为了使网络监听过程中不影响主线程程序的正常运行，我们需要将webservice相关功能放在新开的独立线程中。 本项目使用的是QtCreator(Qt5.5.0)+VisualStudio2013+gSOAP2.8搭建。其他版本只要版本是正确对应的，都大同小异。">
 
 
 
@@ -161,13 +166,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/archives/2018/01/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/08/13/Qt+webservice的多线程实现/"/>
 
 
 
 
 
-  <title>Archive | KunBB's blog</title>
+  <title>Qt+webservice的多线程实现 | KunBB's blog</title>
   
 
 
@@ -196,7 +201,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-archive">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -335,74 +340,259 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
-
-      <span class="archive-page-counter">
-        
-        
-        
-          
-        
-        Um..! 6 posts in total. Keep on posting.
-      </span>
-
-      
-
-        
-        
-        
-
-        
-          
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2018">2018</h1>
-          </div>
-        
-        
-
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/13/Qt+webservice的多线程实现/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yunkun Xu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1505221430290&amp;di=5d6a88d013890d4f520618b024b4aaed&amp;imgtype=0&amp;src=http%3A%2F%2Fimg3.duitang.com%2Fuploads%2Fitem%2F201601%2F03%2F20160103085338_eyBCL.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="KunBB's blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/01/30/libsvm SVR部分详解/" itemprop="url">
-              
-                <span itemprop="name">LibSVM支持向量回归详解</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">Qt+webservice的多线程实现</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-01-30T10:10:00+08:00"
-              content="2018-01-30" >
-          01-30
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-13T20:04:00+08:00">
+                2018-08-13
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Qt/" itemprop="url" rel="index">
+                    <span itemprop="name">Qt</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/08/13/Qt+webservice的多线程实现/" class="leancloud_visitors" data-flag-title="Qt+webservice的多线程实现">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Heat&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+				 <span>℃</span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  1,677
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
+      
 
+      
+        <p>项目使用Qt搭建了一个数据库软件，需要远程访问公司的MES系统，使用webservice技术进行通信并以XML格式传输数据，为了使网络监听过程中不影响主线程程序的正常运行，我们需要将webservice相关功能放在新开的独立线程中。</p>
+<p>本项目使用的是QtCreator(Qt5.5.0)+VisualStudio2013+gSOAP2.8搭建。其他版本只要版本是正确对应的，都大同小异。<br><a id="more"></a></p>
+<h1 id="WebService相关概念"><a href="#WebService相关概念" class="headerlink" title="WebService相关概念"></a>WebService相关概念</h1><p><em>参见参考文献[3]。</em></p>
+<p>WebService是一种跨编程语言和跨操作系统平台的远程调用技术。所谓跨编程语言和跨操作平台，就是说服务端和和客户端的搭建平台与编程语言可以都不相同。所谓远程调用，就是一台计算机a上 的一个程序可以调用到另外一台计算机b上的一个对象的方法。</p>
+<p>其实可以从多个角度来理解WebService，从表面上看，WebService就是一个应用程序向外界暴露出一个能通过Web进行调用的API，也就是说能用编程的方法通过 Web来调用这个应用程序。我们把调用这个WebService的应用程序叫做客户端，而把提供这个WebService的应用程序叫做服务端。从深层次看，WebService是建立可互操作的分布式应用程序的新平台，是一个平台，是一套标准。它定义了应用程序如何在Web上实现互操作性，你可以用任何 你喜欢的语言，在任何你喜欢的平台上写Webservice ，只要我们可以通过Webservice标准对这些服务进行查询和访问。</p>
+<p>WebService平台需要一套协议来实现分布式应用程序的创建。任何平台都有它的数据表示方法和类型系统。要实现互操作性，WebService平台必须提供一套标准的类型系统，用于沟通不同平台、编程语言和组件模型中的不同类型系统。Webservice平台必须提供一种标准来描述Webservice，让客户可以得到足够的信息来调用这个Webservice。最后，我们还必须有一种方法来对这个Webservice进行远程调用,这种方法实际是一种远程过程调用协议(RPC)。为了达到互操作性，这种RPC协议还必须与平台和编程语言无关。</p>
+<p>XML+XSD,SOAP和WSDL就是构成WebService平台的三大技术。</p>
+<ul>
+<li><p><strong>XML+XSD</strong><br>WebService采用HTTP协议传输数据，采用XML格式封装数据(即XML中说明调用远程服务对象的哪个方法，传递的参数是什么，以及服务对象的 返回结果是什么)，XML是WebService平台中表示数据的格式，其优点在于它既是平台无关又是厂商无关的。<br>XML解决了数据表示的问题，但它没有定义一套标准的数据类型，更没有说怎么去扩展这套数据类型。例如整形数到底代表什么？16位，32位，64位？这些细节对实现互操作性很重要。XML Schema(XSD)就是专门解决这个问题的一套标准。它定义了一套标准的数据类型，并给出了一种语言来扩展这套数据类型。WebService平台就是用XSD来作为其数据类型系统的。当你用某种语言(如VB.NET或C#)来构造一个Webservice时，为了符合WebService标准，所有你使用的数据类型都必须被转换为XSD类型。你用的工具可能已经自动帮你完成了这个转换，但你很可能会根据你的需要修改一下转换过程。</p>
+</li>
+<li><p><strong>SOAP</strong><br>SOAP是”简单对象访问协议”，SOAP协议 = HTTP协议 + XML数据格式。<br>WebService通过HTTP协议发送请求和接收结果时，发送的请求内容和结果内容都采用XML格式封装，并增加了一些特定的HTTP消息头，以说明HTTP消息的内容格式，这些特定的HTTP消息头和XML内容格式就是SOAP协议。SOAP提供了标准的RPC方法来调用WebService。<br>SOAP协议定义了SOAP消息的格式，SOAP协议是基于HTTP协议的，SOAP也是基于XML和XSD的，XML是SOAP的数据编码方式。打个比喻：HTTP就是普通公路，XML就是中间的绿色隔离带和两边的防护栏，SOAP就是普通公路经过加隔离带和防护栏改造过的高速公路。</p>
+</li>
+<li><p><strong>WSDL</strong><br>好比我们去商店买东西，首先要知道商店里有什么东西可买，然后再来购买，商家的做法就是张贴广告海报。 WebService也一样，WebService客户端要调用一个WebService服务，首先要有知道这个服务的地址在哪，以及这个服务里有什么方法可以调用，所以WebService务器端首先要通过一个WSDL文件来说明自己家里有啥服务可以对外调用，服务是什么（服务中有哪些方法，方法接受的参数是什么，返回值是什么），服务的网络地址用哪个url地址表示，服务通过什么方式来调用。<br>WSDL(Web Services Description Language)就是这样一个基于XML的语言，用于描述WebService及其函数、参数和返回值。它是WebService客户端和服务器端都能理解的标准格式。因为是基于XML的，所以WSDL既是机器可阅读的，又是人可阅读的，这将是一个很大的好处。一些最新的开发工具既能根据你的Webservice生成WSDL文档，又能导入WSDL文档，生成调用相应WebService的代理类代码。<br>WSDL文件保存在Web服务器上，通过一个url地址就可以访问到它。客户端要调用一个WebService服务之前，要知道该服务的WSDL文件的地址。 WebService服务提供商可以通过两种方式来暴露它的WSDL文件地址：1.注册到UDDI服务器，以便被人查找；2.直接告诉给客户端调用者。</p>
+</li>
+</ul>
+<h1 id="gSOAP使用"><a href="#gSOAP使用" class="headerlink" title="gSOAP使用"></a>gSOAP使用</h1><p>gsoap概念：是一种能够把C/C++语言的接口转换成基于soap协议的webservice服务的工具。</p>
+<h2 id="gSOAP简介"><a href="#gSOAP简介" class="headerlink" title="gSOAP简介"></a>gSOAP简介</h2><p>gSOAP</p>
+<h1 id="实例介绍"><a href="#实例介绍" class="headerlink" title="实例介绍"></a>实例介绍</h1><hr>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h1><p>[1] Qt中多线程的使用：<a href="https://blog.csdn.net/mao19931004/article/details/53131872" target="_blank" rel="external">https://blog.csdn.net/mao19931004/article/details/53131872</a><br>[2] Qt使用多线程的一些心得——1.继承QThread的多线程使用方法：<a href="https://blog.csdn.net/czyt1988/article/details/64441443" target="_blank" rel="external">https://blog.csdn.net/czyt1988/article/details/64441443</a><br>[3] WebService学习总结(一)——WebService的相关概念：<a href="https://www.cnblogs.com/xdp-gacl/p/4048937.html" target="_blank" rel="external">https://www.cnblogs.com/xdp-gacl/p/4048937.html</a><br>[4]</p>
+
+      
     </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Donate comment here</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/wechatpay.jpg" alt="Yunkun Xu WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/alipay.jpg" alt="Yunkun Xu Alipay"/>
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/多线程-Qt-webservice-xml-gsoap/" rel="tag"># -多线程 -Qt -webservice -xml -gsoap</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/13/Qt+Python混合编程/" rel="next" title="Qt+Python混合编程">
+                <i class="fa fa-chevron-left"></i> Qt+Python混合编程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -410,6 +600,12 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMDg2NC83NDEz"></div>
+    
+  </div>
+
 
         </div>
         
@@ -430,8 +626,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           
             <img class="site-author-image" itemprop="image"
@@ -496,6 +701,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#WebService相关概念"><span class="nav-number">1.</span> <span class="nav-text">WebService相关概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#gSOAP使用"><span class="nav-number">2.</span> <span class="nav-text">gSOAP使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#gSOAP简介"><span class="nav-number">2.1.</span> <span class="nav-text">gSOAP简介</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实例介绍"><span class="nav-number">3.</span> <span class="nav-text">实例介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">4.</span> <span class="nav-text">Reference:</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -632,6 +853,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
 
   
 
@@ -660,6 +885,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 
@@ -1097,7 +1333,7 @@
         showTime(Counter);
       }
     });
-  </script>
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 
@@ -1106,26 +1342,6 @@
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
