@@ -133,7 +133,7 @@
 <meta property="og:site_name" content="KunBB&#39;s blog">
 <meta property="og:description" content="项目需要开发一个数据库软件，并且整个软件都是使用Qt搭建的，数据库选用的是MySQL，因此需要使用Qt调用MySQL，在此记录一下相关方法与问题，以方便自己与他人。   本项目使用的是QtCreator(Qt5.5.0)+VisualStudio2013+MySQL5.7.17.0搭建。其他版本只要版本是正确对应的，都大同小异。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-08-14T07:11:47.042Z">
+<meta property="og:updated_time" content="2018-08-14T13:39:02.702Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Qt+MySQL编程">
 <meta name="twitter:description" content="项目需要开发一个数据库软件，并且整个软件都是使用Qt搭建的，数据库选用的是MySQL，因此需要使用Qt调用MySQL，在此记录一下相关方法与问题，以方便自己与他人。   本项目使用的是QtCreator(Qt5.5.0)+VisualStudio2013+MySQL5.7.17.0搭建。其他版本只要版本是正确对应的，都大同小异。">
@@ -513,7 +513,7 @@
 </li>
 <li><p>QT移植无法启动<code>This application failed to start because it could not find or load the Qt platform plugin</code>：<br>1). 将<code>../Qt5.5.0/5.5/msvc2013_64/bin</code>中的所有<code>.dll</code>复制到.exe目录下，尽管右下可能用不到；<br>2). 将文件夹<code>../Qt5.5.0/5.5/msvc2013_64/plugins/platforms</code>直接复制到.exe目录下。</p>
 </li>
-<li><p>在<code>Qt5.5 64-bit for Desktop (msvc 2013)</code>中输入<code>windeployqt 文件名.exe</code>时报错<code>Warning: Cannot find Visual Studio installation directory, VCINSTALLDIR is not set.</code>。<br>直接用 “VS2013 开发人员命令提示” 命令行去执行刚才的<code>windeployqt 文件名.exe</code>，会将 “vcredist_x64.exe”（vc x64 运行最少环境）程序放入当前目录。</p>
+<li><p>在<code>Qt5.5 64-bit for Desktop (msvc 2013)</code>中输入<code>windeployqt 文件名.exe</code>时报错<code>Warning: Cannot find Visual Studio installation directory, VCINSTALLDIR is not set.</code>：<br>直接用 “VS2013 开发人员命令提示” 命令行去执行刚才的<code>windeployqt 文件名.exe</code>，会将 “vcredist_x64.exe”（vc x64 运行最少环境）程序放入当前目录。</p>
 </li>
 </ul>
 <hr>

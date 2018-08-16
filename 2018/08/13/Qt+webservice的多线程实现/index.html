@@ -133,10 +133,16 @@
 <meta property="og:site_name" content="KunBB&#39;s blog">
 <meta property="og:description" content="项目使用Qt搭建了一个数据库软件，需要远程访问公司的MES系统，使用webservice技术进行通信并以XML格式传输数据，为了使网络监听过程中不影响主线程程序的正常运行，我们需要将webservice相关功能放在新开的独立线程中。 本项目使用的是QtCreator(Qt5.5.0)+VisualStudio2013+gSOAP2.8搭建。其他版本只要版本是正确对应的，都大同小异。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-08-14T05:54:08.421Z">
+<meta property="og:image" content="https://github.com/KunBB/MarkdownPhotos/blob/master/LibSVM%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E5%9B%9E%E5%BD%92%E8%AF%A6%E8%A7%A3/1.jpg?raw=true">
+<meta property="og:image" content="https://github.com/KunBB/MarkdownPhotos/blob/master/LibSVM%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E5%9B%9E%E5%BD%92%E8%AF%A6%E8%A7%A3/1.jpg?raw=true">
+<meta property="og:image" content="http://yoursite.com/2018/08/13/Qt+webservice的多线程实现/4">
+<meta property="og:image" content="http://yoursite.com/2018/08/13/Qt+webservice的多线程实现/5">
+<meta property="og:image" content="http://yoursite.com/2018/08/13/Qt+webservice的多线程实现/3">
+<meta property="og:updated_time" content="2018-08-16T14:20:00.290Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Qt+webservice的多线程实现">
 <meta name="twitter:description" content="项目使用Qt搭建了一个数据库软件，需要远程访问公司的MES系统，使用webservice技术进行通信并以XML格式传输数据，为了使网络监听过程中不影响主线程程序的正常运行，我们需要将webservice相关功能放在新开的独立线程中。 本项目使用的是QtCreator(Qt5.5.0)+VisualStudio2013+gSOAP2.8搭建。其他版本只要版本是正确对应的，都大同小异。">
+<meta name="twitter:image" content="https://github.com/KunBB/MarkdownPhotos/blob/master/LibSVM%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E5%9B%9E%E5%BD%92%E8%AF%A6%E8%A7%A3/1.jpg?raw=true">
 
 
 
@@ -449,7 +455,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  1,677
+                  5,795
                 </span>
               
 
@@ -465,7 +471,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  6
+                  24
                 </span>
               
             </div>
@@ -501,10 +507,422 @@
 <li><p><strong>WSDL</strong><br>好比我们去商店买东西，首先要知道商店里有什么东西可买，然后再来购买，商家的做法就是张贴广告海报。 WebService也一样，WebService客户端要调用一个WebService服务，首先要有知道这个服务的地址在哪，以及这个服务里有什么方法可以调用，所以WebService务器端首先要通过一个WSDL文件来说明自己家里有啥服务可以对外调用，服务是什么（服务中有哪些方法，方法接受的参数是什么，返回值是什么），服务的网络地址用哪个url地址表示，服务通过什么方式来调用。<br>WSDL(Web Services Description Language)就是这样一个基于XML的语言，用于描述WebService及其函数、参数和返回值。它是WebService客户端和服务器端都能理解的标准格式。因为是基于XML的，所以WSDL既是机器可阅读的，又是人可阅读的，这将是一个很大的好处。一些最新的开发工具既能根据你的Webservice生成WSDL文档，又能导入WSDL文档，生成调用相应WebService的代理类代码。<br>WSDL文件保存在Web服务器上，通过一个url地址就可以访问到它。客户端要调用一个WebService服务之前，要知道该服务的WSDL文件的地址。 WebService服务提供商可以通过两种方式来暴露它的WSDL文件地址：1.注册到UDDI服务器，以便被人查找；2.直接告诉给客户端调用者。</p>
 </li>
 </ul>
-<h1 id="gSOAP使用"><a href="#gSOAP使用" class="headerlink" title="gSOAP使用"></a>gSOAP使用</h1><p>gsoap概念：是一种能够把C/C++语言的接口转换成基于soap协议的webservice服务的工具。</p>
-<h2 id="gSOAP简介"><a href="#gSOAP简介" class="headerlink" title="gSOAP简介"></a>gSOAP简介</h2><p>gSOAP</p>
-<h1 id="实例介绍"><a href="#实例介绍" class="headerlink" title="实例介绍"></a>实例介绍</h1><hr>
-<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h1><p>[1] Qt中多线程的使用：<a href="https://blog.csdn.net/mao19931004/article/details/53131872" target="_blank" rel="external">https://blog.csdn.net/mao19931004/article/details/53131872</a><br>[2] Qt使用多线程的一些心得——1.继承QThread的多线程使用方法：<a href="https://blog.csdn.net/czyt1988/article/details/64441443" target="_blank" rel="external">https://blog.csdn.net/czyt1988/article/details/64441443</a><br>[3] WebService学习总结(一)——WebService的相关概念：<a href="https://www.cnblogs.com/xdp-gacl/p/4048937.html" target="_blank" rel="external">https://www.cnblogs.com/xdp-gacl/p/4048937.html</a><br>[4]</p>
+<h1 id="gSOAP总结"><a href="#gSOAP总结" class="headerlink" title="gSOAP总结"></a>gSOAP总结</h1><p>gsoap概念：是一种能够把C/C++语言的接口转换成基于soap协议的webservice服务的工具。从官网的说明文档可知gSOAP可以为我们完成以下工作：</p>
+<p>1、自动生成C和C++源代码，以使用和部署XML、JSON REST API以及SOAP/XML API；<br>2、使用gSOAP的快速XML流处理模型进行XML解析和验证，实现实现可移植的快速的和精简的API，每秒处理10K+消息仅需几KB代码和数据；<br>3、将WSDL转换为有效的C或C++源代码以使用或部署XML Web服务；<br>4、将XML schemas(XSD)转换为高效的C或C++源代码，以使用gSOAP全面的XML schemas功能覆盖来使用或部署XML REST API；<br>5、为WSDL和/或XSD定义的大型复杂XML规范生成高效的C和C ++代码，例如eBay，ONVIF，HL7，FHIR，HIPAA 5010，CDISC，XMPP XEP，TR-069，AWS，EWS，ACORD，ISO 20022和SWIFT，FixML，XBRL，OTA，IATA NDC，FedEx等（您甚至可以将多个组合在一起）；<br>6、安全的XML处理过程：gSOAP不容易受到大部分XML攻击手段的攻击；<br>7、使用强大的XML数据绑定准确地序列化XML中的C和C++数据，这有助于通过静态类型快速开发类型安全的API，以避免运行时错误；<br>8、在WSDL和XSD文件上使用wsdl2h选项-O2或-O4进行“schema slicing”，通过自动删除未使用的schema类型（WSDL和XSD根目录中无法访问的类型）来优化XML代码库的大小；<br>9、使用和部署JSON REST API；<br>10、使用SAML令牌安全地使用HTTP/S，WS-Security和WS-Trust来使用和部署API;<br>11、使用测试信使CLI测试您的SOAP/XML API，它会自动生成基于WSDL的完整和随机化的SOAP/XML消息（使用带有选项-g的wsdl2h和soapcpp2）来测试Web服务API和客户端；<br>12、使用gSOAP Apache模块在Apache Web服务器中部署API，在IIS中使用gSOAP ISAPI扩展部署API；<br>13、使用gSOAP cURL插件和gSOAP WinInet插件来使用API；<br>14、符合XML的行业标准，包括XML REST和SOAP，WSDL，MIME，MTOM，DIME，WS-Trust，WS-Security（集成了WS-Policy和WS-SecurityPolicy），WS-ReliableMessaging，WS-Discovery，WS-Addressing等；</p>
+<h2 id="gSOAP简介"><a href="#gSOAP简介" class="headerlink" title="gSOAP简介"></a>gSOAP简介</h2><p>gSOAP一种跨平台的开源的C/C++软件开发工具包。生成C/C++的RPC代码，XML数据绑定，对SOAP Web服务和其他应用形成高效的具体架构解析器，它们都受益于一个XML接口。 这个工具包提供了一个全面和透明的XML数据绑定解决方案，Autocoding节省大量开发时间来执行SOAP/XML Web服务中的C/C++。此外，使用XML数据绑定大大简化了XML自动映射。应用开发人员不再需要调整应用程序逻辑的具体库和XML为中心的数据。</p>
+<h2 id="gSOAP结构"><a href="#gSOAP结构" class="headerlink" title="gSOAP结构"></a>gSOAP结构</h2><p>使用gSOAP首先需要用到了两个工具就是<code>../gsoap-2.8/gsoap/bin/win32/wsdl2h.exe</code>和<code>../gsoap-2.8/gsoap/bin/win32/soapcpp2.exe</code>，用于自动生成包含接口的c/c++源文件。</p>
+<h3 id="wsdl2h-exe"><a href="#wsdl2h-exe" class="headerlink" title="wsdl2h.exe"></a>wsdl2h.exe</h3><p>该工具可以根据输入的wsdl或XSD或URL产生相应的C/C++形式的.h供<code>soapcpp2.exe</code>使用。示例如下：</p>
+<p>新建一个文件夹，将<code>wsdl2h.exe</code>(和<code>.wsdl</code>文件)放入，命令行进入当前路径后输入以下命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">wsdl2h [options] XSD and WSDL files ...</div><div class="line"></div><div class="line">wsdl2h -o file.h file1.wsdl</div><div class="line">wsdl2h -o file.h http://www.genivia.com/calc.wsdl</div></pre></td></tr></table></figure></p>
+<p>根据WSDL自动生成<code>file.h</code>头文件，以供<code>soapcpp2.exe</code>使用。</p>
+<p>wsdl2h主要的运行选项如下：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">选项</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">-a</td>
+<td style="text-align:left">对匿名类型产生基于顺序号的结构体名称</td>
+</tr>
+<tr>
+<td style="text-align:left">-b</td>
+<td style="text-align:left">提供单向响应消息的双向操作（双工）</td>
+</tr>
+<tr>
+<td style="text-align:left">-c</td>
+<td style="text-align:left">生成c代码</td>
+</tr>
+<tr>
+<td style="text-align:left">-c++</td>
+<td style="text-align:left">生成c++代码</td>
+</tr>
+<tr>
+<td style="text-align:left">-c++11</td>
+<td style="text-align:left">生成c++11代码</td>
+</tr>
+<tr>
+<td style="text-align:left">-d</td>
+<td style="text-align:left">使用DOM填充xs：any和xsd：anyType元素</td>
+</tr>
+<tr>
+<td style="text-align:left">-D</td>
+<td style="text-align:left">使用指针使具有默认值的属性成员可选</td>
+</tr>
+<tr>
+<td style="text-align:left">-e</td>
+<td style="text-align:left">不要限定枚举名称，此选项用于向后兼容gSOAP 2.4.1及更早版本，该选项不会生成符合WS-I Basic Profile 1.0a的代码。</td>
+</tr>
+<tr>
+<td style="text-align:left">-f</td>
+<td style="text-align:left">为schema扩展生成平面C++类层次结构</td>
+</tr>
+<tr>
+<td style="text-align:left">-g</td>
+<td style="text-align:left">生成全局顶级元素声明</td>
+</tr>
+<tr>
+<td style="text-align:left">-h</td>
+<td style="text-align:left">显示帮助信息</td>
+</tr>
+<tr>
+<td style="text-align:left">-I path</td>
+<td style="text-align:left">包含文件时指明路径，相当于#import</td>
+</tr>
+<tr>
+<td style="text-align:left">-i</td>
+<td style="text-align:left">不导入（高级选项）</td>
+</tr>
+<tr>
+<td style="text-align:left">-j</td>
+<td style="text-align:left">不生成SOAP_ENV<strong>Header和SOAP_ENV</strong>Detail定义</td>
+</tr>
+<tr>
+<td style="text-align:left">-k</td>
+<td style="text-align:left">不生成SOAP_ENV__Header mustUnderstand限定符</td>
+</tr>
+<tr>
+<td style="text-align:left">-l</td>
+<td style="text-align:left">在输出中包含许可证信息</td>
+</tr>
+<tr>
+<td style="text-align:left">-m</td>
+<td style="text-align:left">使用xsd.h模块导入基元类型</td>
+</tr>
+<tr>
+<td style="text-align:left">-N name</td>
+<td style="text-align:left">用name 来指定服务命名空间的前缀</td>
+</tr>
+<tr>
+<td style="text-align:left">-n name</td>
+<td style="text-align:left">用name 作为命名空间的前缀取代缺省的ns</td>
+</tr>
+<tr>
+<td style="text-align:left">-O1</td>
+<td style="text-align:left">通过省略重复的选择/序列成员来优化</td>
+</tr>
+<tr>
+<td style="text-align:left">-O2</td>
+<td style="text-align:left">优化-O1并省略未使用的模式类型（从根目录无法访问）</td>
+</tr>
+<tr>
+<td style="text-align:left">-o file</td>
+<td style="text-align:left">输出文件名</td>
+</tr>
+<tr>
+<td style="text-align:left">-P</td>
+<td style="text-align:left">不要创建从xsd__anyType继承的多态类型</td>
+</tr>
+<tr>
+<td style="text-align:left">-p</td>
+<td style="text-align:left">创建从base xsd__anyType继承的多态类型，当WSDL包含多态定义时，会自动执行此操作</td>
+</tr>
+<tr>
+<td style="text-align:left">-q name</td>
+<td style="text-align:left">使用name作为所有声明的C++命名空间</td>
+</tr>
+<tr>
+<td style="text-align:left">-R</td>
+<td style="text-align:left">在WSDL中为REST绑定生成REST操作</td>
+</tr>
+<tr>
+<td style="text-align:left">-r host[:port[:uid:pwd]]</td>
+<td style="text-align:left">通过代理主机，端口和代理凭据连接</td>
+</tr>
+<tr>
+<td style="text-align:left">-r:uid:pwd</td>
+<td style="text-align:left">连接身份验证凭据（验证身份验证需要SSL）</td>
+</tr>
+<tr>
+<td style="text-align:left">-s</td>
+<td style="text-align:left">不生成STL代码（没有std :: string和没有std :: vector）</td>
+</tr>
+<tr>
+<td style="text-align:left">-t file</td>
+<td style="text-align:left">使用类型映射文件而不是默认文件typemap.dat</td>
+</tr>
+<tr>
+<td style="text-align:left">-U</td>
+<td style="text-align:left">将Unicode XML名称映射到UTF8编码的Unicode C/C++标识符</td>
+</tr>
+<tr>
+<td style="text-align:left">-u</td>
+<td style="text-align:left">不产生工会unions</td>
+</tr>
+<tr>
+<td style="text-align:left">-V</td>
+<td style="text-align:left">显示当前版本并退出</td>
+</tr>
+<tr>
+<td style="text-align:left">-v</td>
+<td style="text-align:left">详细输出</td>
+</tr>
+<tr>
+<td style="text-align:left">-W</td>
+<td style="text-align:left">抑制编译器警告</td>
+</tr>
+<tr>
+<td style="text-align:left">-w</td>
+<td style="text-align:left">始终在响应结构中包装响应参数</td>
+</tr>
+<tr>
+<td style="text-align:left">-x</td>
+<td style="text-align:left">不生成_XML any/anyAttribute可扩展性元素</td>
+</tr>
+<tr>
+<td style="text-align:left">-y</td>
+<td style="text-align:left">为结构和枚举生成typedef同义词</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="soapcpp2-exe"><a href="#soapcpp2-exe" class="headerlink" title="soapcpp2.exe"></a>soapcpp2.exe</h3><p>该工具是一个根据.h文件生成若干支持webservice代码文件生成工具，生成的代码文件包括webservice客户端和服务端的实现框架，XML数据绑定等，具体说明如下：</p>
+<p>新建一个文件夹，将<code>soapcpp2.exe</code>和<code>.h</code>文件放入，命令行进入当前路径后输入以下命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">soapcpp2 [options] header_file.h</div><div class="line"></div><div class="line">soapcpp2 mySoap.h</div><div class="line">soapcpp2 -c -r -CL calc.h</div></pre></td></tr></table></figure></p>
+<p>会生成如下c类型文件：<br><img src="https://github.com/KunBB/MarkdownPhotos/blob/master/LibSVM%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E5%9B%9E%E5%BD%92%E8%AF%A6%E8%A7%A3/1.jpg?raw=true" alt="Loading..."></p>
+<p>使用命令<code>-i</code>会生成如下c++类型文件：<br><img src="https://github.com/KunBB/MarkdownPhotos/blob/master/LibSVM%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E5%9B%9E%E5%BD%92%E8%AF%A6%E8%A7%A3/1.jpg?raw=true" alt="Loading..."></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">文件</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">soapStub.h</td>
+<td style="text-align:left">根据输入的.h文件生成的数据定义文件，一般我们不直接引用它</td>
+</tr>
+<tr>
+<td style="text-align:left">soapH.h</td>
+<td style="text-align:left">所有客户端服务端都应包含的主头文件</td>
+</tr>
+<tr>
+<td style="text-align:left">soapC.cpp</td>
+<td style="text-align:left">指定数据结构的序列化和反序列化方法</td>
+</tr>
+<tr>
+<td style="text-align:left">soapClient.cpp</td>
+<td style="text-align:left">用于远程操作的客户端存根例程</td>
+</tr>
+<tr>
+<td style="text-align:left">soapServer.cpp</td>
+<td style="text-align:left">服务框架例程</td>
+</tr>
+<tr>
+<td style="text-align:left">soapClientLib.cpp</td>
+<td style="text-align:left">客户端存根与本地静态(反)序列化器结合使用</td>
+</tr>
+<tr>
+<td style="text-align:left">soapServerLib.cpp</td>
+<td style="text-align:left">服务框架与本地静态(反)序列化器结合使用</td>
+</tr>
+<tr>
+<td style="text-align:left">soapXYZProxy.h</td>
+<td style="text-align:left">使用选项-i：c++服务端对象(与soapC.cpp和soapXYZProxy.cpp链接)</td>
+</tr>
+<tr>
+<td style="text-align:left">soapXYZProxy.cpp</td>
+<td style="text-align:left">使用选项-i：客户端代码</td>
+</tr>
+<tr>
+<td style="text-align:left">soapXYZService.h</td>
+<td style="text-align:left">使用选项-i：server对象(与soapC.cpp和soapXYZService.cpp链接)</td>
+</tr>
+<tr>
+<td style="text-align:left">soapXYZService.cpp</td>
+<td style="text-align:left">使用选项-i：服务端代码</td>
+</tr>
+<tr>
+<td style="text-align:left">.xsd</td>
+<td style="text-align:left">ns.XSD由XML Schema生成，ns为命名空间前缀名，我们可以看看是否满足我们的协议格式（如果有此要求）</td>
+</tr>
+<tr>
+<td style="text-align:left">.wsdl</td>
+<td style="text-align:left">ns.wsdl由WSDL描述生成</td>
+</tr>
+<tr>
+<td style="text-align:left">.xml</td>
+<td style="text-align:left">生成了几个SOAP/XML请求和响应文件。即满足webservice定义的例子message(实际的传输消息)，我们可以看看是否满足我们的协议格式(如果有此要求)</td>
+</tr>
+<tr>
+<td style="text-align:left">.nsmap</td>
+<td style="text-align:left">根据输入soapcpp2.exe的头文件中定义的命名空间前缀ns生成ns.nsmap，该文件包含可在客户端和服务端使用的命名空间映射表</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>soapcpp的主要运行选项如下：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">选项</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">-1</td>
+<td style="text-align:left">生成SOAP 1.1绑定</td>
+</tr>
+<tr>
+<td style="text-align:left">-2</td>
+<td style="text-align:left">生成SOAP 1.2绑定</td>
+</tr>
+<tr>
+<td style="text-align:left">-0</td>
+<td style="text-align:left">没有SOAP绑定，使用REST</td>
+</tr>
+<tr>
+<td style="text-align:left">-C</td>
+<td style="text-align:left">仅生成客户端代码</td>
+</tr>
+<tr>
+<td style="text-align:left">-S</td>
+<td style="text-align:left">仅生成服务端代码</td>
+</tr>
+<tr>
+<td style="text-align:left">-T</td>
+<td style="text-align:left">生成服务端自动测试代码</td>
+</tr>
+<tr>
+<td style="text-align:left">-Ec</td>
+<td style="text-align:left">为深度数据复制生成额外的例程</td>
+</tr>
+<tr>
+<td style="text-align:left">-Ed</td>
+<td style="text-align:left">为深度数据删除生成额外的例程</td>
+</tr>
+<tr>
+<td style="text-align:left">-Et</td>
+<td style="text-align:left">使用walker函数为数据遍历生成额外的例程</td>
+</tr>
+<tr>
+<td style="text-align:left">-L</td>
+<td style="text-align:left">不生成soapClientLib / soapServerLib</td>
+</tr>
+<tr>
+<td style="text-align:left">-a</td>
+<td style="text-align:left">使用SOAPAction和WS-Addressing来调用服务端操作</td>
+</tr>
+<tr>
+<td style="text-align:left">-A</td>
+<td style="text-align:left">要求SOAPAction调用服务端操作</td>
+</tr>
+<tr>
+<td style="text-align:left">-b</td>
+<td style="text-align:left">序列化字节数组char [N]为字符串</td>
+</tr>
+<tr>
+<td style="text-align:left">-c</td>
+<td style="text-align:left">生成纯C代码</td>
+</tr>
+<tr>
+<td style="text-align:left">-d <path></path></td>
+<td style="text-align:left">保存到指定目录<path></path>中</td>
+</tr>
+<tr>
+<td style="text-align:left">-e</td>
+<td style="text-align:left">生成SOAP RPC编码样式绑定</td>
+</tr>
+<tr>
+<td style="text-align:left">-f N</td>
+<td style="text-align:left">多个soapC文件，每个文件有N个序列化程序定义（N≥10）</td>
+</tr>
+<tr>
+<td style="text-align:left">-h</td>
+<td style="text-align:left">打印一条简短的用法消息</td>
+</tr>
+<tr>
+<td style="text-align:left">-i</td>
+<td style="text-align:left">生成从soap struct继承的服务代理类和对象</td>
+</tr>
+<tr>
+<td style="text-align:left">-j</td>
+<td style="text-align:left">生成可以共享soap结构的C++服务代理类和对象</td>
+</tr>
+<tr>
+<td style="text-align:left">-I <path></path></td>
+<td style="text-align:left">包含其他文件时使用，指明 &lt; path &gt; (多个的话，用`:’分割)，相当于#import ，该路径一般是gSOAP目录下的import目录，该目录下有一堆文件供soapcpp2生成代码时使用</td>
+</tr>
+<tr>
+<td style="text-align:left">-l</td>
+<td style="text-align:left">生成可链接模块（实验）</td>
+</tr>
+<tr>
+<td style="text-align:left">-m</td>
+<td style="text-align:left">为MEX编译器生成Matlab代码</td>
+</tr>
+<tr>
+<td style="text-align:left">-n</td>
+<td style="text-align:left">用于生成支持多个客户端和服务器端</td>
+</tr>
+<tr>
+<td style="text-align:left">-p <name></name></td>
+<td style="text-align:left">生成的文件前缀采用&lt; name &gt; ，而不是缺省的 “soap”</td>
+</tr>
+<tr>
+<td style="text-align:left">-q <name></name></td>
+<td style="text-align:left">使用name作为c++所有声明的命名空间</td>
+</tr>
+<tr>
+<td style="text-align:left">-r</td>
+<td style="text-align:left">生成soapReadme.md报告</td>
+</tr>
+<tr>
+<td style="text-align:left">-s</td>
+<td style="text-align:left">生成的代码在反序列化时，严格检查XML的有效性</td>
+</tr>
+<tr>
+<td style="text-align:left">-t</td>
+<td style="text-align:left">生成的代码在发送消息时，采用xsi:type方式</td>
+</tr>
+<tr>
+<td style="text-align:left">-u</td>
+<td style="text-align:left">通过抑制XML注释来取消注释WSDL / schema输出中的注释</td>
+</tr>
+<tr>
+<td style="text-align:left">-V</td>
+<td style="text-align:left">显示当前版本并退出</td>
+</tr>
+<tr>
+<td style="text-align:left">-v</td>
+<td style="text-align:left">详细输出</td>
+</tr>
+<tr>
+<td style="text-align:left">-w</td>
+<td style="text-align:left">不生成WSDL和schema文件</td>
+</tr>
+<tr>
+<td style="text-align:left">-x</td>
+<td style="text-align:left">不生成示例XML消息文件</td>
+</tr>
+<tr>
+<td style="text-align:left">-y</td>
+<td style="text-align:left">在示例XML消息中包含C / C ++类型访问信息</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="实例介绍"><a href="#实例介绍" class="headerlink" title="实例介绍"></a>实例介绍</h1><h2 id="功能介绍"><a href="#功能介绍" class="headerlink" title="功能介绍"></a>功能介绍</h2><p>1、客户端能够向服务端发送字符串数据；<br>2、服务端能够接收到客户端发送的字符串数据；<br>3、服务端对字符串数据解析、查重并录入数据库；<br>4、软件窗口显示连接状态。</p>
+<p>最终效果如下所示：<br>点击“开始连接”按钮：<br><img src="4" alt="Loading..."></p>
+<p>从客户端接收到一组数据后：<br><img src="5" alt="Loading..."></p>
+<h2 id="实例步骤"><a href="#实例步骤" class="headerlink" title="实例步骤"></a>实例步骤</h2><p><strong>1. 生成源代码</strong><br>由于没有<code>.wsdl</code>文件，因此我们跳过<code>wsdl2h.exe</code>这一步骤，手动编写供<code>soapcpp2.exe</code>使用的头文件<code>mySoap.h</code>：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//gsoap ns service name: sendMsg</span></div><div class="line"><span class="comment">//gsoap ns service style: rpc</span></div><div class="line"><span class="comment">//gsoap ns service encoding: encoded</span></div><div class="line"><span class="comment">//gsoap ns service namespace: urn:sendMsg</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">ns__sendMsg</span><span class="params">(<span class="keyword">char</span>* szMsgXml,struct nullResponse&#123;&#125; *out)</span></span>;</div></pre></td></tr></table></figure></p>
+<p>新建文件夹，将<code>soapcpp2.exe</code>和<code>mySoap.h</code>放入，打开命令后进入该目录下，运行命令<code>soapcpp2 mySoap.h</code>，生成如下文件：<br><img src="3" alt="Loading..."></p>
+<p><strong>2. 客户端程序编写</strong><br>在QtCreator中向客户端工程目录添加文件<code>sendMsg.nsmap</code>、<code>soapH.h</code>、<code>soapStub.h</code>、<code>stdsoap2.h</code>、<code>soapC.cpp</code>、<code>soapClient.cpp</code>、<code>stdsoap2.cpp</code>(<code>stdsoap2.h</code>和<code>stdsoap2.cpp</code>位于文件夹<code>../gsoap-2.8/gsoap</code>)。</p>
+<p>客户端项目构建的是一个控制台程序，因此直接在main函数里进行编写代码：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QCoreApplication&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"stdio.h"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"gservice.nsmap"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"soapStub.h"</span></span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="function">QCoreApplication <span class="title">a</span><span class="params">(argc, argv)</span></span>;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"The Client is runing...\n"</span>);</div><div class="line"></div><div class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">soap</span> *<span class="title">CalculateSoap</span> = <span class="title">soap_new</span>();</span></div><div class="line"></div><div class="line">    <span class="keyword">char</span> server_addr[] = <span class="string">"127.0.0.1:8080"</span>; <span class="comment">// url地址，IP号+设备端口号</span></div><div class="line">    <span class="keyword">char</span>* data = <span class="string">"flange,6,7,8,9,10,11,12,13"</span>; <span class="comment">// 所需传递的数据</span></div><div class="line"></div><div class="line">    nullResponse result; <span class="comment">// 用于sendMsg的空返回值</span></div><div class="line">    <span class="keyword">int</span> iRet = soap_call_ns__sendMsg(CalculateSoap,server_addr,<span class="literal">NULL</span>,data,&amp;result); <span class="comment">// 调用之前定义的ns__sendMsg方法(即服务端提供的方法)</span></div><div class="line"></div><div class="line">    <span class="keyword">if</span> ( iRet == SOAP_ERR)&#123;</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"Error while calling the soap_call_ns__sendmsg"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span></div><div class="line">    &#123;</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"Calling the soap_call_ns__add success。\n"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    soap_end(CalculateSoap);</div><div class="line">    soap_done(CalculateSoap);</div><div class="line"></div><div class="line">    <span class="keyword">return</span> a.exec();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>3. 服务端程序编写</strong><br>在QtCreator中向服务端工程目录添加文件<code>sendMsg.nsmap</code>、<code>soapH.h</code>、<code>soapStub.h</code>、<code>stdsoap2.h</code>、<code>soapC.cpp</code>、<code>soapServer.cpp</code>、<code>stdsoap2.cpp</code>。</p>
+<p>由于服务端网络通信功能需要不断对端口进行监听，因此为避免影响软件其他功能的运行，在此需要新开一条线程。项目头文件源码如下：<br>socketconnect.h:<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> SOCKETCONNECT_H</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> SOCKETCONNECT_H</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QWidget&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QDebug&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QVector&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"webservice_thread.h"</span> <span class="comment">// 多线程头文件</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QMessageBox&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">namespace</span> Ui &#123;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SocketConnect</span>;</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SocketConnect</span> :</span> <span class="keyword">public</span> QWidget</div><div class="line">&#123;</div><div class="line">    Q_OBJECT</div><div class="line"></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">setDbconn</span><span class="params">(QSqlDatabase *dbconn)</span></span>; <span class="comment">// 主线程数据库</span></div><div class="line">    <span class="function"><span class="keyword">explicit</span> <span class="title">SocketConnect</span><span class="params">(QWidget *parent = <span class="number">0</span>)</span></span>;</div><div class="line">    ~SocketConnect();</div><div class="line"></div><div class="line"><span class="keyword">private</span> slots:</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">pB_lj_clicked</span><span class="params">()</span></span>; <span class="comment">// 连接按钮</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">pB_dk_clicked</span><span class="params">()</span></span>; <span class="comment">// 断开连接按钮</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">linkState_accept</span><span class="params">(QVector&lt;QString&gt;)</span></span>; <span class="comment">// 用于在窗口显示连接状态</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">data_accept</span><span class="params">(QVector&lt;QString&gt;)</span></span>; <span class="comment">// 接收数据，检查后录入数据库</span></div><div class="line"></div><div class="line"><span class="keyword">private</span>:</div><div class="line">    QSqlDatabase *dbconn;</div><div class="line">    WebserviceThread *WebT;</div><div class="line">    QVector&lt;QString&gt; v_linkstate;</div><div class="line"></div><div class="line">    Ui::SocketConnect *ui;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">// SOCKETCONNECT_H</span></span></div></pre></td></tr></table></figure></p>
+<p>socketconnect.cpp:<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"socketconnect.h"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"ui_socketconnect.h"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"scrollwidget.h"</span></span></div><div class="line"></div><div class="line">SocketConnect::SocketConnect(QWidget *parent) :</div><div class="line">    QWidget(parent),</div><div class="line">    ui(<span class="keyword">new</span> Ui::SocketConnect)</div><div class="line">&#123;</div><div class="line">    ui-&gt;setupUi(<span class="keyword">this</span>);</div><div class="line"></div><div class="line">    ui-&gt;tabWidget-&gt;setTabText(<span class="number">1</span>, QStringLiteral(<span class="string">"法兰盘部件"</span>));</div><div class="line">    ui-&gt;tabWidget-&gt;setCurrentIndex(<span class="number">0</span>);</div><div class="line"></div><div class="line">    ui-&gt;lineEdit-&gt;setText(<span class="string">"127.0.0.1"</span>); <span class="comment">// 暂时无用</span></div><div class="line">    ui-&gt;lineEdit_2-&gt;setText(<span class="string">"8080"</span>);</div><div class="line">    ui-&gt;lineEdit_3-&gt;setText(<span class="string">"helloworld"</span>);</div><div class="line">    ui-&gt;lineEdit_4-&gt;setText(<span class="string">"helloworld"</span>);</div><div class="line">    ui-&gt;lineEdit_4-&gt;setEchoMode(QLineEdit::Password);</div><div class="line"></div><div class="line">    ui-&gt;tableWidget_fla-&gt;setEditTriggers(QAbstractItemView::NoEditTriggers); <span class="comment">// 表格不可编辑</span></div><div class="line">    ui-&gt;tableWidget_fla-&gt;setSelectionBehavior(QAbstractItemView::SelectRows);</div><div class="line"></div><div class="line">    ui-&gt;tableWidget_fla-&gt;setAlternatingRowColors(<span class="literal">true</span>);</div><div class="line">    ui-&gt;tableWidget_fla-&gt;setStyleSheet(<span class="string">"QTableView&#123;alternate-background-color: rgb(183, 242, 238);&#125;"</span>); <span class="comment">// 设置隔行换色</span></div><div class="line"></div><div class="line">    connect(ui-&gt;pushButton_lj,SIGNAL(clicked(<span class="keyword">bool</span>)),<span class="keyword">this</span>,SLOT(pB_lj_clicked()));</div><div class="line">    connect(ui-&gt;pushButton_dk,SIGNAL(clicked(<span class="keyword">bool</span>)),<span class="keyword">this</span>,SLOT(pB_dk_clicked()));</div><div class="line">&#125;</div><div class="line"></div><div class="line">SocketConnect::~SocketConnect()</div><div class="line">&#123;</div><div class="line">    <span class="keyword">delete</span> ui;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">void</span> SocketConnect::setDbconn(QSqlDatabase *db)&#123;</div><div class="line">    <span class="keyword">this</span>-&gt;dbconn=db;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">void</span> SocketConnect::pB_lj_clicked()</div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span>(ui-&gt;lineEdit_3-&gt;text()==<span class="string">"helloworld"</span>&amp;&amp;ui-&gt;lineEdit_4-&gt;text()==<span class="string">"helloworld"</span>)&#123;</div><div class="line">        WebT = <span class="keyword">new</span> WebserviceThread(<span class="keyword">this</span>);</div><div class="line">        <span class="keyword">int</span> port = ui-&gt;lineEdit_2-&gt;text().toInt();</div><div class="line">        WebT-&gt;setParameters(port);</div><div class="line">        connect(WebT,SIGNAL(linkState_send(QVector&lt;QString&gt;)),<span class="keyword">this</span>,SLOT(linkState_accept(QVector&lt;QString&gt;)));</div><div class="line">        connect(ui-&gt;pushButton_dk,SIGNAL(clicked(<span class="keyword">bool</span>)),WebT,SLOT(stopclick_accept()));</div><div class="line">        connect(WebT,SIGNAL(data_send(QVector&lt;QString&gt;)),<span class="keyword">this</span>,SLOT(data_accept(QVector&lt;QString&gt;)));</div><div class="line">        WebT-&gt;start(); <span class="comment">// 进入线程</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span>&#123;</div><div class="line">        QMessageBox::critical(<span class="literal">NULL</span>, QString::fromLocal8Bit(<span class="string">"警告"</span>), QStringLiteral(<span class="string">"账号或密码错误，无法连接！"</span>), QMessageBox::Yes);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">void</span> SocketConnect::linkState_accept(QVector&lt;QString&gt; link_state)&#123;</div><div class="line">    ScrollWidget *s_linkstate = <span class="keyword">new</span> ScrollWidget; <span class="comment">// 自己定义的QWidget的子类，用于增加、更新、清空QList&lt;QWidget*&gt;</span></div><div class="line"></div><div class="line">    QString linkstate;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;link_state.size();i++)&#123;</div><div class="line">        linkstate+=link_state[i];</div><div class="line">    &#125;</div><div class="line">    v_linkstate.append(linkstate); <span class="comment">// 存储线程文件传过来的连接状态</span></div><div class="line"></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;v_linkstate.size();i++)&#123;</div><div class="line">        QLabel *label_linkstate = <span class="keyword">new</span> QLabel(v_linkstate[i]);</div><div class="line">        s_linkstate-&gt;addWidget(label_linkstate);</div><div class="line">    &#125;</div><div class="line">    s_linkstate-&gt;updateWidget();</div><div class="line">    ui-&gt;scrollArea-&gt;setWidget(s_linkstate); <span class="comment">// 更新scrollarea</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">void</span> SocketConnect::data_accept(QVector&lt;QString&gt; content)&#123;</div><div class="line">    dbconn-&gt;open();</div><div class="line"></div><div class="line">    QString dataClass = content[<span class="number">0</span>]; <span class="comment">// 第一个数据存储了数据类型信息</span></div><div class="line">    content.erase(content.begin());</div><div class="line"></div><div class="line">    <span class="comment">//检查编号数据是否重复或为空</span></div><div class="line">    dbconn-&gt;open();</div><div class="line">    <span class="keyword">if</span>(content[<span class="number">0</span>].isEmpty())&#123;</div><div class="line">        QMessageBox::critical(<span class="literal">NULL</span>, QString::fromLocal8Bit(<span class="string">"警告"</span>), QStringLiteral(<span class="string">"远程传输数据的编号为空，请检查并重新录入！"</span>), QMessageBox::Yes);</div><div class="line">        <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line">    QSqlQueryModel *model_sql = <span class="keyword">new</span> QSqlQueryModel;</div><div class="line">    model_sql-&gt;setQuery(QString(<span class="string">"SELECT * FROM wbq.%1"</span>).arg(dataClass));</div><div class="line"></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span> ;k&lt;model_sql-&gt;rowCount(); k++)&#123;</div><div class="line">        QModelIndex index = model_sql-&gt;index(k,<span class="number">0</span>);</div><div class="line">        <span class="keyword">if</span>(content[<span class="number">0</span>] == model_sql-&gt;data(index).toString())&#123;</div><div class="line">            QMessageBox::critical(<span class="literal">NULL</span>, QString::fromLocal8Bit(<span class="string">"警告"</span>), QStringLiteral(<span class="string">"远程传输数据的编号已存在于数据库中，请检查并重新录入！"</span>), QMessageBox::Yes);</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//结束检查</span></div><div class="line"></div><div class="line">    <span class="keyword">if</span>(dataClass==<span class="string">"flange"</span>)&#123;</div><div class="line">        ui-&gt;tabWidget-&gt;setCurrentIndex(<span class="number">1</span>);</div><div class="line"></div><div class="line">        <span class="comment">//数据写入MySQL数据库</span></div><div class="line">        QSqlQueryModel *model = <span class="keyword">new</span> QSqlQueryModel;</div><div class="line">        model-&gt;setQuery(QStringLiteral(<span class="string">"INSERT INTO wbq.coordinator SET 编号=%1, ......"</span>).arg(content[<span class="number">0</span>])......; <span class="comment">// 输入数据</span></div><div class="line">        dbconn-&gt;close();</div><div class="line">        <span class="keyword">delete</span> model;</div><div class="line"></div><div class="line">        <span class="comment">//数据显示到表格中</span></div><div class="line">        <span class="keyword">int</span> row = ui-&gt;tableWidget_fla-&gt;rowCount()+<span class="number">1</span>;</div><div class="line">        ui-&gt;tableWidget_fla-&gt;setRowCount(row);</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;content.size();i++)&#123;</div><div class="line">            ui-&gt;tableWidget_fla-&gt;setItem(row<span class="number">-1</span>,i,<span class="keyword">new</span> QTableWidgetItem);</div><div class="line">            ui-&gt;tableWidget_fla-&gt;item(row<span class="number">-1</span>,i)-&gt;setText(content[i]);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span>&#123;</div><div class="line">        QMessageBox::critical(<span class="literal">NULL</span>, QString::fromLocal8Bit(<span class="string">"警告"</span>), QStringLiteral(<span class="string">"信息格式有误或信息错误！"</span>), QMessageBox::Yes);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">void</span> SocketConnect::pB_dk_clicked()</div><div class="line">&#123;</div><div class="line">    ui-&gt;scrollArea-&gt;takeWidget();</div><div class="line"></div><div class="line">    QVector&lt;QString&gt; tmp;</div><div class="line">    v_linkstate.swap(tmp);</div><div class="line"></div><div class="line">    ui-&gt;tableWidget_fla-&gt;setRowCount(<span class="number">0</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>多线程头文件webservice_thread.h:<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> WEBSERVICE_THREAD</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> WEBSERVICE_THREAD</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QtSql/QSql&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QtSql/qsqlquerymodel.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QtSql/QSqlQuery&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QtSql/qsqldatabase.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QSqlError&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QStandardItem&gt;</span></span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QThread&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QDebug&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QVector&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QMetaType&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QWaitCondition&gt;</span></span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">WebserviceThread</span>:</span> <span class="keyword">public</span> QThread&#123;</div><div class="line">    Q_OBJECT</div><div class="line"></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    WebserviceThread(QObject *parent=<span class="number">0</span>);</div><div class="line">    ~WebserviceThread();</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">setParameters</span><span class="params">(<span class="keyword">int</span>)</span></span>;</div><div class="line"></div><div class="line">signals:</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">linkState_send</span><span class="params">(QVector&lt;QString&gt;)</span></span>; <span class="comment">// 向主线程发送连接状态</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">data_send</span><span class="params">(QVector&lt;QString&gt;)</span></span>; <span class="comment">// 向主线程发送从客户端接收的数据</span></div><div class="line"></div><div class="line"><span class="keyword">private</span> slots:</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">stopclick_accept</span><span class="params">()</span></span>; <span class="comment">// 改变runstate</span></div><div class="line"></div><div class="line"><span class="keyword">private</span>:</div><div class="line">    QVector&lt;QString&gt; readXML(QString);</div><div class="line">    <span class="keyword">int</span> runstate; <span class="comment">// 用于终止循环</span></div><div class="line">    <span class="keyword">int</span> nPort;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">// WEBSERVICE_THREAD</span></span></div></pre></td></tr></table></figure></p>
+<p>多线程文件webservice_thread.cpp：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"webservice_thread.h"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sstream&gt;</span></span></div><div class="line"><span class="comment">//gsoap文件</span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"gservice.nsmap"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"soapH.h"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"soapStub.h"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdsoap2.h"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"stdsoap2.cpp"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"soapC.cpp"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"soapServer.cpp"</span></span></div><div class="line"></div><div class="line">QString Msg; <span class="comment">// 存储客户端发送过来的数据</span></div><div class="line"></div><div class="line">WebserviceThread::WebserviceThread(QObject *parent):QThread(parent)&#123;</div><div class="line">    qRegisterMetaType&lt;QVector&lt;QString&gt;&gt;(<span class="string">"QVector&lt;QString&gt;"</span>);</div><div class="line">    runstate=<span class="number">0</span>; <span class="comment">//置1时停止网络循环</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">WebserviceThread::~WebserviceThread()&#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">void</span> WebserviceThread::setParameters(<span class="keyword">int</span> port)&#123;</div><div class="line">    nPort=port;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">http_get_wbq</span><span class="params">(soap *)</span></span>;</div><div class="line"><span class="keyword">void</span> WebserviceThread::run()&#123;</div><div class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">soap</span> <span class="title">wbq_soap</span>;</span></div><div class="line">    soap_init(&amp;wbq_soap);</div><div class="line">    wbq_soap.fget = http_get_wbq;</div><div class="line">    <span class="keyword">int</span> nMaster = (<span class="keyword">int</span>)soap_bind(&amp;wbq_soap,<span class="literal">NULL</span>,nPort,<span class="number">100</span>); <span class="comment">// 端口绑定</span></div><div class="line">    <span class="keyword">if</span>(nMaster&lt;<span class="number">0</span>)</div><div class="line">        soap_print_fault(&amp;wbq_soap,<span class="built_in">stderr</span>);</div><div class="line">    <span class="keyword">else</span>&#123;</div><div class="line">        QVector&lt;QString&gt; link_state_1;</div><div class="line">        link_state_1.append(QString(<span class="string">"Socket connection successful: master socket = "</span>));</div><div class="line">        link_state_1.append(QString::number(nMaster, <span class="number">10</span>));</div><div class="line">        <span class="function">emit <span class="title">linkState_send</span><span class="params">(link_state_1)</span></span>; <span class="comment">// 发射初始连接状态后的状态信息</span></div><div class="line"></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;;i++)&#123;</div><div class="line">            <span class="keyword">int</span> nSlave = (<span class="keyword">int</span>)soap_accept(&amp;wbq_soap); <span class="comment">// 端口监听</span></div><div class="line">            <span class="keyword">if</span>(nSlave&lt;<span class="number">0</span>)&#123;</div><div class="line">                soap_print_fault(&amp;wbq_soap,<span class="built_in">stderr</span>);</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            QVector&lt;QString&gt; link_state_2;</div><div class="line">            link_state_2.append(QString(<span class="string">"Times "</span>));</div><div class="line">            link_state_2.append(QString::number(i, <span class="number">10</span>));</div><div class="line">            link_state_2.append(QString(<span class="string">". Accepted connection from "</span>));</div><div class="line">            link_state_2.append(QString::number(<span class="keyword">int</span>((wbq_soap.ip&gt;&gt;<span class="number">24</span>)&amp;<span class="number">0xFF</span>), <span class="number">10</span>));</div><div class="line">            link_state_2.append(QString(<span class="string">"."</span>));</div><div class="line">            link_state_2.append(QString::number(<span class="keyword">int</span>((wbq_soap.ip&gt;&gt;<span class="number">16</span>)&amp;<span class="number">0xFF</span>), <span class="number">10</span>));</div><div class="line">            link_state_2.append(QString(<span class="string">"."</span>));</div><div class="line">            link_state_2.append(QString::number(<span class="keyword">int</span>((wbq_soap.ip&gt;&gt;<span class="number">8</span>)&amp;<span class="number">0xFF</span>), <span class="number">10</span>));</div><div class="line">            link_state_2.append(QString(<span class="string">"."</span>));</div><div class="line">            link_state_2.append(QString::number(<span class="keyword">int</span>((wbq_soap.ip)&amp;<span class="number">0xFF</span>), <span class="number">10</span>));</div><div class="line">            link_state_2.append(QString(<span class="string">": slave socket = "</span>));</div><div class="line">            link_state_2.append(QString::number(nSlave, <span class="number">10</span>));</div><div class="line">            <span class="keyword">if</span>(!runstate)</div><div class="line">                <span class="function">emit <span class="title">linkState_send</span><span class="params">(link_state_2)</span></span>; <span class="comment">// 发射客户端连接信息</span></div><div class="line"></div><div class="line">            <span class="keyword">if</span>(runstate)<span class="comment">//点击断开连接后的下一次循环可以ping通，但无法调用服务端的sendMsg方法，即数据无法传送，不会造成数据丢失。</span></div><div class="line">                <span class="keyword">break</span>;</div><div class="line"></div><div class="line">            <span class="keyword">if</span>(soap_serve(&amp;wbq_soap)!=SOAP_OK)</div><div class="line">                soap_print_fault(&amp;wbq_soap,<span class="built_in">stderr</span>);</div><div class="line">            soap_destroy(&amp;wbq_soap);</div><div class="line">            soap_end(&amp;wbq_soap);</div><div class="line"></div><div class="line">            QVector&lt;QString&gt; data = readXML(Msg); <span class="comment">// 解析数据</span></div><div class="line">            <span class="function">emit <span class="title">data_send</span><span class="params">(data)</span></span>;</div><div class="line">            Msg=<span class="string">""</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    soap_done(&amp;wbq_soap);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">void</span> WebserviceThread::stopclick_accept()&#123;</div><div class="line">    runstate = <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment">此功能是按自己格式解析的</span></div><div class="line"><span class="comment">*/</span></div><div class="line">QVector&lt;QString&gt; WebserviceThread::readXML(QString Msg)&#123;</div><div class="line">    QVector&lt;QString&gt; data;</div><div class="line">    QStringList msglist = Msg.split(<span class="string">","</span>);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;msglist.size();i++)&#123;</div><div class="line">        data.append(msglist[i]);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> data;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">ns__sendMsg</span><span class="params">(struct soap *soap, <span class="keyword">char</span>* smsg, nullResponse* result)</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    Msg = QString(smsg);</div><div class="line">    <span class="keyword">return</span> SOAP_OK;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment">用于在网页页面正常显示信息（百度得到的解决方案）</span></div><div class="line"><span class="comment">*/</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">http_get_wbq</span><span class="params">(struct soap *soap)</span></span>&#123;</div><div class="line">    soap_response(soap, SOAP_HTML); <span class="comment">// HTTP response header with text/html</span></div><div class="line">    soap_send(soap, <span class="string">"&lt;HTML&gt;My Web server is operational.&lt;/HTML&gt;"</span>);</div><div class="line">    soap_end_send(soap);</div><div class="line">    <span class="keyword">return</span> SOAP_OK;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="存在问题"><a href="#存在问题" class="headerlink" title="存在问题"></a>存在问题</h2><p>1、gSOAP中有对数据序列化与反序列化的功能，不应按自己的格式来传送数据；<br>2、断开连接按钮存在问题，不能及时断开连接。</p>
+<hr>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h1><p>[1] Qt中多线程的使用：<a href="https://blog.csdn.net/mao19931004/article/details/53131872" target="_blank" rel="external">https://blog.csdn.net/mao19931004/article/details/53131872</a><br>[2] Qt使用多线程的一些心得——1.继承QThread的多线程使用方法：<a href="https://blog.csdn.net/czyt1988/article/details/64441443" target="_blank" rel="external">https://blog.csdn.net/czyt1988/article/details/64441443</a><br>[3] WebService学习总结(一)——WebService的相关概念：<a href="https://www.cnblogs.com/xdp-gacl/p/4048937.html" target="_blank" rel="external">https://www.cnblogs.com/xdp-gacl/p/4048937.html</a><br>[4] gsoap使用总结：<a href="https://blog.csdn.net/byxdaz/article/details/51679117" target="_blank" rel="external">https://blog.csdn.net/byxdaz/article/details/51679117</a></p>
 
       
     </div>
@@ -711,7 +1129,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#WebService相关概念"><span class="nav-number">1.</span> <span class="nav-text">WebService相关概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#gSOAP使用"><span class="nav-number">2.</span> <span class="nav-text">gSOAP使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#gSOAP简介"><span class="nav-number">2.1.</span> <span class="nav-text">gSOAP简介</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实例介绍"><span class="nav-number">3.</span> <span class="nav-text">实例介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">4.</span> <span class="nav-text">Reference:</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#WebService相关概念"><span class="nav-number">1.</span> <span class="nav-text">WebService相关概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#gSOAP总结"><span class="nav-number">2.</span> <span class="nav-text">gSOAP总结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#gSOAP简介"><span class="nav-number">2.1.</span> <span class="nav-text">gSOAP简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gSOAP结构"><span class="nav-number">2.2.</span> <span class="nav-text">gSOAP结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#wsdl2h-exe"><span class="nav-number">2.2.1.</span> <span class="nav-text">wsdl2h.exe</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#soapcpp2-exe"><span class="nav-number">2.2.2.</span> <span class="nav-text">soapcpp2.exe</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实例介绍"><span class="nav-number">3.</span> <span class="nav-text">实例介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#功能介绍"><span class="nav-number">3.1.</span> <span class="nav-text">功能介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例步骤"><span class="nav-number">3.2.</span> <span class="nav-text">实例步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#存在问题"><span class="nav-number">3.3.</span> <span class="nav-text">存在问题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">4.</span> <span class="nav-text">Reference:</span></a></li></ol></div>
             
 
           </div>
