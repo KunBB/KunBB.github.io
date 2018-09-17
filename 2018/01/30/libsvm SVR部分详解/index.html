@@ -176,7 +176,7 @@
 <meta property="og:image" content="https://github.com/KunBB/MarkdownPhotos/blob/master/LibSVM%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E5%9B%9E%E5%BD%92%E8%AF%A6%E8%A7%A3/41.jpg?raw=true">
 <meta property="og:image" content="https://github.com/KunBB/MarkdownPhotos/blob/master/LibSVM%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E5%9B%9E%E5%BD%92%E8%AF%A6%E8%A7%A3/42.jpg?raw=true">
 <meta property="og:image" content="https://github.com/KunBB/MarkdownPhotos/blob/master/LibSVM%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E5%9B%9E%E5%BD%92%E8%AF%A6%E8%A7%A3/43.jpg?raw=true">
-<meta property="og:updated_time" content="2018-09-17T02:34:55.888Z">
+<meta property="og:updated_time" content="2018-09-17T08:54:05.909Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LibSVM支持向量回归详解">
 <meta name="twitter:description" content="LibSVM是是台湾林智仁(Chih-Jen Lin)教授2001年开发的一套支持向量机的库，可以很方便的对数据做分类或回归。由于LibSVM程序小，运用灵活，输入参数少，并且是开源的，易于扩展，因此成为目前国内应用最多的SVM的库，同时sklearn.svm也是使用的该库。 网络上对于LibSVM源码的讲解有很多，但个人感觉绝大多数讲解的不够清晰，很多都是贴个理论公式图片再粘段代码就一带而过。并">
@@ -493,7 +493,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  8,392
+                  8,363
                 </span>
               
 
@@ -853,7 +853,7 @@
 <p>③yi=-1，αi&lt;C，由(2)和(3)可得：<br><img src="https://github.com/KunBB/MarkdownPhotos/blob/master/LibSVM%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E5%9B%9E%E5%BD%92%E8%AF%A6%E8%A7%A3/n_9.jpg?raw=true" alt="Loading..."></p>
 <p>④yi=1，αi&gt;0，由(2)和(3)可得：<br><img src="https://github.com/KunBB/MarkdownPhotos/blob/master/LibSVM%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E5%9B%9E%E5%BD%92%E8%AF%A6%E8%A7%A3/n_10.jpg?raw=true" alt="Loading..."></p>
 <p>对式(4)、(5)、(6)、(7)进行约简得到式(8):<br><img src="https://github.com/KunBB/MarkdownPhotos/blob/master/LibSVM%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E5%9B%9E%E5%BD%92%E8%AF%A6%E8%A7%A3/n_11.jpg?raw=true" alt="Loading..."></p>
-<p>可以发现，(4)和(5)都是b大于某个数，(6)和(7)都是b小于某个数。那么我可以发现，(4)和(5)都是b大于某个数，(6)和(7)都是b小于某个数。因为b是个常量，那么根据上述条件，我们可以得到以下结论，在合理的αi和αj下，有：<br><img src="https://github.com/KunBB/MarkdownPhotos/blob/master/LibSVM%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E5%9B%9E%E5%BD%92%E8%AF%A6%E8%A7%A3/n_12.jpg?raw=true" alt="Loading..."></p>
+<p>可以发现，(4)和(5)都是b大于某个数，(6)和(7)都是b小于某个数。因为b是个常量，那么根据上述条件，我们可以得到以下结论，在合理的αi和αj下，有：<br><img src="https://github.com/KunBB/MarkdownPhotos/blob/master/LibSVM%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E5%9B%9E%E5%BD%92%E8%AF%A6%E8%A7%A3/n_12.jpg?raw=true" alt="Loading..."></p>
 <p>我们就是要从中挑选违反上述条件的αi和αj，来进行重新的迭代和更新，使得所有的αi和αj都满足上述条件。那么我们可以很容易得到违反条件为：<br><img src="https://github.com/KunBB/MarkdownPhotos/blob/master/LibSVM%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E5%9B%9E%E5%BD%92%E8%AF%A6%E8%A7%A3/n_13.jpg?raw=true" alt="Loading..."></p>
 <p>则根据式(8)中关于i的选择就可以明白select_working_set函数中关于选择i的部分了。</p>
 <h5 id="选择j"><a href="#选择j" class="headerlink" title="选择j"></a>选择j</h5><p>当yi<em>yj</em>K(i,j)为半正定矩阵时，当且仅当待优化乘子为“违反对”时，目标函数是严格递减的。LibSVM在做选择的时候，采用的是second order information方法。那么我们挑选出了i之后，剩下的任务就是挑选出既是“违反对”同时使目标函数值最小。补充一下：挑选了“违反对”，自然就使得目标函数自然递减了，那么我们挑选目标函数最小，自然使得迭代速度加快。这是我们希望看到的结果。</p>
