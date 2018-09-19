@@ -176,7 +176,7 @@
 <meta property="og:image" content="https://github.com/KunBB/MarkdownPhotos/blob/master/LibSVM%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E5%9B%9E%E5%BD%92%E8%AF%A6%E8%A7%A3/41.jpg?raw=true">
 <meta property="og:image" content="https://github.com/KunBB/MarkdownPhotos/blob/master/LibSVM%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E5%9B%9E%E5%BD%92%E8%AF%A6%E8%A7%A3/42.jpg?raw=true">
 <meta property="og:image" content="https://github.com/KunBB/MarkdownPhotos/blob/master/LibSVM%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E5%9B%9E%E5%BD%92%E8%AF%A6%E8%A7%A3/43.jpg?raw=true">
-<meta property="og:updated_time" content="2018-09-19T01:15:27.365Z">
+<meta property="og:updated_time" content="2018-09-19T10:58:13.244Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LibSVM支持向量回归详解">
 <meta name="twitter:description" content="LibSVM是是台湾林智仁(Chih-Jen Lin)教授2001年开发的一套支持向量机的库，可以很方便的对数据做分类或回归。由于LibSVM程序小，运用灵活，输入参数少，并且是开源的，易于扩展，因此成为目前国内应用最多的SVM的库，同时sklearn.svm也是使用的该库。 网络上对于LibSVM源码的讲解有很多，但个人感觉绝大多数讲解的不够清晰，很多都是贴个理论公式图片再粘段代码就一带而过。并">
@@ -493,7 +493,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  8,363
+                  8,379
                 </span>
               
 
@@ -531,7 +531,8 @@
 
       
         <p>LibSVM是是台湾林智仁(Chih-Jen Lin)教授2001年开发的一套支持向量机的库，可以很方便的对数据做分类或回归。由于LibSVM程序小，运用灵活，输入参数少，并且是开源的，易于扩展，因此成为目前国内应用最多的SVM的库，同时sklearn.svm也是使用的该库。</p>
-<p>网络上对于LibSVM源码的讲解有很多，但个人感觉绝大多数讲解的不够清晰，很多都是贴个理论公式图片再粘段代码就一带而过。并且网络上基本都是对SVC的讲解，SVR部分几乎没有提及（虽然SVR只是SVC的扩展）。因此本篇博文将系统地讲解LibSVM中SVR训练与预测部分的源码（想学习SVC的同学同样适用）。<br><a id="more"></a></p>
+<p>网络上对于LibSVM源码的讲解有很多，但个人感觉绝大多数讲解的不够清晰，很多都是贴个理论公式图片再粘段代码就一带而过。并且网络上基本都是对SVC的讲解，SVR部分几乎没有提及（虽然SVR只是SVC的扩展）。因此本篇博文将系统地讲解LibSVM中SVR训练与预测部分的源码（想学习SVC的同学同样适用）。</p>
+<p>python复现LIBSVM中SVR部分功能可参见 <a href="https://github.com/KunBB/LibSVM_SVR_python" target="_blank" rel="external">https://github.com/KunBB/LibSVM_SVR_python</a><br><a id="more"></a></p>
 <hr>
 <h1 id="LibSVM整体流程"><a href="#LibSVM整体流程" class="headerlink" title="LibSVM整体流程"></a>LibSVM整体流程</h1><h2 id="train："><a href="#train：" class="headerlink" title="train："></a>train：</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//根据svm_type的不同进行初始化</span></div><div class="line">svm_train()</div><div class="line">    <span class="comment">//根据svm_type的不同调用不同的分类回归训练函数</span></div><div class="line">    svm_train_one()</div><div class="line">        <span class="comment">//针对epsilon-SVR这一类型进行模型参数初始化</span></div><div class="line">        solve_epsilon_svr()</div><div class="line">            <span class="comment">//使用SMO算法求解对偶问题（二次优化问题）</span></div><div class="line">            Solver::Solve()</div><div class="line">                    <span class="comment">//每隔若干次迭代进行一次shrinking，对样本集进行缩减降低计算成本</span></div><div class="line">                    Solver::do_shrinking()</div><div class="line">                    <span class="comment">//若满足停止条件则进行梯度重建并跳出循环</span></div><div class="line">                    Solver::reconstruct_gradient()</div><div class="line">                    <span class="comment">//选择出当前最大违反对i,j</span></div><div class="line">                    Solver::select_working_set()</div><div class="line">                <span class="comment">//计算参数优化后的rho</span></div><div class="line">                Solver::caculate_rho()</div><div class="line">            <span class="comment">//得到优化后的alpha和SolutionInfo对象si</span></div><div class="line">        <span class="comment">//得到优化后的alpha和SolutionInfo对象si</span></div><div class="line">    <span class="comment">//得到decision_function对象f</span></div><div class="line"><span class="comment">//得到svm_model对象model</span></div></pre></td></tr></table></figure>
 <h2 id="predict"><a href="#predict" class="headerlink" title="predict"></a>predict</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//根据svm_type的不同开辟dec_value空间</span></div><div class="line">svm_predict()</div><div class="line">    <span class="comment">//根据svm_type的不同调用k_function函数</span></div><div class="line">    svm_predict_values()</div><div class="line">        <span class="comment">//根据kernel_type的不同计算k(i,j)</span></div><div class="line">        Kernel::k_function()</div><div class="line">        <span class="comment">//得到k(x_train[i],x_test[j])</span></div><div class="line">    <span class="comment">//得到预测值y_pre[j]</span></div><div class="line"><span class="comment">//得到预测值y_pre[j]</span></div></pre></td></tr></table></figure>
