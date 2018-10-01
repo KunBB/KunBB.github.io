@@ -125,18 +125,39 @@
 
 
 
-<meta name="description" content="CS231n课程大家都很熟悉了，深度学习入门必备课程。这里就不多介绍了，只对课程资源进行归纳汇总，分享一下自己学习该课程后完成的作业，以供一起学习的同学们参考、交流。由于该课程的课件较为精炼，没有长篇大论，且知乎有全套的课件翻译，因此这里暂不对该课程知识点进行归纳总结，后续学习中如果有需要提炼的地方会对本文进行更新。">
+<meta name="description" content="Lecture 9主要讲了一些经典的、比较流行的网络结构，详细讲解了AlexNet、ZFNet、VGGNet、GoogleNet和ResNet。">
 <meta name="keywords" content="Artificial Intelligence,Deep Leanring,Machine Learning">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CS231n Convolutional Neural Networks for Visual Recognition Summary and Assignments">
-<meta property="og:url" content="http://yoursite.com/2018/09/24/CS231n Convolutional Neural Networks for Visual Recognition Summary and Assignments/index.html">
+<meta property="og:title" content="CS231n Lecture 9 CNN Architectures Summary">
+<meta property="og:url" content="http://yoursite.com/2018/09/28/CS231n Lecture 9 CNN Architectures Summary/index.html">
 <meta property="og:site_name" content="KunBB&#39;s blog">
-<meta property="og:description" content="CS231n课程大家都很熟悉了，深度学习入门必备课程。这里就不多介绍了，只对课程资源进行归纳汇总，分享一下自己学习该课程后完成的作业，以供一起学习的同学们参考、交流。由于该课程的课件较为精炼，没有长篇大论，且知乎有全套的课件翻译，因此这里暂不对该课程知识点进行归纳总结，后续学习中如果有需要提炼的地方会对本文进行更新。">
+<meta property="og:description" content="Lecture 9主要讲了一些经典的、比较流行的网络结构，详细讲解了AlexNet、ZFNet、VGGNet、GoogleNet和ResNet。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-09-28T11:25:19.638Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_9/1.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_9/2.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_9/3.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_9/4.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_9/5.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_9/6.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_9/7.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_9/8.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_9/20.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_9/9.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_9/10.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_9/11.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_9/12.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_9/13.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_9/14.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_9/15.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_9/16.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_9/17.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_9/18.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_9/19.png">
+<meta property="og:updated_time" content="2018-10-01T08:30:56.658Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CS231n Convolutional Neural Networks for Visual Recognition Summary and Assignments">
-<meta name="twitter:description" content="CS231n课程大家都很熟悉了，深度学习入门必备课程。这里就不多介绍了，只对课程资源进行归纳汇总，分享一下自己学习该课程后完成的作业，以供一起学习的同学们参考、交流。由于该课程的课件较为精炼，没有长篇大论，且知乎有全套的课件翻译，因此这里暂不对该课程知识点进行归纳总结，后续学习中如果有需要提炼的地方会对本文进行更新。">
+<meta name="twitter:title" content="CS231n Lecture 9 CNN Architectures Summary">
+<meta name="twitter:description" content="Lecture 9主要讲了一些经典的、比较流行的网络结构，详细讲解了AlexNet、ZFNet、VGGNet、GoogleNet和ResNet。">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_9/1.jpg">
 
 
 
@@ -166,13 +187,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/09/24/CS231n Convolutional Neural Networks for Visual Recognition Summary and Assignments/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/09/28/CS231n Lecture 9 CNN Architectures Summary/"/>
 
 
 
 
 
-  <title>CS231n Convolutional Neural Networks for Visual Recognition Summary and Assignments | KunBB's blog</title>
+  <title>CS231n Lecture 9 CNN Architectures Summary | KunBB's blog</title>
   
 
 
@@ -354,7 +375,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/24/CS231n Convolutional Neural Networks for Visual Recognition Summary and Assignments/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/28/CS231n Lecture 9 CNN Architectures Summary/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yunkun Xu">
@@ -371,7 +392,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">CS231n Convolutional Neural Networks for Visual Recognition Summary and Assignments</h1>
+          <h1 class="post-title" itemprop="name headline">CS231n Lecture 9 CNN Architectures Summary</h1>
         
 
         <div class="post-meta">
@@ -383,8 +404,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-24T11:10:00+08:00">
-                2018-09-24
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-28T20:25:00+08:00">
+                2018-09-28
               </time>
             
 
@@ -423,7 +444,7 @@
 
           
           
-             <span id="/2018/09/24/CS231n Convolutional Neural Networks for Visual Recognition Summary and Assignments/" class="leancloud_visitors" data-flag-title="CS231n Convolutional Neural Networks for Visual Recognition Summary and Assignments">
+             <span id="/2018/09/28/CS231n Lecture 9 CNN Architectures Summary/" class="leancloud_visitors" data-flag-title="CS231n Lecture 9 CNN Architectures Summary">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -449,7 +470,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  414
+                  2,435
                 </span>
               
 
@@ -465,7 +486,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  2
+                  10
                 </span>
               
             </div>
@@ -486,12 +507,102 @@
       
 
       
-        <p>CS231n课程大家都很熟悉了，深度学习入门必备课程。这里就不多介绍了，只对课程资源进行归纳汇总，分享一下自己学习该课程后完成的作业，以供一起学习的同学们参考、交流。由于该课程的课件较为精炼，没有长篇大论，且知乎有全套的课件翻译，因此这里暂不对该课程知识点进行归纳总结，后续学习中如果有需要提炼的地方会对本文进行更新。<br><a id="more"></a></p>
-<h1 id="课程资源"><a href="#课程资源" class="headerlink" title="课程资源"></a>课程资源</h1><p>课程地址：<a href="http://cs231n.stanford.edu/" target="_blank" rel="external">http://cs231n.stanford.edu/</a><br>课程视频(EN, Spring 2017)：<a href="https://www.youtube.com/playlist?list=PL3FW7Lu3i5JvHM8ljYj-zLfQRF3EO8sYv" target="_blank" rel="external">https://www.youtube.com/playlist?list=PL3FW7Lu3i5JvHM8ljYj-zLfQRF3EO8sYv</a><br>课程地址(CN, Spring 2017)：<a href="http://www.mooc.ai/course/268" target="_blank" rel="external">http://www.mooc.ai/course/268</a><br>知乎课件翻译地址(Winter 2016)：<a href="https://zhuanlan.zhihu.com/p/22339097" target="_blank" rel="external">https://zhuanlan.zhihu.com/p/22339097</a></p>
-<h1 id="课程作业"><a href="#课程作业" class="headerlink" title="课程作业"></a>课程作业</h1><p>我在学习这门课程的时候，作业是从课程官网下载的，因此版本是Spring 2018。相较于之前的作业版本，Spring 2018 Assignment 2 中新加入了Layer Normalization和Group Normalization的内容以及PyTorch和Tensorflow的相关练习。　　<br>Assignments还在更新中，目前Assignments 2基本完成，后续会继续更新直到全部完成。课程Assignments详见：<a href="https://github.com/KunBB/cs231n_assignment" target="_blank" rel="external">https://github.com/KunBB/cs231n_assignment</a></p>
-<h1 id="课程小结"><a href="#课程小结" class="headerlink" title="课程小结"></a>课程小结</h1><h2 id="Lecture-1-Lecture-7"><a href="#Lecture-1-Lecture-7" class="headerlink" title="Lecture 1 ~ Lecture 7"></a>Lecture 1 ~ Lecture 7</h2><p>见知乎的翻译课件，或是CS231n官网的英文课件；</p>
-<h2 id="Lecture-8"><a href="#Lecture-8" class="headerlink" title="Lecture 8"></a>Lecture 8</h2><p>主要讲解了一些主流的深度学习框架、PyTorch和Tensorflow的基本使用流程等，这部分内容通过完成最新的Assignment 2中的PyTorch或Tensorflow就差不多可以掌握了。</p>
-<h2 id="Lecture-9"><a href="#Lecture-9" class="headerlink" title="Lecture 9"></a><a href="https://blog.csdn.net/qq_29176963/article/details/82882080" target="_blank" rel="external">Lecture 9</a></h2><p>Lecture 9主要讲了一些经典的、比较流行的网络结构，详细讲解了AlexNet、ZFNet、VGGNet、GoogleNet和ResNet。</p>
+        <p>Lecture 9主要讲了一些经典的、比较流行的网络结构，详细讲解了AlexNet、ZFNet、VGGNet、GoogleNet和ResNet。<br><a id="more"></a></p>
+<h1 id="AlexNet"><a href="#AlexNet" class="headerlink" title="AlexNet"></a>AlexNet</h1><p>AlexNet网络结构图如下图所示：<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_9/1.jpg" alt="Loading..."></p>
+<h2 id="网络详细信息如下"><a href="#网络详细信息如下" class="headerlink" title="网络详细信息如下"></a>网络详细信息如下</h2><p>[227x227x3] INPUT<br>[55x55x96] <font color="red">CONV1</font>: 96 11x11 filters at stride 4, pad 0<br>[27x27x96] <font color="blue">MAX POOL1</font>: 3x3 filters at stride 2<br>[27x27x96] <font color="green">NORM1</font>: Normalization layer<br>[27x27x256] <font color="red">CONV2</font>: 256 5x5 filters at stride 1, pad 2<br>[13x13x256] <font color="blue">MAX POOL2</font>: 3x3 filters at stride 2<br>[13x13x256] <font color="green">NORM2</font>: Normalization layer<br>[13x13x384] <font color="red">CONV3</font>: 384 3x3 filters at stride 1, pad 1<br>[13x13x384] <font color="red">CONV4</font>: 384 3x3 filters at stride 1, pad 1<br>[13x13x256] <font color="red">CONV5</font>: 256 3x3 filters at stride 1, pad 1<br>[6x6x256] <font color="blue">MAX POOL3</font>: 3x3 filters at stride 2<br>[4096] <font color="orange">FC6</font>: 4096 neurons<br>[4096] <font color="orange">FC7</font>: 4096 neurons<br>[1000] <font color="orange">FC8</font>: 1000 neurons (class scores)</p>
+<h2 id="AlexNet网络特点"><a href="#AlexNet网络特点" class="headerlink" title="AlexNet网络特点"></a>AlexNet网络特点</h2><ul>
+<li>First use of ReLU；</li>
+<li>Used Norm layers (not common anymore)；</li>
+<li>Heavy data augmentation；</li>
+<li>Dropout 0.5；</li>
+<li>Batch size 128；</li>
+<li>SGD Momentum 0.9；</li>
+<li>Learning rate 1e-2, reduced by 10 manually when val accuracy plateaus；</li>
+<li>L2 weight decay 5e-4（正则化的权重衰减）；</li>
+<li>7 CNN ensemble: 18.2% -&gt; 15.4%（模型集成，取平均）。</li>
+</ul>
+<p>由于当时所使用GPU的显存不够存放这么多参数，因此从第一个卷积层开始将参数分为两组，在两个GPU中训练，如第一个卷积层中参数被分为两组，每组有$11\times11\times3\times48$个参数。</p>
+<h1 id="ZFNet"><a href="#ZFNet" class="headerlink" title="ZFNet"></a>ZFNet</h1><p>ZFNet网络结构图如下图所示：<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_9/2.jpg" alt="Loading..."></p>
+<h2 id="ZFNet网络特点"><a href="#ZFNet网络特点" class="headerlink" title="ZFNet网络特点"></a>ZFNet网络特点</h2><ul>
+<li>ZFNet框架大体与AlexNet一致；</li>
+<li>CONV1：Change from ($11\times11$ stride 4) to ($7\times7$ stride 2)；</li>
+<li>CONV3,4,5：Use 384,384,256 filters, instead of 512,1024,512 filters.</li>
+</ul>
+<h1 id="VGGNet"><a href="#VGGNet" class="headerlink" title="VGGNet"></a>VGGNet</h1><p>VGGNet网络结构图如下图所示：<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_9/3.png" alt="Loading..."></p>
+<h2 id="VGG16网络详细信息如下"><a href="#VGG16网络详细信息如下" class="headerlink" title="VGG16网络详细信息如下"></a>VGG16网络详细信息如下</h2><p><font color="gray">INPUT</font>: [224x224x3] memory: 224x224x3=150K params: 0  </p>
+<p><font color="red">CONV3-64</font>: [224x224x64] memory: 224x224x64=3.2M params: (3x3x3)x64 = 1,728  </p>
+<p><font color="red">CONV3-64</font>: [224x224x64] memory: 224x224x64=3.2M params: (3x3x64)x64 = 36,864  </p>
+<p><font color="blue">POOL2</font>: [112x112x64] memory: 112x112x64=800K params: 0  </p>
+<p><font color="red">CONV3-128</font>: [112x112x128] memory: 112x112x128=1.6M params: (3x3x64)x128 = 73,728  </p>
+<p><font color="red">CONV3-128</font>: [112x112x128] memory: 112x112x128=1.6M params: (3x3x128)x128 = 147,456  </p>
+<p><font color="blue">POOL2</font>: [56x56x128] memory: 56x56x128=400K params: 0  </p>
+<p><font color="red">CONV3-256</font>: [56x56x256] memory: 56x56x256=800K params: (3x3x128)x256 = 294,912  </p>
+<p><font color="red">CONV3-256</font>: [56x56x256] memory: 56x56x256=800K params: (3x3x256)x256 = 589,824  </p>
+<p><font color="red">CONV3-256</font>: [56x56x256] memory: 56x56x256=800K params: (3x3x256)x256 = 589,824  </p>
+<p><font color="blue">POOL2</font>: [28x28x256] memory: 28x28x256=200K params: 0  </p>
+<p><font color="red">CONV3-512</font>: [28x28x512] memory: 28x28x512=400K params: (3x3x256)x512 = 1,179,648  </p>
+<p><font color="red">CONV3-512</font>: [28x28x512] memory: 28x28x512=400K params: (3x3x512)x512 = 2,359,296  </p>
+<p><font color="red">CONV3-512</font>: [28x28x512] memory: 28x28x512=400K params: (3x3x512)x512 = 2,359,296  </p>
+<p><font color="blue">POOL2</font>: [14x14x512] memory: 14x14x512=100K params: 0  </p>
+<p><font color="red">CONV3-512</font>: [14x14x512] memory: 14x14x512=100K params: (3x3x512)x512 = 2,359,296  </p>
+<p><font color="red">CONV3-512</font>: [14x14x512] memory: 14x14x512=100K params: (3x3x512)x512 = 2,359,296  </p>
+<p><font color="red">CONV3-512</font>: [14x14x512] memory: 14x14x512=100K params: (3x3x512)x512 = 2,359,296  </p>
+<p><font color="blue">POOL2</font>: [7x7x512] memory: 7x7x512=25K params: 0  </p>
+<p><font color="orange">FC</font>: [1x1x4096] memory: 4096 params: 7x7x512x4096 = 102,760,448  </p>
+<p><font color="orange">FC</font>: [1x1x4096] memory: 4096 params: 4096x4096 = 16,777,216  </p>
+<p><font color="orange">FC</font>: [1x1x1000] memory: 1000 params: 4096x1000 = 4,096,000  </p>
+<h2 id="VGGNet网络特点"><a href="#VGGNet网络特点" class="headerlink" title="VGGNet网络特点"></a>VGGNet网络特点</h2><ul>
+<li>更小的filters，更深的网络；</li>
+<li>Only 3x3 CONV stride 1, pad 1 and 2x2 MAX POOL stride 2；</li>
+<li>倒数第二层FC（FC7，1000个，即类别层之前）的hidden number=4096被验证已经能够很好地进行特征表达，可以用于在其他数据中提取特征，并有比较好的泛化性能；</li>
+<li>为何使用小的filters（3x3 CONV）：3个3x3的卷积层和1个7x7的卷积层拥有同样有效的感受野（解析可见<a href="https://blog.csdn.net/program_developer/article/details/80958716），但是其更深，更非线性化，且其参数数量更少，单层参数数量分别为3x（3x3xCxC）" target="_blank" rel="external">https://blog.csdn.net/program_developer/article/details/80958716），但是其更深，更非线性化，且其参数数量更少，单层参数数量分别为3x（3x3xCxC）</a>&lt;7x7xCxC（C为channel数量）。</li>
+</ul>
+<h1 id="GoogleNet"><a href="#GoogleNet" class="headerlink" title="GoogleNet"></a>GoogleNet</h1><p>GoogleNet网络结构图如下图所示：<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_9/4.png" alt="Loading..."></p>
+<h2 id="GoogleNet网络特点"><a href="#GoogleNet网络特点" class="headerlink" title="GoogleNet网络特点"></a>GoogleNet网络特点</h2><ul>
+<li>22层网络；</li>
+<li>没有FC层；</li>
+<li>为提高计算效率引入了“inception” module和“bottleneck”的概念；</li>
+<li>网络有两个辅助输出（Auxiliary classification outputs）；</li>
+<li>仅有5million个参数，比AlexNet少12倍。</li>
+</ul>
+<h2 id="“inception”-module"><a href="#“inception”-module" class="headerlink" title="“inception” module"></a>“inception” module</h2><p>可以将网络看成是由局部网络拓扑（“inception” module）堆叠而成。对进入相同层的相同输入并行应用不同类别的滤波操作。我们将来自前面层的输入进行不同的卷积操作、池化操作，从而得到不同的输出，最后需要将所有输出在深度层面上连接到一起。计算与串联方式如下图所示：<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_9/5.png" alt="Loading..."></p>
+<h2 id="“blottleneck”"><a href="#“blottleneck”" class="headerlink" title="“blottleneck”"></a>“blottleneck”</h2><p>使用 “inception” module 后随之而来的问题就是：</p>
+<ul>
+<li>单层的参数就达到854M个，计算量极大；</li>
+<li>且数据经过每一个 “inception” module 后深度都会增加（光池化层得到输出数据的尺寸就已经与原数据相同）。</li>
+</ul>
+<p>为解决上述问题，构建了称之为“bottleneck”的1x1卷积层以减少特征深度（如下图所示）：<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_9/6.png" alt="Loading..."></p>
+<p>改进后的“inception” module如下图所示：<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_9/7.png" alt="Loading..."></p>
+<h2 id="Auxiliary-classification-outputs"><a href="#Auxiliary-classification-outputs" class="headerlink" title="Auxiliary classification outputs"></a>Auxiliary classification outputs</h2><p>GoogleNet同时拥有两个辅助输出，可以对前面几个层进行更多的梯度训练。当网络深度很深的时候，一些梯度信号会最小化并且丢失了前面几层的梯度信号，该方法能在一定层度上解决梯度消失的问题。<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_9/8.png" alt="Loading..."></p>
+<h1 id="ResNet"><a href="#ResNet" class="headerlink" title="ResNet"></a>ResNet</h1><p>ResNet网络结构图如下图所示：<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_9/20.png" alt="Loading..."></p>
+<h2 id="ResNet网络特点："><a href="#ResNet网络特点：" class="headerlink" title="ResNet网络特点："></a>ResNet网络特点：</h2><ul>
+<li>152层；</li>
+<li>利用残差层实现优化；</li>
+<li>网络由残差盒堆叠而成（每一个残差盒包含两个3x3 CONV）；</li>
+<li>如果将残差盒中的所有权重置零，那么残差盒的输出与输入就是相等的，因此，在某种层度上，这个模型是相对容易去训练的，并不需要添加额外的层；</li>
+<li>神经网络中添加L2正则化的作用是迫使网络中的所有参数趋近于0，其他网络结构（如CONV）参数趋于0不太说得通。但在残差网络中，如果所有参数趋于0，那就是促使模型不再使用他不需要的层，因为它只趋使残差盒趋向同一性，也就不需要进行分类；</li>
+<li>残差连接在反向传播时，为梯度提供了一个超级“高速通道”（梯度经过残差盒的加法门分流然后汇总），这使得网络训练更加容易（DenseNet和FractalNet也有类似的梯度直传式的连接）；</li>
+<li>周期性的，会使用两倍数量的filters，用stride 2 CONV进行下采样（所有维度/2）；</li>
+<li>网络起始处有一个额外的CONV；</li>
+<li>没有额外的FC；</li>
+<li>只有一个全局的AVE POOL；</li>
+<li>每一个CONV后都带有一个BN；</li>
+<li>用一个额外的带尺度因子的Xavier/2去初始化；</li>
+<li>初始学习率为0.1，当Validation error停滞时，将其缩小十倍；</li>
+<li>Mini-batch size = 256；</li>
+<li>Weight decay = 1e-5.</li>
+</ul>
+<h2 id="残差盒（Residual-block）"><a href="#残差盒（Residual-block）" class="headerlink" title="残差盒（Residual block）"></a>残差盒（Residual block）</h2><p>当我们在普通神经网络上堆叠越来越多的层时到底会发生什么？<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_9/9.png" alt="Loading..."><br>由上图实验结果可知，56层网络的训练误差和测试误差都高于20层的网络。但是为何56层本应发生过拟合的NN的训练误差不如20层的NN呢，它最差也应该和20层的NN性能一样才对？</p>
+<p><strong>本文作者假设：这是一个优化问题，层深的模型更难优化</strong>。于是，作者提出了残差网络的概念，其与常规网络的区别如下图所示：<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_9/10.png" alt="Loading..."><br>Residual block使这些网络层拟合的是残差映射H(x)-x而不是直接映射H(x)。某种意义上可以看成是一种对输入的修正。学习残差映射你只需知道什么是∆x=H(x)-x，通常来说，很多网络层之间实际上都是相差无几的，通过学习一个恒等映射加上很小的∆x（若恒等映射是最好的，只需将∆x置零），这样更容易学习。</p>
+<p>与GoogleNet类似，如果网络层数较多的话，ResNet的残差盒会使用“bottleneck”来加速计算（如下图所示）。<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_9/11.png" alt="Loading..."></p>
+<h1 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h1><h2 id="Network-in-Network（NiN）"><a href="#Network-in-Network（NiN）" class="headerlink" title="Network in Network（NiN）"></a>Network in Network（NiN）</h2><p>每个卷积层中都有一个完全连接的MLP(micronetwork)，以计算局部图像块的更多抽象特征。这个模型是GoogleNet和ResNet模型“bottleneck”的灵感来源。<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_9/12.png" alt="Loading..."></p>
+<h2 id="Identity-Mappings-in-Deep-Residual-Networks"><a href="#Identity-Mappings-in-Deep-Residual-Networks" class="headerlink" title="Identity Mappings in Deep Residual Networks"></a>Identity Mappings in Deep Residual Networks</h2><p>在ResNet的基础上进行修改，新的结构能够实现一种更直接的路径用于在整个网络中传播信息（将激活层移动到残差映射路径中）。<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_9/13.png" alt="Loading..."></p>
+<h2 id="Wide-Residual-Networks"><a href="#Wide-Residual-Networks" class="headerlink" title="Wide Residual Networks"></a>Wide Residual Networks</h2><p>作者认为残差量是一个十分重要的因素而不是深度。使用了更宽的残差模块（FxK filters而不是F filters in each layer），宽网络的另一个优点是便于使用并行计算。本文旨在比较网络的宽度、深度和残差连接所做出的的贡献。<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_9/14.png" alt="Loading..."></p>
+<h2 id="ResNeXt"><a href="#ResNeXt" class="headerlink" title="ResNeXt"></a>ResNeXt</h2><p>通过多条平行路径增加残差盒宽度，这些分支总和被称为“cardinality”，思想类似于“inception”module。<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_9/15.png" alt="Loading..."></p>
+<h2 id="Deep-Networks-with-Stochastic-Depth"><a href="#Deep-Networks-with-Stochastic-Depth" class="headerlink" title="Deep Networks with Stochastic Depth"></a>Deep Networks with Stochastic Depth</h2><p>动机是在训练过程中通过短网络减少消失梯度和训练时间。该思想类似于Dropout，只不过这里是沿网络深度方向的dropout。方法是在每次训练中随机drop某层子集（即ResNet中∆x=0，该层为恒等映射），在测试时使用完整的训练好的网络。<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_9/16.png" alt="Loading..."></p>
+<h2 id="FractalNet"><a href="#FractalNet" class="headerlink" title="FractalNet"></a>FractalNet</h2><p>作者认为引入残差可能不是必须的，关键在于有效地从浅层网络转型为深层网络。因此他使用了上图所示这种分型结构，各层都以分形的形式存在，因此同时存在浅层和深层路径到大输出值。他们通过抛弃子路径的方式训练，类似于dropout，测试时使用整个分形网络。<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_9/17.png" alt="Loading..."></p>
+<h2 id="DenseNet"><a href="#DenseNet" class="headerlink" title="DenseNet"></a>DenseNet</h2><p>密集连接卷积神经网络。每个Dense block中每层都与其后的所有层以前馈的形式连接，因此在这个Dense block内，你对其的输入也是对所有其他各层的输入，你会计算每一个卷积输出，这些输出与其后的所有层连接，所有这些值集中起来，共同作为卷积层的输入。这一方法能缓解梯度消失的问题，加强特征图的传递，鼓励特征重用。<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_9/18.png" alt="Loading..."></p>
+<h2 id="SqueezeNet"><a href="#SqueezeNet" class="headerlink" title="SqueezeNet"></a>SqueezeNet</h2><p>由一个个fire模块组成，每个fire模块都含有一个squeeze层，其由许多1x1的filters组成。接着，它再传递给一个扩大层含有一些1x1和3x3的filters。参数只有AlexNet的1/50，性能相似。<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_9/19.png" alt="Loading..."></p>
 
       
     </div>
@@ -555,8 +666,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/19/Reinforcement Learning：An Introduction Chapter1 学习笔记/" rel="next" title="Reinforcement Learning：An Introduction Chapter 1 学习笔记">
-                <i class="fa fa-chevron-left"></i> Reinforcement Learning：An Introduction Chapter 1 学习笔记
+              <a href="/2018/09/24/CS231n Convolutional Neural Networks for Visual Recognition Summary and Assignments/" rel="next" title="CS231n Convolutional Neural Networks for Visual Recognition Summary and Assignments">
+                <i class="fa fa-chevron-left"></i> CS231n Convolutional Neural Networks for Visual Recognition Summary and Assignments
               </a>
             
           </div>
@@ -564,10 +675,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/09/28/CS231n Lecture 9 CNN Architectures Summary/" rel="prev" title="CS231n Lecture 9 CNN Architectures Summary">
-                CS231n Lecture 9 CNN Architectures Summary <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -706,7 +813,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#课程资源"><span class="nav-number">1.</span> <span class="nav-text">课程资源</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#课程作业"><span class="nav-number">2.</span> <span class="nav-text">课程作业</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#课程小结"><span class="nav-number">3.</span> <span class="nav-text">课程小结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Lecture-1-Lecture-7"><span class="nav-number">3.1.</span> <span class="nav-text">Lecture 1 ~ Lecture 7</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lecture-8"><span class="nav-number">3.2.</span> <span class="nav-text">Lecture 8</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lecture-9"><span class="nav-number">3.3.</span> <span class="nav-text">Lecture 9</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#AlexNet"><span class="nav-number">1.</span> <span class="nav-text">AlexNet</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#网络详细信息如下"><span class="nav-number">1.1.</span> <span class="nav-text">网络详细信息如下</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AlexNet网络特点"><span class="nav-number">1.2.</span> <span class="nav-text">AlexNet网络特点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ZFNet"><span class="nav-number">2.</span> <span class="nav-text">ZFNet</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ZFNet网络特点"><span class="nav-number">2.1.</span> <span class="nav-text">ZFNet网络特点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#VGGNet"><span class="nav-number">3.</span> <span class="nav-text">VGGNet</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#VGG16网络详细信息如下"><span class="nav-number">3.1.</span> <span class="nav-text">VGG16网络详细信息如下</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VGGNet网络特点"><span class="nav-number">3.2.</span> <span class="nav-text">VGGNet网络特点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GoogleNet"><span class="nav-number">4.</span> <span class="nav-text">GoogleNet</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#GoogleNet网络特点"><span class="nav-number">4.1.</span> <span class="nav-text">GoogleNet网络特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#“inception”-module"><span class="nav-number">4.2.</span> <span class="nav-text">“inception” module</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#“blottleneck”"><span class="nav-number">4.3.</span> <span class="nav-text">“blottleneck”</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Auxiliary-classification-outputs"><span class="nav-number">4.4.</span> <span class="nav-text">Auxiliary classification outputs</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ResNet"><span class="nav-number">5.</span> <span class="nav-text">ResNet</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ResNet网络特点："><span class="nav-number">5.1.</span> <span class="nav-text">ResNet网络特点：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#残差盒（Residual-block）"><span class="nav-number">5.2.</span> <span class="nav-text">残差盒（Residual block）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#扩展"><span class="nav-number">6.</span> <span class="nav-text">扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Network-in-Network（NiN）"><span class="nav-number">6.1.</span> <span class="nav-text">Network in Network（NiN）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Identity-Mappings-in-Deep-Residual-Networks"><span class="nav-number">6.2.</span> <span class="nav-text">Identity Mappings in Deep Residual Networks</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Wide-Residual-Networks"><span class="nav-number">6.3.</span> <span class="nav-text">Wide Residual Networks</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ResNeXt"><span class="nav-number">6.4.</span> <span class="nav-text">ResNeXt</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Deep-Networks-with-Stochastic-Depth"><span class="nav-number">6.5.</span> <span class="nav-text">Deep Networks with Stochastic Depth</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FractalNet"><span class="nav-number">6.6.</span> <span class="nav-text">FractalNet</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DenseNet"><span class="nav-number">6.7.</span> <span class="nav-text">DenseNet</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SqueezeNet"><span class="nav-number">6.8.</span> <span class="nav-text">SqueezeNet</span></a></li></ol></li></ol></div>
             
 
           </div>
