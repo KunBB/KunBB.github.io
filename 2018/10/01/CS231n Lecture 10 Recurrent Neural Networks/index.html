@@ -109,7 +109,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="NP-hard," />
+  <meta name="keywords" content="Artificial Intelligence,Deep Leanring,Machine Learning," />
 
 
 
@@ -125,20 +125,55 @@
 
 
 
-<meta name="description" content="要理解P问题、NP问题、NPC问题、NP-hard问题，需要先弄懂几个概念：  什么是多项式时间？ 什么是确定性算法？什么是非确定性算法？ 什么是规约/约化？">
-<meta name="keywords" content="NP-hard">
+<meta name="description" content="Lecture 10主要讲解了循环神经网络模型的结构、前向传播与反向传播，并由此引出了LSTM（长短期记忆网络），除此之外还介绍了图像标注、视觉问答等前沿问题。">
+<meta name="keywords" content="Artificial Intelligence,Deep Leanring,Machine Learning">
 <meta property="og:type" content="article">
-<meta property="og:title" content="P问题、NP问题、NPC问题、NP-hard问题详解">
-<meta property="og:url" content="http://yoursite.com/2017/09/13/P问题、NP问题、NPC问题、NP-hard问题详解/index.html">
+<meta property="og:title" content="CS231n Lecture 10 Recurrent Neural Networks">
+<meta property="og:url" content="http://yoursite.com/2018/10/01/CS231n Lecture 10 Recurrent Neural Networks/index.html">
 <meta property="og:site_name" content="KunBB&#39;s blog">
-<meta property="og:description" content="要理解P问题、NP问题、NPC问题、NP-hard问题，需要先弄懂几个概念：  什么是多项式时间？ 什么是确定性算法？什么是非确定性算法？ 什么是规约/约化？">
+<meta property="og:description" content="Lecture 10主要讲解了循环神经网络模型的结构、前向传播与反向传播，并由此引出了LSTM（长短期记忆网络），除此之外还介绍了图像标注、视觉问答等前沿问题。">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/PNPNPCNPhard/1.jpg">
-<meta property="og:updated_time" content="2018-09-17T02:36:01.070Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/3.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/4.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/5.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/6.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/7.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/8.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/9.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/10.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/11.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/12.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/13.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/14.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/15.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/16.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/17.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/18.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/19.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/20.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/21.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/22.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/23.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/24.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/25.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/26.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/36.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/27.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/28.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/29.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/30.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/31.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/32.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/33.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/34.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/35.png">
+<meta property="og:updated_time" content="2018-10-01T15:42:32.191Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="P问题、NP问题、NPC问题、NP-hard问题详解">
-<meta name="twitter:description" content="要理解P问题、NP问题、NPC问题、NP-hard问题，需要先弄懂几个概念：  什么是多项式时间？ 什么是确定性算法？什么是非确定性算法？ 什么是规约/约化？">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/PNPNPCNPhard/1.jpg">
+<meta name="twitter:title" content="CS231n Lecture 10 Recurrent Neural Networks">
+<meta name="twitter:description" content="Lecture 10主要讲解了循环神经网络模型的结构、前向传播与反向传播，并由此引出了LSTM（长短期记忆网络），除此之外还介绍了图像标注、视觉问答等前沿问题。">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/1.png">
 
 
 
@@ -168,13 +203,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/09/13/P问题、NP问题、NPC问题、NP-hard问题详解/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/10/01/CS231n Lecture 10 Recurrent Neural Networks/"/>
 
 
 
 
 
-  <title>P问题、NP问题、NPC问题、NP-hard问题详解 | KunBB's blog</title>
+  <title>CS231n Lecture 10 Recurrent Neural Networks | KunBB's blog</title>
   
 
 
@@ -356,7 +391,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/13/P问题、NP问题、NPC问题、NP-hard问题详解/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/01/CS231n Lecture 10 Recurrent Neural Networks/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yunkun Xu">
@@ -373,7 +408,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">P问题、NP问题、NPC问题、NP-hard问题详解</h1>
+          <h1 class="post-title" itemprop="name headline">CS231n Lecture 10 Recurrent Neural Networks</h1>
         
 
         <div class="post-meta">
@@ -385,8 +420,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-13T01:22:32+08:00">
-                2017-09-13
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-01T09:25:00+08:00">
+                2018-10-01
               </time>
             
 
@@ -408,8 +443,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">Algorithm</span>
+                  <a href="/categories/CS231n/" itemprop="url" rel="index">
+                    <span itemprop="name">CS231n</span>
                   </a>
                 </span>
 
@@ -425,7 +460,7 @@
 
           
           
-             <span id="/2017/09/13/P问题、NP问题、NPC问题、NP-hard问题详解/" class="leancloud_visitors" data-flag-title="P问题、NP问题、NPC问题、NP-hard问题详解">
+             <span id="/2018/10/01/CS231n Lecture 10 Recurrent Neural Networks/" class="leancloud_visitors" data-flag-title="CS231n Lecture 10 Recurrent Neural Networks">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -451,7 +486,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  3,730
+                  4,258
                 </span>
               
 
@@ -467,7 +502,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  13
+                  15
                 </span>
               
             </div>
@@ -488,64 +523,44 @@
       
 
       
-        <p>要理解P问题、NP问题、NPC问题、NP-hard问题，需要先弄懂几个概念：</p>
-<ul>
-<li>什么是多项式时间？</li>
-<li>什么是确定性算法？什么是非确定性算法？</li>
-<li>什么是规约/约化？<a id="more"></a>
-</li>
-</ul>
-<h1 id="多项式时间（Polynomial-time）"><a href="#多项式时间（Polynomial-time）" class="headerlink" title="多项式时间（Polynomial time）"></a>多项式时间（Polynomial time）</h1><p>什么是时间复杂度？</p>
-<p>时间复杂度并不是表示一个程序解决问题需要花多少时间，而是当程序所处理的问题规模扩大后，程序需要的时间长度对应增长得有多快。也就是说，对于某一个程序，其处理某一个特定数据的效率不能衡量该程序的好坏，而应该看当这个数据的规模变大到数百倍后，程序运行时间是否还是一样，或者也跟着慢了数百倍，或者变慢了数万倍。</p>
-<p>不管数据有多大，程序处理所花的时间始终是那么多的，我们就说这个程序很好，具有$O(1)$的时间复杂度，也称<em>常数级复杂度</em>；数据规模变得有多大，花的时间也跟着变得有多长，比如找n个数中的最大值这个程序的时间复杂度就是$O(n)$，为<em>线性级复杂度</em>，而像冒泡排序、插入排序等，数据扩大2倍，时间变慢4倍的，时间复杂度是$O(n^2)$，为<em>平方级复杂度</em>。还有一些穷举类的算法，所需时间长度成几何阶数上涨，这就是$O(a^n)$的<em>指数级复杂度</em>，甚至$O(n!)$的<em>阶乘级复杂度</em>。</p>
-<p>不会存在 $O(2*n^2)$ 的复杂度，因为前面的那个”2”是系数，根本不会影响到整个程序的时间增长。同样地，$O(n^3+n^2)$ 的复杂度也就是$O(n^3)$的复杂度。因此，我们会说，一个$O(0.01*n^3)$的程序的效率比O(100*n^2)的效率低，尽管在n很小的时候，前者优于后者，但后者时间随数据规模增长得慢，最终$O(n^3)$的复杂度将远远超过$O(n^2)$。我们也说，$O(n^{100})$的复杂度小于$O(1.01^n)$的复杂度。</p>
-<p>容易看出，前面的几类复杂度被分为两种级别，其中后者的复杂度无论如何都远远大于前者。像$O(1)$,$O(\ln(n))$,$O(n^a)$等，我们把它叫做<strong>多项式级复杂度</strong>，因为它的规模n出现在底数的位置；另一种像是$O(a^n)$和$O(n!)$等，它是<strong>非多项式级的复杂度</strong>，其复杂度计算机往往不能承受。当我们在解决一个问题时，我们选择的算法通常都需要是多项式级的复杂度，非多项式级的复杂度需要的时间太多，往往会超时，除非是数据规模非常小。</p>
-<h1 id="确定性算法与非确定性算法"><a href="#确定性算法与非确定性算法" class="headerlink" title="确定性算法与非确定性算法"></a>确定性算法与非确定性算法</h1><h2 id="确定性算法："><a href="#确定性算法：" class="headerlink" title="确定性算法："></a>确定性算法：</h2><p>设A是求解问题B的一个解决算法，在算法的整个执行过程中，每一步都能得到一个确定的解，这样的算法就是确定性算法。</p>
-<h2 id="非确定性算法："><a href="#非确定性算法：" class="headerlink" title="非确定性算法："></a>非确定性算法：</h2><p>设A是求解问题B的一个解决算法，它将问题分解成两部分，分别为猜测阶段和验证阶段，其中</p>
-<ul>
-<li>猜测阶段：在这个阶段，对问题的一个特定的输入实例x产生一个任意字符串y，在算法的每一次运行时，y的值可能不同，因此，猜测以一种非确定的形式工作。</li>
-<li>验证阶段：在这个阶段，用一个确定性算法（有限时间内）验证。①检查在猜测阶段产生的y是否是合适的形式，如果不是，则算法停下来并得到no；② 如果y是合适的形式，则验证它是否是问题的解，如果是，则算法停下来并得到yes，否则算法停下来并得到no。它是验证所猜测的解的正确性。</li>
-</ul>
-<h1 id="规约-约化"><a href="#规约-约化" class="headerlink" title="规约/约化"></a>规约/约化</h1><p>问题A可以约化为问题B，称为“问题A可规约为问题B”，可以理解为问题B的解一定就是问题A的解，因此解决A不会难于解决B。由此可知问题B的时间复杂度一定大于等于问题A。</p>
-<p>《算法导论》中有一个例子：现在有两个问题：求解一个一元一次方程和求解一个一元二次方程。那么我们说，前者可以规约为后者，意即知道如何解一个一元二次方程那么一定能解出一元一次方程。我们可以写出两个程序分别对应两个问题，那么我们能找到一个“规则”，按照这个规则把解一元一次方程程序的输入数据变一下，用在解一元二次方程的程序上，两个程序总能得到一样的结果。这个规则即是：两个方程的对应项系数不变，一元二次方程的二次项系数为0。</p>
-<p>从规约的定义中我们看到，一个问题规约为另一个问题，时间复杂度增加了，问题的应用范围也增大了。通过对某些问题的不断规约，我们能够不断寻找复杂度更高，但应用范围更广的算法来代替复杂度虽然低，但只能用于很小的一类问题的算法。存在这样一个NP问题，所有的NP问题都可以约化成它。换句话说，只要解决了这个问题，那么所有的NP问题都解决了。这种问题的存在难以置信，并且更加不可思议的是，这种问题不只一个，它有很多个，它是一类问题。这一类问题就是传说中的NPC问题，也就是NP-完全问题。</p>
-<h1 id="P类问题、NP类问题、NPC问题、NP难问题"><a href="#P类问题、NP类问题、NPC问题、NP难问题" class="headerlink" title="P类问题、NP类问题、NPC问题、NP难问题"></a>P类问题、NP类问题、NPC问题、NP难问题</h1><ol>
-<li><p>P类问题：能在多项式时间内可解的问题。</p>
-</li>
-<li><p>NP类问题：在多项式时间内“可验证”的问题。也就是说，不能判定这个问题到底有没有解，而是猜出一个解来在多项式时间内证明这个解是否正确。即该问题的猜测过程是不确定的，而对其某一个解的验证则能够在多项式时间内完成。P类问题属于NP问题，但NP类问题不一定属于P类问题。</p>
-</li>
-<li><p>NPC问题：存在这样一个NP问题，所有的NP问题都可以约化成它。换句话说，只要解决了这个问题，那么所有的NP问题都解决了。其定义要满足2个条件：</p>
-<ul>
-<li>它是一个NP问题；</li>
-<li>所有NP问题都能规约到它。</li>
-</ul>
-</li>
-<li><p>NP难问题：NP-Hard问题是这样一种问题，它满足NPC问题定义的第二条但不一定要满足第一条（就是说，NP-Hard问题要比 NPC问题的范围广，NP-Hard问题没有限定属于NP），即所有的NP问题都能约化到它，但是他不一定是一个NP问题。NP-Hard问题同样难以找到多项式的算法，但它不列入我们的研究范围，因为它不一定是NP问题。即使NPC问题发现了多项式级的算法，NP-Hard问题有可能仍然无法得到多项式级的算法。事实上，由于NP-Hard放宽了限定条件，它将有可能比所有的NPC问题的时间复杂度更高从而更难以解决。<br>以上四个问题之间的关系如下图所示：<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/PNPNPCNPhard/1.jpg" alt="Loading..."></p>
-</li>
-</ol>
-<h1 id="P-NP？"><a href="#P-NP？" class="headerlink" title="P=NP？"></a>P=NP？</h1><ul>
-<li><em>此处会再次从不同的角度来讨论P与NP的定义。</em></li>
-</ul>
-<p>“P=NP?” 通常被认为是计算机科学最重要的问题。在很早的时候，就有个数学家毫不客气的指出，P=NP? 是个愚蠢的问题，并且为了嘲笑它，专门在4月1号写了一篇“论文”，称自己证明了 P=NP。</p>
-<p>首先，我们要搞清楚什么是“P=NP?” 为此，我们必须先了解一下什么是“算法复杂度”。为此，我们又必须先了解什么是“算法”。我们可以简单的把“算法”想象成一台机器，就跟绞肉机似的。我们给它一些“输入”，它就给我们一些“输出”。比如，绞肉机的输入是肉末，输出是肉渣。牛的输入是草，输出是奶。“加法器”的输入是两个整数，输出是这两个整数的和。“算法理论”所讨论的问题，就是如何设计这些机器，让它们更加有效的工作。就像是说如何培育出优质的奶牛，吃进相同数量的草，更快的产出更多的奶。</p>
-<p>世界上的计算问题，都需要“算法”经过一定时间的工作（也叫“计算”），才能得到结果。计算所需要的时间，往往跟“输入”的大小有关系。你的牛吃越是多的草，它就需要越是长时间才能把它们都变成奶。这种草和奶的转换速度，通常被叫做“算法复杂度”。算法复杂度通常被表示为一个函数f(n)，其中n是输入的大小。比如，如果我们的算法复杂度为n^2，那么当输入10个东西的时候，它需要100个单元的时间才能完成计算。当输入100 个东西的时候，它需要10000个单元的时间才能完成。当输入1000个数据的时候，它需要1000000个单元的时间。所谓的“P时间”，多项式时间，就是说这个复杂度函数f(n)是一个多项式。<br>“P=NP?”中的“P”，就是指所有这些复杂度为多项式的算法的“集合”，也就是“所有”的复杂度为多项式的算法。为了简要的描述以下的内容，我定义一些术语：</p>
-<ul>
-<li>“f(n)时间算法”=“能够在f(n)时间之内，解决某个问题的算法”</li>
-</ul>
-<p>当f(n)是个多项式（比如$n^2$）的时候，这就是“多项式时间算法”（P时间算法）。当f(n)是个指数函数（比如$2^n$）的时候，这就是“指数时间算法”（EXPTIME算法）。很多人认为NP问题就是需要指数时间的问题，而NP跟EXPTIME，其实是风马牛不相及的。很显然，P不等于EXPTIME，但是P是否等于NP，却没有一个结论。</p>
-<p>现在我来解释一下什么是NP。通常的计算机，都是确定性（deterministic）的。它们在同一个时刻，只有一种行为。如果用程序来表示，那么它们遇到一个条件判断（分支）的时候，只能一次探索其中一条路径。比如：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (x == <span class="number">0</span>) &#123;</div><div class="line">    one();</div><div class="line">&#125;</div><div class="line"><span class="keyword">else</span> &#123;</div><div class="line">    two();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>在这里，根据x的值是否为零，one()和two()这两个操作，只有一个会发生。然而，有人幻想出来一种机器，叫做“非确定性计算机”（nondeterministic computer），它可以同时运行这程序的两个分支，one()和two()。这有什么用处呢？它的用处就在于，当你不知道x的大小的时候，根据one()和two()是否“运行成功”，你可以推断出x是否为零。这种方式可以同时探索多种可能性。这不是普通的“并行计算”，因为每当遇到一个分支点，非确定性计算机就会产生新的计算单元，用以同时探索这些路径。这机器就像有“分身术”一样。当这种分支点存在于循环（或者递归）里面的时候，它就会反复的产生新的计算单元，新的计算单元又产生更多的计算单元，就跟细胞分裂一样。一般的计算机都没有 这种“超能力”，它们只有固定数目的计算单元。所以他只能先探索一条路径，失败之后，再回过头来探索另外一条。所以，它们似乎要多花一些时间才能得到结果。到这里，基本的概念都有了定义，于是我们可以圆满的给出P和NP的定义。P和NP是这样两个“问题的集合”：</p>
-<p><strong>P = “确定性计算机”能够在“多项式时间”解决的所有问题<br>NP = “非确定性计算机”能够在“多项式时间”解决的所有问题<br>（注意它们的区别，仅在于“确定性”或者是“非确定性”。）</strong></p>
-<p>“P=NP?”问题的目标，就是想要知道P和NP这两个集合是否相等。为了证明两个集合（A和 B）相等，一般都要证明两个方向：</p>
-<ol>
-<li>A 包含 B；</li>
-<li>B 包含 A。</li>
-</ol>
-<p>上一个标题中我们已经说过NP包含了P。因为任何一个非确定性机器，都能被当成一个确定性的机器来用。你只要不使用它的“超能力”，在每个分支点只探索一条路径就行。所以“P=NP?”问题的关键，就在于P是否也包含了NP。也就是说，如果只使用确定性计算机，能否在多项式时间之内，解决所有非确定性计算机能在多项式时间内解决的问题。</p>
-<p>我们来细看一下什么是多项式时间（Polynomial time）。我们都知道，$n^2$是多项式，$n^{1000000}$ 也是多项式。多项式与多项式之间，却有天壤之别。把解决问题所需要的时间，用“多项式”这么笼统的概念来描述，其实是非常不准确的做法。在实际的大规模应用中，$n^2$的算法都嫌慢。能找到“多项式时间”的算法，根本不能说明任何问题。对此，理论家们喜欢说，就算再大的多项式(比如 $n^{1000000}$)，也不能和再小的指数函数（比如 $1.0001^n$）相比。因为总是“存在”一个M，当n&gt;M的时候，$1.0001^n$会超过$n^{1000000}$。可是问题的关键，却不在于M的“存在”，而在于它的“大小”。如果你的输入必须达到天文数字才能让指数函数超过多项式的话，那么还不如就用指数复杂度的算法。所以，“P=NP?”这问题的错误就在于，它并没有针对我们的实际需要，而是首先假设了我们有“无穷大”的输入，有“无穷多”的时间和耐心，可以让多项式时间的算法“最终”得到优势。</p>
+        <p>Lecture 10主要讲解了循环神经网络模型的结构、前向传播与反向传播，并由此引出了LSTM（长短期记忆网络），除此之外还介绍了图像标注、视觉问答等前沿问题。<br><a id="more"></a></p>
+<h1 id="RNN网络结构"><a href="#RNN网络结构" class="headerlink" title="RNN网络结构"></a>RNN网络结构</h1><p><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/1.png" alt="Loading..."><br>RNN通常用来预测一个时间序列向量。每个RNN网络都有如上图所示这样一个小小的循环核心单元。X为输入，将其传入RNN，RNN有一个内部隐藏态（internal hidden state），这一隐藏态会在RNN每次读取新的输入时更新。当模型下一次读取输入时，隐藏状态同时将结果反馈至模型。</p>
+<p>循环神经网络隐藏状态$h_t$更新公式：<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/2.png" alt="Loading..."><br>我们对某种循环关系用函数$f$进行计算。函数$f$依赖于权重$W$，接收输入隐藏态$h_{t-1}$和输入$x_t$，然后输出下一个隐藏态$h_t$。如果我们想要在网络的每一步都产生一些输出，那么我们可以增加全连接层，根据每一步的隐藏态做出决策。<br>（注意，每一时间步的函数$f$和参数$W$都是相同的。）</p>
+<p>Vanilla RNN 络结构图与更新公式：<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/3.png" alt="Loading..."><br>Vanilla RNN 计算图：<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/4.png" alt="Loading..."><br>$h_0$为初始状态，一般$h_0=0$。由上图可以看出每一时间步都在使用相同的$f$和$W$。由反向传播原理可知，$W$最后的梯度是所有时间步下独立计算出的梯度之和。</p>
+<h2 id="Many-to-many"><a href="#Many-to-many" class="headerlink" title="Many to many"></a>Many to many</h2><p><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/5.png" alt="Loading..."><br>$Y_t$可以是每个时间步的类别得分，$L_t$是对应时间步下的损失（如softmax等），计算$L_t$需要序列在每个时间步下都有与之对应的真实标签。所有$L_t$相加就得到了最终的Loss $L$。在反向传播中我们需要计算$\frac{dL}{dW}$，而$L$又会回溯到每一个时间步的损失，然后每一时间步又会各自计算出当下$\frac{dL_t}{dW}$，其总和就是权重$W$的最终梯度。</p>
+<h2 id="Many-to-one"><a href="#Many-to-one" class="headerlink" title="Many to one"></a>Many to one</h2><p><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/6.png" alt="Loading..."><br>此种结构通常用于情感分析等问题。我们会根据网络的最终$h_T$做出决策，因为其整合了序列中包含的所有情况。</p>
+<h2 id="One-to-many"><a href="#One-to-many" class="headerlink" title="One to many"></a>One to many</h2><p><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/7.png" alt="Loading..."><br>此种结构通常用于自动生成图片描述等问题。</p>
+<h2 id="Sequence-to-sequence"><a href="#Sequence-to-sequence" class="headerlink" title="Sequence to sequence"></a>Sequence to sequence</h2><p><strong>Many-to-one+One-to-many</strong><br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/8.png" alt="Loading..."><br>此种结构通常用于机器翻译。编码阶段会接收到一个不定长的输入序列（如一个句子），然后整个句子会被编码器网络最终的隐层状态编码成一个单独的向量。解码阶段每一个时间步下会做出一个预测，将其还原成一个句子。</p>
+<h1 id="示例：字符级别语言模型"><a href="#示例：字符级别语言模型" class="headerlink" title="示例：字符级别语言模型"></a>示例：字符级别语言模型</h1><p>现在有vocabulary：[h, e, l, o]，example training sequence：“hello”。我们希望输入前一个字母后网络能够预测出下一个字母是什么。<br>训练过程如下：<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/9.png" alt="Loading..."><br>我们可以看到第一个时间步输入“h”，应该输出“e”，但预测结果score最高的是“o”。</p>
+<p>测试过程如下所示：<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/10.png" alt="Loading..."><br>在测试时，一次输入一个样本字符，将输出的字符反馈给模型（这里先不用去看数值，虽然h后面o的可能性最大，但是这里假设就是e）。</p>
+<p>接下来我们就要利用Loss来backpropagation修正整个网路，RNN通过时间进行反向传播过程如下图所示：<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/11.png" alt="Loading..."><br>由上图可以看出如果直接是在全局计算的话，会发现显存或内存不够，而且计算过程十分耗时，因为每计算一次梯度都必须做一次前向计算，遍历所有的训练集，然后反向传播每次也会遍历一遍训练集。</p>
+<p>在实际中人们通常采用一种近似方法，我们称之为延时间的截断（Truncated）反向传播方法。在训练模型时，前向计算若干步（如100），仅计算这个子序列的Loss，然后沿子序列反向传播并计算梯度更新参数，如下图所示。<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/12.png" alt="Loading..."><br>重复上述batch的计算过程（进入下一个100步），前向传播与第一个batch无异（需导入上一个batch最后得到的隐藏状态$h_t$），但是在计算梯度时，我们仅根据第二批数据反向传播误差，仅更新该batch中的参数（如下图所示）。<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/13.png" alt="Loading..."><br>Andrej Karpathy写了一个Vanilla RNN简单的示例程序：<a href="https://gist.github.com/karpathy/d4dee566867f8291f086" target="_blank" rel="external">min-char-rnn.py</a>，顺便给大家推荐该代码作者写的详解 <a href="https://karpathy.github.io/2015/05/21/rnn-effectiveness/" target="_blank" rel="external">karpathy’blog</a>。</p>
+<h1 id="RNN的可解释性"><a href="#RNN的可解释性" class="headerlink" title="RNN的可解释性"></a>RNN的可解释性</h1><p>[Karpathy, Johnson, and Fei-Fei: Visualizing and Understanding Recurrent Networks, ICLR Workshop 2016]<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/14.png" alt="Loading..."><br>该论文中作者训练了一个字符层级的语言模型循环神经网络，然后从隐藏向量中选取一个元素，通过一个序列过程来看这个隐藏向量的值，试图了解这些不同隐藏状态正在寻找的东西。<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/15.png" alt="Loading..."><br>从向量中选择一个元素，然后让句子继续向前运行通过训练好的模型，接下来每个字符的颜色对应于隐藏矢量在读取序列时的每个时间步长的单个标量元素的大小。</p>
+<h1 id="图像标注问题"><a href="#图像标注问题" class="headerlink" title="图像标注问题"></a>图像标注问题</h1><p>[Karpathy A, Li F F. Deep visual-semantic alignments for generating image descriptions, CVPR 2015]<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/16.png" alt="Loading..."><br>我们希望输入一个图像，然后输出自然语言的图像语义信息。</p>
+<p>模型中有一部分卷积神经网络用来处理输入的图像信息，它将产生图像的特征向量，然后输入到循环神经网络语言模型的第一个时间步中，一次一个地生成标题的单词。</p>
+<p><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/17.png" alt="Loading..."><br>我们把输入图像输入到卷积神经网络中，但是我们不是使用这个图像网络模型中最后得到的softmax值，而是使用模型末端的4096维向量，我们用这个向量来概述整个图像的内容。</p>
+<p><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/18.png" alt="Loading..."><br>当我们讨论递归神经网络语言模型时，我们需要知道模型的第一个初始化输入，来告诉它开始生成文字。本论文中作者给它了一些特殊的开始记号。在之前的递归神经网络语言模型中我们已经了解了这些矩阵的计算公式，即把当前时间步的输入以及前一个时间步的隐藏状态结合到下一个时间步的隐藏状态。但我们现在还需要添加图片信息，需要用完全不同的方法来整合这些信息，一个简单的方式是加入第三个权重矩阵，它在每个时间步中添加图像信息来计算下一个隐藏状态（如上图所示）。<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/19.png" alt="Loading..."><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/20.png" alt="Loading..."><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/21.png" alt="Loading..."><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/22.png" alt="Loading..."><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/23.png" alt="Loading..."><br>上面五幅图演示了生成句子的过程。</p>
+<p>现在我们需要计算词汇表中所有scores的分布，在这里我们的词汇表是类似所有英语词汇的东西，所以他可能会相当大，我们将从分布中采样并在下一次时间步时当做输入传入。依次重复上述步骤，我们将生成完整的句子。一旦我们采样到特殊停止标记（类似于句号）就停止生成。在训练时，我们在每个标题末尾都放上结束的标志，这样在训练过程中结束标记就出现在序列的末尾。在测试时，它倾向于在完成生成句子后对这些结束标记进行采样。</p>
+<h1 id="Attention机制"><a href="#Attention机制" class="headerlink" title="Attention机制"></a>Attention机制</h1><p><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/24.png" alt="Loading..."><br>当我们生成这个图片标题的文字时，我们允许模型来引导它们的注意到图像不同的部分。<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/25.png" alt="Loading..."><br>通常的做法是，相比于产生一个单独的向量来整合整个图像，该方法的卷积神经网络倾向于产生由向量构成的网络给每幅图片中特殊的地方都用一个向量表示。当我们在前向传播时，除了在每一时间步中对词汇表进行采样外，还会在图像中想要查看的位置上产生一个分布。图像位置的分布可以看成是一种模型在训练过程中应该关注哪里的张量。因此第一个隐藏状态$h_0$计算在图片位置上的分布$a_1$，它将会回到向量集合，给出一个概要向量$z_1$，把注意力集中在图像的某一部分上。<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/26.png" alt="Loading..."><br>现在这个概要向量得到了反馈，作为神经网络下一时间步的额外输入。接着$h_1$将产生两个输出，一个是我们在词汇表上的分布$d_1$，一个是图像位置的分布$a_2$，整个过程将会继续下去，它在每个时间步都会做这两件不同的事情。</p>
+<p>Ps：软注意力机制采用的是加权组合，所有图像位置中的所有特征。硬注意力机制中，我们限制模型在每一步只选择一个位置来观察图片。在硬注意力的情况下选择图像的位置有点复杂，因为这不是一个可微函数，所以需要使用一些比vanilla反向传播算法高级一点的算法，以便能够在那样的情况下训练模型。</p>
+<h1 id="视觉问答：RNNs-with-Attention"><a href="#视觉问答：RNNs-with-Attention" class="headerlink" title="视觉问答：RNNs with Attention"></a>视觉问答：RNNs with Attention</h1><p><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/36.png" alt="Loading..."><br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/27.png" alt="Loading..."><br>这是一个多对一的情形（选出正确的答案）。我们的模型需要将自然语言序列作为输入，我们可以设想针对输入问题的每个元素，建立一个递归神经网络，从而将输入问题概括为一个向量。然后我们可以用CNN将图像也概括为一个向量。现在把CNN得出的向量和输入问题的向量结合，通过RNN编程来预测答案的概率分布。有时候会将soft spatial attention结合到视觉问答中，所以在这里可以看到这个模型在试图确定这些问题的答案时它在图像上仍具有spatial attention。</p>
+<p>Q：如何将编码图像向量和编码问题向量组合起来？<br>A：最简单的一种做法是将他们连接起来然后粘贴进FC中。有时也会用一些高级的方法，即在这两个向量之间做乘法从而得到更为强大的函数。</p>
+<h1 id="Multilayers-RNNs"><a href="#Multilayers-RNNs" class="headerlink" title="Multilayers RNNs"></a>Multilayers RNNs</h1><p><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/28.png" alt="Loading..."><br>如上所示是一个三层循环神经网络结构图，现在将输入传进模型，然后在第一层的RNN中产生一系列的隐藏状态。在我们运行了RNN的一层之后得到了所有的隐藏状态序列。我们可以将这些隐藏状态序列作为第二层RNN的输入序列，以此类推。<br>（RNN一般2-4层就足够了）</p>
+<h1 id="Vanilla-RNN-梯度流"><a href="#Vanilla-RNN-梯度流" class="headerlink" title="Vanilla RNN 梯度流"></a>Vanilla RNN 梯度流</h1><p><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/29.png" alt="Loading..."><br>上图中可以看出隐藏状态$h_t$的计算过程。计算梯度时，我们会得到$\frac{dLoss}{dh_t}$，最后我们需要计算的是$\frac{dLoss}{dh_{t-1}}$。当我们进行反向传播时，梯度会沿红线反向流动。但是当反向传播流过矩阵乘法门时，实际上是用权重矩阵的转置来做矩阵乘法，这意味着每一次BP经过一个vanilla RNN单元时就需要和权重矩阵相乘一次。<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/30.png" alt="Loading..."><br>当我们把很多网络单元连接成一个序列，梯度反向流动穿过一些这样的层时，都要乘以一个权重矩阵的转置，这意味着最终$h_0$的梯度表达式将会包含很多权重矩阵因子。（再强调一下，每一个单元的$W$是相同的）</p>
+<p>为了便于理解，我们可以将权重矩阵简化为标量。假如我们有一些标量，我们不断地对同一个数值与这些标量做乘法，当有几百时间步时，情况将非常糟糕。在标量的情形中，它要么在这些标量绝对值大于1时发生梯度爆炸，要么当这些标量绝对值小于1时发生梯度消失。唯一能够让这不发生的情况是这些标量值刚好是1。延伸到矩阵的情况时，标量的绝对值替换为权重矩阵的最大奇异值。</p>
+<p><strong>解决梯度爆炸的方法</strong>：梯度截断<br>判断梯度的L2范数是否大于某个值。<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/31.png" alt="Loading..."></p>
+<p><strong>解决梯度消失的方法</strong>：改变RNN结构<br>引出了下面介绍的LSTM。</p>
+<h1 id="长短期记忆网络（LSTM）"><a href="#长短期记忆网络（LSTM）" class="headerlink" title="长短期记忆网络（LSTM）"></a>长短期记忆网络（LSTM）</h1><p><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/32.png" alt="Loading..."><br>如上图所示，LSTM每个时间步都维持两个隐藏状态。我们称$h_t$为隐藏状态，$c_t$为单元状态，$c_t$相当于保留在LSTM内部的隐藏状态，不会完全暴露到外部去。首先我们传入两个输入来计算四个门i、f、o、g，使用这些门来更新单元状态$c_t$，然后将这些单元状态作为参数来计算下一时间步中的隐藏状态。</p>
+<p><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/33.png" alt="Loading..."><br>将上一时间步的隐藏状态和当前时间步的输入堆叠在一起，然后乘上一个非常大的权重矩阵w，计算得到四个不同的门向量，每个门向量的大小和隐藏状态一样。</p>
+<p><strong>i代表输入门</strong>，表示LSTM要接受多少新的输入信息；<strong>f是遗忘门</strong>，表示要遗忘多少之前的单元记忆（上一时间步的记忆信息）；<strong>o是输出门</strong>，表示我们要展现多少信息给外部；<strong>G是门中门</strong>，表示我们有多少信息要写到输入单元中去。四个门中i、f、o都用了sigmoid，这意味着输出值都在0和1之间。G用了tanh函数，这意味着输出都在-1到1之间。</p>
+<p>从上图公式中我们可以看出单元状态是经过遗忘门逐项相乘的。<strong>遗忘门</strong>可以看做是由0和1组成的向量，F中0表示我们忘记这个单元状态中的这个元素值，1说明我们想要记住这个单元状态中的这个值。使用遗忘门来断开部分单元状态的值后，我们接下来需要<strong>输入门</strong>和<strong>门中门</strong>逐元素相乘。i是由0和1构成的向量，对于单元状态的每个元素值，i的值为1表示我们想要保留单元状态的那个元素，i的值为0表示我们不想保留单元状态对应的那个元素。<strong>门中门</strong>中的这些值是当前时间步中我们可能会写入到单元状态中去的候选值。单元状态$c_t$在每个时间步中都可以被加一或减一。也就是说在单元状态的内部，我们可以保留或者遗忘之前的状态。所以可以把$c_t$中的每个元素看作是小的标量计数器。</p>
+<p>$c_t$经过tanh后被压缩到0~1，再用输出门逐元素相乘。<strong>输出门</strong>告诉我们对于单元状态中的每个元素，当我们在此时间步计算外部的隐藏状态时，是否希望单元状态中的此元素暴露出去。</p>
+<p><strong>LSTM示意图</strong>：<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/34.png" alt="Loading..."><br>我们通过传输进来的单元获得了上游梯度$\frac{dLoss}{dc_t}$，然后通过加法运算向后进行方向传播，这个加法运算仅仅是将上游的梯度复制到这两个分支中，这样上游梯度直接被复制并且通过与遗忘门元素相乘的方式贯穿了反向传播过程。此方法的优点在于这里与<strong>遗忘门f</strong>相乘是矩阵元素相乘而不是矩阵相乘；另一点是矩阵元素相乘可能会在不同的时间点乘以一个不同的<strong>遗忘门</strong>（更容易避免梯度消失和梯度爆炸的问题），而在vanilla RNN中我们是不断地乘以相同的权重矩阵；最后一个优点是梯度从最后一个隐藏状态$h_T$传递到$c_0$只会经过一个tanh。</p>
+<p><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/35.png" alt="Loading..."><br>通过单元状态进行反向传播的路径是一种梯度高速公路，使梯度相对畅通无阻地从模型最末端的损失函数返回到模型最开始的初始单元状态（与ResNet类似）。</p>
+<p>Q：<strong>遗忘门f</strong>是一个0~1的数，是否也会导致出现梯度消失的问题？<br>A：人们常会初始化遗忘门的偏置参数，进而使遗忘门总是非常接近于1。</p>
+<p>这里推荐一篇论文：[LSTM: A Search Space Odyssey Greff et al., 2015]，这篇论文详细研究了LSTM更新方程的每一个部分。</p>
 <hr>
-<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h1><p>[1] 对于“NP难问题”的理解：<a href="http://blog.csdn.net/u010021014/article/details/77839858" target="_blank" rel="external">http://blog.csdn.net/u010021014/article/details/77839858</a><br>[2] 谈“P=NP?”：<a href="http://yinwang0.lofter.com/post/183ec2_4f6312" target="_blank" rel="external">http://yinwang0.lofter.com/post/183ec2_4f6312</a></p>
+<font color="red" size="6">**本博客与https://xuyunkun.com同步更新**</font>
 
       
     </div>
@@ -592,7 +607,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/NP-hard/" rel="tag"># NP-hard</a>
+            <a href="/tags/Artificial-Intelligence/" rel="tag"># Artificial Intelligence</a>
+          
+            <a href="/tags/Deep-Leanring/" rel="tag"># Deep Leanring</a>
+          
+            <a href="/tags/Machine-Learning/" rel="tag"># Machine Learning</a>
           
         </div>
       
@@ -605,15 +624,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/09/28/CS231n Lecture 9 CNN Architectures Summary/" rel="next" title="CS231n Lecture 9 CNN Architectures Summary">
+                <i class="fa fa-chevron-left"></i> CS231n Lecture 9 CNN Architectures Summary
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/01/30/libsvm SVR部分详解/" rel="prev" title="LibSVM支持向量回归详解">
-                LibSVM支持向量回归详解 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -752,7 +771,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#多项式时间（Polynomial-time）"><span class="nav-number">1.</span> <span class="nav-text">多项式时间（Polynomial time）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#确定性算法与非确定性算法"><span class="nav-number">2.</span> <span class="nav-text">确定性算法与非确定性算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#确定性算法："><span class="nav-number">2.1.</span> <span class="nav-text">确定性算法：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#非确定性算法："><span class="nav-number">2.2.</span> <span class="nav-text">非确定性算法：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#规约-约化"><span class="nav-number">3.</span> <span class="nav-text">规约/约化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#P类问题、NP类问题、NPC问题、NP难问题"><span class="nav-number">4.</span> <span class="nav-text">P类问题、NP类问题、NPC问题、NP难问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#P-NP？"><span class="nav-number">5.</span> <span class="nav-text">P=NP？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">6.</span> <span class="nav-text">Reference:</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#RNN网络结构"><span class="nav-number">1.</span> <span class="nav-text">RNN网络结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Many-to-many"><span class="nav-number">1.1.</span> <span class="nav-text">Many to many</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Many-to-one"><span class="nav-number">1.2.</span> <span class="nav-text">Many to one</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#One-to-many"><span class="nav-number">1.3.</span> <span class="nav-text">One to many</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sequence-to-sequence"><span class="nav-number">1.4.</span> <span class="nav-text">Sequence to sequence</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#示例：字符级别语言模型"><span class="nav-number">2.</span> <span class="nav-text">示例：字符级别语言模型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#RNN的可解释性"><span class="nav-number">3.</span> <span class="nav-text">RNN的可解释性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#图像标注问题"><span class="nav-number">4.</span> <span class="nav-text">图像标注问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Attention机制"><span class="nav-number">5.</span> <span class="nav-text">Attention机制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#视觉问答：RNNs-with-Attention"><span class="nav-number">6.</span> <span class="nav-text">视觉问答：RNNs with Attention</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Multilayers-RNNs"><span class="nav-number">7.</span> <span class="nav-text">Multilayers RNNs</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Vanilla-RNN-梯度流"><span class="nav-number">8.</span> <span class="nav-text">Vanilla RNN 梯度流</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#长短期记忆网络（LSTM）"><span class="nav-number">9.</span> <span class="nav-text">长短期记忆网络（LSTM）</span></a></li></ol></div>
             
 
           </div>
@@ -1374,7 +1393,7 @@
         showTime(Counter);
       }
     });
-  </script>
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 
@@ -1383,26 +1402,6 @@
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
