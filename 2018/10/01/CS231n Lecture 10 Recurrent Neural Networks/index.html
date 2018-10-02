@@ -125,13 +125,13 @@
 
 
 
-<meta name="description" content="Lecture 10主要讲解了循环神经网络模型的结构、前向传播与反向传播，并由此引出了LSTM（长短期记忆网络），除此之外还介绍了图像标注、视觉问答等前沿问题。">
+<meta name="description" content="Lecture 10主要讲解了循环神经网络模型的结构、前向传播与反向传播，并由此引出了Attention机制、LSTM（长短期记忆网络）等，除此之外还介绍了图像标注、视觉问答等前沿问题。">
 <meta name="keywords" content="Artificial Intelligence,Deep Leanring,Machine Learning">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CS231n Lecture 10 Recurrent Neural Networks">
 <meta property="og:url" content="http://yoursite.com/2018/10/01/CS231n Lecture 10 Recurrent Neural Networks/index.html">
 <meta property="og:site_name" content="KunBB&#39;s blog">
-<meta property="og:description" content="Lecture 10主要讲解了循环神经网络模型的结构、前向传播与反向传播，并由此引出了LSTM（长短期记忆网络），除此之外还介绍了图像标注、视觉问答等前沿问题。">
+<meta property="og:description" content="Lecture 10主要讲解了循环神经网络模型的结构、前向传播与反向传播，并由此引出了Attention机制、LSTM（长短期记忆网络）等，除此之外还介绍了图像标注、视觉问答等前沿问题。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/1.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/2.png">
@@ -169,10 +169,10 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/33.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/34.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/35.png">
-<meta property="og:updated_time" content="2018-10-01T15:42:32.191Z">
+<meta property="og:updated_time" content="2018-10-02T02:11:02.177Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CS231n Lecture 10 Recurrent Neural Networks">
-<meta name="twitter:description" content="Lecture 10主要讲解了循环神经网络模型的结构、前向传播与反向传播，并由此引出了LSTM（长短期记忆网络），除此之外还介绍了图像标注、视觉问答等前沿问题。">
+<meta name="twitter:description" content="Lecture 10主要讲解了循环神经网络模型的结构、前向传播与反向传播，并由此引出了Attention机制、LSTM（长短期记忆网络）等，除此之外还介绍了图像标注、视觉问答等前沿问题。">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/1.png">
 
 
@@ -486,7 +486,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  4,258
+                  4,251
                 </span>
               
 
@@ -523,7 +523,7 @@
       
 
       
-        <p>Lecture 10主要讲解了循环神经网络模型的结构、前向传播与反向传播，并由此引出了LSTM（长短期记忆网络），除此之外还介绍了图像标注、视觉问答等前沿问题。<br><a id="more"></a></p>
+        <p>Lecture 10主要讲解了循环神经网络模型的结构、前向传播与反向传播，并由此引出了Attention机制、LSTM（长短期记忆网络）等，除此之外还介绍了图像标注、视觉问答等前沿问题。<br><a id="more"></a></p>
 <h1 id="RNN网络结构"><a href="#RNN网络结构" class="headerlink" title="RNN网络结构"></a>RNN网络结构</h1><p><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/1.png" alt="Loading..."><br>RNN通常用来预测一个时间序列向量。每个RNN网络都有如上图所示这样一个小小的循环核心单元。X为输入，将其传入RNN，RNN有一个内部隐藏态（internal hidden state），这一隐藏态会在RNN每次读取新的输入时更新。当模型下一次读取输入时，隐藏状态同时将结果反馈至模型。</p>
 <p>循环神经网络隐藏状态$h_t$更新公式：<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/2.png" alt="Loading..."><br>我们对某种循环关系用函数$f$进行计算。函数$f$依赖于权重$W$，接收输入隐藏态$h_{t-1}$和输入$x_t$，然后输出下一个隐藏态$h_t$。如果我们想要在网络的每一步都产生一些输出，那么我们可以增加全连接层，根据每一步的隐藏态做出决策。<br>（注意，每一时间步的函数$f$和参数$W$都是相同的。）</p>
 <p>Vanilla RNN 络结构图与更新公式：<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/3.png" alt="Loading..."><br>Vanilla RNN 计算图：<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/4.png" alt="Loading..."><br>$h_0$为初始状态，一般$h_0=0$。由上图可以看出每一时间步都在使用相同的$f$和$W$。由反向传播原理可知，$W$最后的梯度是所有时间步下独立计算出的梯度之和。</p>
@@ -559,8 +559,6 @@
 <p><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/35.png" alt="Loading..."><br>通过单元状态进行反向传播的路径是一种梯度高速公路，使梯度相对畅通无阻地从模型最末端的损失函数返回到模型最开始的初始单元状态（与ResNet类似）。</p>
 <p>Q：<strong>遗忘门f</strong>是一个0~1的数，是否也会导致出现梯度消失的问题？<br>A：人们常会初始化遗忘门的偏置参数，进而使遗忘门总是非常接近于1。</p>
 <p>这里推荐一篇论文：[LSTM: A Search Space Odyssey Greff et al., 2015]，这篇论文详细研究了LSTM更新方程的每一个部分。</p>
-<hr>
-<font color="red" size="6">**本博客与https://xuyunkun.com同步更新**</font>
 
       
     </div>
@@ -1393,7 +1391,7 @@
         showTime(Counter);
       }
     });
-  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </script>
 
 
 
@@ -1402,6 +1400,26 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
