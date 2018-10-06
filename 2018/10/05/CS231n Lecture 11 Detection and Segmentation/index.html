@@ -125,55 +125,50 @@
 
 
 
-<meta name="description" content="Lecture 10主要讲解了循环神经网络模型的结构、前向传播与反向传播，并由此引出了Attention机制、LSTM（长短期记忆网络）等，除此之外还介绍了图像标注、视觉问答等前沿问题。">
+<meta name="description" content="Lecture 11主要讲解的是分割、定位与检测。具体包括语义分割、分类定位、目标检测和实例分割四部分。 语义分割（Semantic Segmentation）语义分割为每一个像素产生一个分类标签，但并不区分同类目标。 Semantic Segmentation Idea: Sliding Window输入一幅图像，将其打碎为许多小的局部图像块。以图中为例，三个包含牛头的小块，对其分别进行分类，判">
 <meta name="keywords" content="Artificial Intelligence,Deep Leanring,Machine Learning">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CS231n Lecture 10 Recurrent Neural Networks">
-<meta property="og:url" content="http://yoursite.com/2018/10/01/CS231n Lecture 10 Recurrent Neural Networks/index.html">
+<meta property="og:title" content="CS231n Lecture 11 Detection and Segmentation">
+<meta property="og:url" content="http://yoursite.com/2018/10/05/CS231n Lecture 11 Detection and Segmentation/index.html">
 <meta property="og:site_name" content="KunBB&#39;s blog">
-<meta property="og:description" content="Lecture 10主要讲解了循环神经网络模型的结构、前向传播与反向传播，并由此引出了Attention机制、LSTM（长短期记忆网络）等，除此之外还介绍了图像标注、视觉问答等前沿问题。">
+<meta property="og:description" content="Lecture 11主要讲解的是分割、定位与检测。具体包括语义分割、分类定位、目标检测和实例分割四部分。 语义分割（Semantic Segmentation）语义分割为每一个像素产生一个分类标签，但并不区分同类目标。 Semantic Segmentation Idea: Sliding Window输入一幅图像，将其打碎为许多小的局部图像块。以图中为例，三个包含牛头的小块，对其分别进行分类，判">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/1.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/2.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/3.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/4.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/5.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/6.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/7.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/8.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/9.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/10.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/11.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/12.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/13.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/14.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/15.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/16.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/17.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/18.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/19.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/20.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/21.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/22.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/23.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/24.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/25.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/26.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/36.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/27.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/28.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/29.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/30.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/31.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/32.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/33.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/34.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/35.png">
-<meta property="og:updated_time" content="2018-10-02T02:11:02.177Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_11/0.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_11/1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_11/2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_11/3.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_11/4.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_11/5.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_11/6.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_11/7.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_11/8.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_11/9.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_11/10.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_11/11.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_11/12.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_11/13.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_11/14.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_11/15.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_11/16.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_11/17.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_11/18.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_11/19.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_11/20.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_11/21.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_11/22.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_11/23.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_11/24.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_11/25.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_11/26.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_11/27.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_11/28.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_11/29.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_11/30.png">
+<meta property="og:updated_time" content="2018-10-06T06:05:37.676Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CS231n Lecture 10 Recurrent Neural Networks">
-<meta name="twitter:description" content="Lecture 10主要讲解了循环神经网络模型的结构、前向传播与反向传播，并由此引出了Attention机制、LSTM（长短期记忆网络）等，除此之外还介绍了图像标注、视觉问答等前沿问题。">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/1.png">
+<meta name="twitter:title" content="CS231n Lecture 11 Detection and Segmentation">
+<meta name="twitter:description" content="Lecture 11主要讲解的是分割、定位与检测。具体包括语义分割、分类定位、目标检测和实例分割四部分。 语义分割（Semantic Segmentation）语义分割为每一个像素产生一个分类标签，但并不区分同类目标。 Semantic Segmentation Idea: Sliding Window输入一幅图像，将其打碎为许多小的局部图像块。以图中为例，三个包含牛头的小块，对其分别进行分类，判">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_11/0.jpg">
 
 
 
@@ -203,13 +198,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/10/01/CS231n Lecture 10 Recurrent Neural Networks/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/10/05/CS231n Lecture 11 Detection and Segmentation/"/>
 
 
 
 
 
-  <title>CS231n Lecture 10 Recurrent Neural Networks | KunBB's blog</title>
+  <title>CS231n Lecture 11 Detection and Segmentation | KunBB's blog</title>
   
 
 
@@ -391,7 +386,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/01/CS231n Lecture 10 Recurrent Neural Networks/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/05/CS231n Lecture 11 Detection and Segmentation/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yunkun Xu">
@@ -408,7 +403,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">CS231n Lecture 10 Recurrent Neural Networks</h1>
+          <h1 class="post-title" itemprop="name headline">CS231n Lecture 11 Detection and Segmentation</h1>
         
 
         <div class="post-meta">
@@ -420,8 +415,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-01T09:25:00+08:00">
-                2018-10-01
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-05T21:30:00+08:00">
+                2018-10-05
               </time>
             
 
@@ -460,7 +455,7 @@
 
           
           
-             <span id="/2018/10/01/CS231n Lecture 10 Recurrent Neural Networks/" class="leancloud_visitors" data-flag-title="CS231n Lecture 10 Recurrent Neural Networks">
+             <span id="/2018/10/05/CS231n Lecture 11 Detection and Segmentation/" class="leancloud_visitors" data-flag-title="CS231n Lecture 11 Detection and Segmentation">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -486,7 +481,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  4,251
+                  4,011
                 </span>
               
 
@@ -502,7 +497,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  15
+                  14
                 </span>
               
             </div>
@@ -523,42 +518,72 @@
       
 
       
-        <p>Lecture 10主要讲解了循环神经网络模型的结构、前向传播与反向传播，并由此引出了Attention机制、LSTM（长短期记忆网络）等，除此之外还介绍了图像标注、视觉问答等前沿问题。<br><a id="more"></a></p>
-<h1 id="RNN网络结构"><a href="#RNN网络结构" class="headerlink" title="RNN网络结构"></a>RNN网络结构</h1><p><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/1.png" alt="Loading..."><br>RNN通常用来预测一个时间序列向量。每个RNN网络都有如上图所示这样一个小小的循环核心单元。X为输入，将其传入RNN，RNN有一个内部隐藏态（internal hidden state），这一隐藏态会在RNN每次读取新的输入时更新。当模型下一次读取输入时，隐藏状态同时将结果反馈至模型。</p>
-<p>循环神经网络隐藏状态$h_t$更新公式：<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/2.png" alt="Loading..."><br>我们对某种循环关系用函数$f$进行计算。函数$f$依赖于权重$W$，接收输入隐藏态$h_{t-1}$和输入$x_t$，然后输出下一个隐藏态$h_t$。如果我们想要在网络的每一步都产生一些输出，那么我们可以增加全连接层，根据每一步的隐藏态做出决策。<br>（注意，每一时间步的函数$f$和参数$W$都是相同的。）</p>
-<p>Vanilla RNN 络结构图与更新公式：<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/3.png" alt="Loading..."><br>Vanilla RNN 计算图：<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/4.png" alt="Loading..."><br>$h_0$为初始状态，一般$h_0=0$。由上图可以看出每一时间步都在使用相同的$f$和$W$。由反向传播原理可知，$W$最后的梯度是所有时间步下独立计算出的梯度之和。</p>
-<h2 id="Many-to-many"><a href="#Many-to-many" class="headerlink" title="Many to many"></a>Many to many</h2><p><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/5.png" alt="Loading..."><br>$Y_t$可以是每个时间步的类别得分，$L_t$是对应时间步下的损失（如softmax等），计算$L_t$需要序列在每个时间步下都有与之对应的真实标签。所有$L_t$相加就得到了最终的Loss $L$。在反向传播中我们需要计算$\frac{dL}{dW}$，而$L$又会回溯到每一个时间步的损失，然后每一时间步又会各自计算出当下$\frac{dL_t}{dW}$，其总和就是权重$W$的最终梯度。</p>
-<h2 id="Many-to-one"><a href="#Many-to-one" class="headerlink" title="Many to one"></a>Many to one</h2><p><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/6.png" alt="Loading..."><br>此种结构通常用于情感分析等问题。我们会根据网络的最终$h_T$做出决策，因为其整合了序列中包含的所有情况。</p>
-<h2 id="One-to-many"><a href="#One-to-many" class="headerlink" title="One to many"></a>One to many</h2><p><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/7.png" alt="Loading..."><br>此种结构通常用于自动生成图片描述等问题。</p>
-<h2 id="Sequence-to-sequence"><a href="#Sequence-to-sequence" class="headerlink" title="Sequence to sequence"></a>Sequence to sequence</h2><p><strong>Many-to-one+One-to-many</strong><br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/8.png" alt="Loading..."><br>此种结构通常用于机器翻译。编码阶段会接收到一个不定长的输入序列（如一个句子），然后整个句子会被编码器网络最终的隐层状态编码成一个单独的向量。解码阶段每一个时间步下会做出一个预测，将其还原成一个句子。</p>
-<h1 id="示例：字符级别语言模型"><a href="#示例：字符级别语言模型" class="headerlink" title="示例：字符级别语言模型"></a>示例：字符级别语言模型</h1><p>现在有vocabulary：[h, e, l, o]，example training sequence：“hello”。我们希望输入前一个字母后网络能够预测出下一个字母是什么。<br>训练过程如下：<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/9.png" alt="Loading..."><br>我们可以看到第一个时间步输入“h”，应该输出“e”，但预测结果score最高的是“o”。</p>
-<p>测试过程如下所示：<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/10.png" alt="Loading..."><br>在测试时，一次输入一个样本字符，将输出的字符反馈给模型（这里先不用去看数值，虽然h后面o的可能性最大，但是这里假设就是e）。</p>
-<p>接下来我们就要利用Loss来backpropagation修正整个网路，RNN通过时间进行反向传播过程如下图所示：<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/11.png" alt="Loading..."><br>由上图可以看出如果直接是在全局计算的话，会发现显存或内存不够，而且计算过程十分耗时，因为每计算一次梯度都必须做一次前向计算，遍历所有的训练集，然后反向传播每次也会遍历一遍训练集。</p>
-<p>在实际中人们通常采用一种近似方法，我们称之为延时间的截断（Truncated）反向传播方法。在训练模型时，前向计算若干步（如100），仅计算这个子序列的Loss，然后沿子序列反向传播并计算梯度更新参数，如下图所示。<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/12.png" alt="Loading..."><br>重复上述batch的计算过程（进入下一个100步），前向传播与第一个batch无异（需导入上一个batch最后得到的隐藏状态$h_t$），但是在计算梯度时，我们仅根据第二批数据反向传播误差，仅更新该batch中的参数（如下图所示）。<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/13.png" alt="Loading..."><br>Andrej Karpathy写了一个Vanilla RNN简单的示例程序：<a href="https://gist.github.com/karpathy/d4dee566867f8291f086" target="_blank" rel="external">min-char-rnn.py</a>，顺便给大家推荐该代码作者写的详解 <a href="https://karpathy.github.io/2015/05/21/rnn-effectiveness/" target="_blank" rel="external">karpathy’blog</a>。</p>
-<h1 id="RNN的可解释性"><a href="#RNN的可解释性" class="headerlink" title="RNN的可解释性"></a>RNN的可解释性</h1><p>[Karpathy, Johnson, and Fei-Fei: Visualizing and Understanding Recurrent Networks, ICLR Workshop 2016]<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/14.png" alt="Loading..."><br>该论文中作者训练了一个字符层级的语言模型循环神经网络，然后从隐藏向量中选取一个元素，通过一个序列过程来看这个隐藏向量的值，试图了解这些不同隐藏状态正在寻找的东西。<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/15.png" alt="Loading..."><br>从向量中选择一个元素，然后让句子继续向前运行通过训练好的模型，接下来每个字符的颜色对应于隐藏矢量在读取序列时的每个时间步长的单个标量元素的大小。</p>
-<h1 id="图像标注问题"><a href="#图像标注问题" class="headerlink" title="图像标注问题"></a>图像标注问题</h1><p>[Karpathy A, Li F F. Deep visual-semantic alignments for generating image descriptions, CVPR 2015]<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/16.png" alt="Loading..."><br>我们希望输入一个图像，然后输出自然语言的图像语义信息。</p>
-<p>模型中有一部分卷积神经网络用来处理输入的图像信息，它将产生图像的特征向量，然后输入到循环神经网络语言模型的第一个时间步中，一次一个地生成标题的单词。</p>
-<p><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/17.png" alt="Loading..."><br>我们把输入图像输入到卷积神经网络中，但是我们不是使用这个图像网络模型中最后得到的softmax值，而是使用模型末端的4096维向量，我们用这个向量来概述整个图像的内容。</p>
-<p><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/18.png" alt="Loading..."><br>当我们讨论递归神经网络语言模型时，我们需要知道模型的第一个初始化输入，来告诉它开始生成文字。本论文中作者给它了一些特殊的开始记号。在之前的递归神经网络语言模型中我们已经了解了这些矩阵的计算公式，即把当前时间步的输入以及前一个时间步的隐藏状态结合到下一个时间步的隐藏状态。但我们现在还需要添加图片信息，需要用完全不同的方法来整合这些信息，一个简单的方式是加入第三个权重矩阵，它在每个时间步中添加图像信息来计算下一个隐藏状态（如上图所示）。<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/19.png" alt="Loading..."><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/20.png" alt="Loading..."><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/21.png" alt="Loading..."><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/22.png" alt="Loading..."><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/23.png" alt="Loading..."><br>上面五幅图演示了生成句子的过程。</p>
-<p>现在我们需要计算词汇表中所有scores的分布，在这里我们的词汇表是类似所有英语词汇的东西，所以他可能会相当大，我们将从分布中采样并在下一次时间步时当做输入传入。依次重复上述步骤，我们将生成完整的句子。一旦我们采样到特殊停止标记（类似于句号）就停止生成。在训练时，我们在每个标题末尾都放上结束的标志，这样在训练过程中结束标记就出现在序列的末尾。在测试时，它倾向于在完成生成句子后对这些结束标记进行采样。</p>
-<h1 id="Attention机制"><a href="#Attention机制" class="headerlink" title="Attention机制"></a>Attention机制</h1><p><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/24.png" alt="Loading..."><br>当我们生成这个图片标题的文字时，我们允许模型来引导它们的注意到图像不同的部分。<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/25.png" alt="Loading..."><br>通常的做法是，相比于产生一个单独的向量来整合整个图像，该方法的卷积神经网络倾向于产生由向量构成的网络给每幅图片中特殊的地方都用一个向量表示。当我们在前向传播时，除了在每一时间步中对词汇表进行采样外，还会在图像中想要查看的位置上产生一个分布。图像位置的分布可以看成是一种模型在训练过程中应该关注哪里的张量。因此第一个隐藏状态$h_0$计算在图片位置上的分布$a_1$，它将会回到向量集合，给出一个概要向量$z_1$，把注意力集中在图像的某一部分上。<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/26.png" alt="Loading..."><br>现在这个概要向量得到了反馈，作为神经网络下一时间步的额外输入。接着$h_1$将产生两个输出，一个是我们在词汇表上的分布$d_1$，一个是图像位置的分布$a_2$，整个过程将会继续下去，它在每个时间步都会做这两件不同的事情。</p>
-<p>Ps：软注意力机制采用的是加权组合，所有图像位置中的所有特征。硬注意力机制中，我们限制模型在每一步只选择一个位置来观察图片。在硬注意力的情况下选择图像的位置有点复杂，因为这不是一个可微函数，所以需要使用一些比vanilla反向传播算法高级一点的算法，以便能够在那样的情况下训练模型。</p>
-<h1 id="视觉问答：RNNs-with-Attention"><a href="#视觉问答：RNNs-with-Attention" class="headerlink" title="视觉问答：RNNs with Attention"></a>视觉问答：RNNs with Attention</h1><p><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/36.png" alt="Loading..."><br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/27.png" alt="Loading..."><br>这是一个多对一的情形（选出正确的答案）。我们的模型需要将自然语言序列作为输入，我们可以设想针对输入问题的每个元素，建立一个递归神经网络，从而将输入问题概括为一个向量。然后我们可以用CNN将图像也概括为一个向量。现在把CNN得出的向量和输入问题的向量结合，通过RNN编程来预测答案的概率分布。有时候会将soft spatial attention结合到视觉问答中，所以在这里可以看到这个模型在试图确定这些问题的答案时它在图像上仍具有spatial attention。</p>
-<p>Q：如何将编码图像向量和编码问题向量组合起来？<br>A：最简单的一种做法是将他们连接起来然后粘贴进FC中。有时也会用一些高级的方法，即在这两个向量之间做乘法从而得到更为强大的函数。</p>
-<h1 id="Multilayers-RNNs"><a href="#Multilayers-RNNs" class="headerlink" title="Multilayers RNNs"></a>Multilayers RNNs</h1><p><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/28.png" alt="Loading..."><br>如上所示是一个三层循环神经网络结构图，现在将输入传进模型，然后在第一层的RNN中产生一系列的隐藏状态。在我们运行了RNN的一层之后得到了所有的隐藏状态序列。我们可以将这些隐藏状态序列作为第二层RNN的输入序列，以此类推。<br>（RNN一般2-4层就足够了）</p>
-<h1 id="Vanilla-RNN-梯度流"><a href="#Vanilla-RNN-梯度流" class="headerlink" title="Vanilla RNN 梯度流"></a>Vanilla RNN 梯度流</h1><p><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/29.png" alt="Loading..."><br>上图中可以看出隐藏状态$h_t$的计算过程。计算梯度时，我们会得到$\frac{dLoss}{dh_t}$，最后我们需要计算的是$\frac{dLoss}{dh_{t-1}}$。当我们进行反向传播时，梯度会沿红线反向流动。但是当反向传播流过矩阵乘法门时，实际上是用权重矩阵的转置来做矩阵乘法，这意味着每一次BP经过一个vanilla RNN单元时就需要和权重矩阵相乘一次。<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/30.png" alt="Loading..."><br>当我们把很多网络单元连接成一个序列，梯度反向流动穿过一些这样的层时，都要乘以一个权重矩阵的转置，这意味着最终$h_0$的梯度表达式将会包含很多权重矩阵因子。（再强调一下，每一个单元的$W$是相同的）</p>
-<p>为了便于理解，我们可以将权重矩阵简化为标量。假如我们有一些标量，我们不断地对同一个数值与这些标量做乘法，当有几百时间步时，情况将非常糟糕。在标量的情形中，它要么在这些标量绝对值大于1时发生梯度爆炸，要么当这些标量绝对值小于1时发生梯度消失。唯一能够让这不发生的情况是这些标量值刚好是1。延伸到矩阵的情况时，标量的绝对值替换为权重矩阵的最大奇异值。</p>
-<p><strong>解决梯度爆炸的方法</strong>：梯度截断<br>判断梯度的L2范数是否大于某个值。<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/31.png" alt="Loading..."></p>
-<p><strong>解决梯度消失的方法</strong>：改变RNN结构<br>引出了下面介绍的LSTM。</p>
-<h1 id="长短期记忆网络（LSTM）"><a href="#长短期记忆网络（LSTM）" class="headerlink" title="长短期记忆网络（LSTM）"></a>长短期记忆网络（LSTM）</h1><p><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/32.png" alt="Loading..."><br>如上图所示，LSTM每个时间步都维持两个隐藏状态。我们称$h_t$为隐藏状态，$c_t$为单元状态，$c_t$相当于保留在LSTM内部的隐藏状态，不会完全暴露到外部去。首先我们传入两个输入来计算四个门i、f、o、g，使用这些门来更新单元状态$c_t$，然后将这些单元状态作为参数来计算下一时间步中的隐藏状态。</p>
-<p><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/33.png" alt="Loading..."><br>将上一时间步的隐藏状态和当前时间步的输入堆叠在一起，然后乘上一个非常大的权重矩阵w，计算得到四个不同的门向量，每个门向量的大小和隐藏状态一样。</p>
-<p><strong>i代表输入门</strong>，表示LSTM要接受多少新的输入信息；<strong>f是遗忘门</strong>，表示要遗忘多少之前的单元记忆（上一时间步的记忆信息）；<strong>o是输出门</strong>，表示我们要展现多少信息给外部；<strong>G是门中门</strong>，表示我们有多少信息要写到输入单元中去。四个门中i、f、o都用了sigmoid，这意味着输出值都在0和1之间。G用了tanh函数，这意味着输出都在-1到1之间。</p>
-<p>从上图公式中我们可以看出单元状态是经过遗忘门逐项相乘的。<strong>遗忘门</strong>可以看做是由0和1组成的向量，F中0表示我们忘记这个单元状态中的这个元素值，1说明我们想要记住这个单元状态中的这个值。使用遗忘门来断开部分单元状态的值后，我们接下来需要<strong>输入门</strong>和<strong>门中门</strong>逐元素相乘。i是由0和1构成的向量，对于单元状态的每个元素值，i的值为1表示我们想要保留单元状态的那个元素，i的值为0表示我们不想保留单元状态对应的那个元素。<strong>门中门</strong>中的这些值是当前时间步中我们可能会写入到单元状态中去的候选值。单元状态$c_t$在每个时间步中都可以被加一或减一。也就是说在单元状态的内部，我们可以保留或者遗忘之前的状态。所以可以把$c_t$中的每个元素看作是小的标量计数器。</p>
-<p>$c_t$经过tanh后被压缩到0~1，再用输出门逐元素相乘。<strong>输出门</strong>告诉我们对于单元状态中的每个元素，当我们在此时间步计算外部的隐藏状态时，是否希望单元状态中的此元素暴露出去。</p>
-<p><strong>LSTM示意图</strong>：<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/34.png" alt="Loading..."><br>我们通过传输进来的单元获得了上游梯度$\frac{dLoss}{dc_t}$，然后通过加法运算向后进行方向传播，这个加法运算仅仅是将上游的梯度复制到这两个分支中，这样上游梯度直接被复制并且通过与遗忘门元素相乘的方式贯穿了反向传播过程。此方法的优点在于这里与<strong>遗忘门f</strong>相乘是矩阵元素相乘而不是矩阵相乘；另一点是矩阵元素相乘可能会在不同的时间点乘以一个不同的<strong>遗忘门</strong>（更容易避免梯度消失和梯度爆炸的问题），而在vanilla RNN中我们是不断地乘以相同的权重矩阵；最后一个优点是梯度从最后一个隐藏状态$h_T$传递到$c_0$只会经过一个tanh。</p>
-<p><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_10/35.png" alt="Loading..."><br>通过单元状态进行反向传播的路径是一种梯度高速公路，使梯度相对畅通无阻地从模型最末端的损失函数返回到模型最开始的初始单元状态（与ResNet类似）。</p>
-<p>Q：<strong>遗忘门f</strong>是一个0~1的数，是否也会导致出现梯度消失的问题？<br>A：人们常会初始化遗忘门的偏置参数，进而使遗忘门总是非常接近于1。</p>
-<p>这里推荐一篇论文：[LSTM: A Search Space Odyssey Greff et al., 2015]，这篇论文详细研究了LSTM更新方程的每一个部分。</p>
+        <p>Lecture 11主要讲解的是分割、定位与检测。具体包括语义分割、分类定位、目标检测和实例分割四部分。</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_11/0.jpg" alt="Loading..."></h2><h1 id="语义分割（Semantic-Segmentation）"><a href="#语义分割（Semantic-Segmentation）" class="headerlink" title="语义分割（Semantic Segmentation）"></a>语义分割（Semantic Segmentation）</h1><p><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_11/1.png" alt="Loading..."><br>语义分割为每一个像素产生一个分类标签，但并不区分同类目标。</p>
+<h2 id="Semantic-Segmentation-Idea-Sliding-Window"><a href="#Semantic-Segmentation-Idea-Sliding-Window" class="headerlink" title="Semantic Segmentation Idea: Sliding Window"></a>Semantic Segmentation Idea: Sliding Window</h2><p><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_11/2.png" alt="Loading..."><br>输入一幅图像，将其打碎为许多小的局部图像块。以图中为例，三个包含牛头的小块，对其分别进行分类，判断它的中心像素属于哪类。这个计算复杂度相当的高，因为我们想要标记图像中的每个像素点，我们需要为每个像素准备单独的小块。</p>
+<p>当我们希望区分彼此相邻甚至重叠的两块图像块时，这些小块的卷积特征最终通过同样的卷积层，因此，我们可以共享这些图像块的很多计算过程。</p>
+<h2 id="Semantic-Segmentation-Idea-Fully-Convolutional"><a href="#Semantic-Segmentation-Idea-Fully-Convolutional" class="headerlink" title="Semantic Segmentation Idea: Fully Convolutional"></a>Semantic Segmentation Idea: Fully Convolutional</h2><p><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_11/3.png" alt="Loading..."><br>通过数个卷积层最后得到的张量数据的大小是$C \times H \times W$，$C$是类的数量，这个张量会对每一个像素的分类进行评分，因此我们可以通过堆叠卷积层一次性完成所有计算。但这种方法存在一个问题，我们的每一个卷积层都保持着与原始输入图像相同的尺寸，这导致计算量非常大。</p>
+<h2 id="Semantic-Segmentation-Idea-downsampling-upsampling"><a href="#Semantic-Segmentation-Idea-downsampling-upsampling" class="headerlink" title="Semantic Segmentation Idea: downsampling+upsampling"></a>Semantic Segmentation Idea: downsampling+upsampling</h2><p><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_11/4.png" alt="Loading..."><br>常用方法是对输入图像做下采样，之后再做上采样。相较于基于图像的全维度做卷积，我们仅仅对一部分卷积层做原清晰度处理，之后对特征进行下采样（最大池化，或stride&gt;1的卷积）。在后部分网络中我们希望增加清晰度，这样能使我们的输出维持原有的图像尺寸。这种方法更加方便计算，因为我们可以让网络很深，每层的清晰度降低但是有很多层叠加。</p>
+<h3 id="上采样（upsampling）：去池化（unpooling）"><a href="#上采样（upsampling）：去池化（unpooling）" class="headerlink" title="上采样（upsampling）：去池化（unpooling）"></a>上采样（upsampling）：去池化（unpooling）</h3><p><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_11/5.png" alt="Loading..."><br>平均池化在下采样中是针对每个池化区域取平均，而在上采样中做的是最近距离（nearest neighbor）去池化。如上图左所示，输出是输入的$2\times2$ stride 2 nearest neighbor去池化结果，在去池化区域中使用输入的当前元素进行填充。如上图右所示为钉床函数的去池化，我们将输入元素放在去池化区域的左上角，并将去池化区域的其他元素置0。</p>
+<p><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_11/6.png" alt="Loading..."><br>许多神经网络结构是对称的，尤其是下采样的神经网络之后会进行上采样。我们在下采样时用最大池化的同时，会记住池化区域中的最大元素索引，之后我们会执行类似钉床函数去池化的操作，不过这里我们是将输入的元素放在去池化区域中与之前记住的最大元素索引相对应的地方。</p>
+<p>将向量去池化可以帮助我们很好地处理细节，存储空间信息（在池化后会丢失这些信息）。</p>
+<h3 id="上采样（upsampling）：卷积转置（Transpose-Convolution）"><a href="#上采样（upsampling）：卷积转置（Transpose-Convolution）" class="headerlink" title="上采样（upsampling）：卷积转置（Transpose Convolution）"></a>上采样（upsampling）：卷积转置（Transpose Convolution）</h3><p>前面所谈到的各种去池化方法都是使用固定的方程，并不是真的在学习如何上采样。而strided convolution既是一种可学习的层，它可以学习如何下采样，与之对应的我们称之为卷积转置，用于进行上采样，即上采样特征图，又能学习权重。<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_11/7.png" alt="Loading..."><br>上图所示为3x3卷积的常规操作。</p>
+<p><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_11/8.png" alt="Loading..."><br>上图所示为3x3的 strided convolution的常规操作。</p>
+<p><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_11/9.png" alt="Loading..."><br>上图所示为卷积转置操作。卷积转置依次取出特征图的输入元素（标量），我们用这个标量乘以filter，以filter的size复制到输出的相应位置，这样输出便是带有权重的filters的叠加（把输入看做权重）。</p>
+<p><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_11/10.png" alt="Loading..."><br>如上图所示我们在一维情况下来理解卷积转置。上图中输入为$2\times1$，filter为$3\times1$。我们可以看到输出是对输入做加权，最后对输出中的感受野重叠部分进行叠加。</p>
+<p><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_11/11.png" alt="Loading..."><br>（上图左侧的矩阵<strong>X</strong>每行的最后一个$x$应为$z$。）</p>
+<p>我们可以把卷积写成矩阵相乘的形式。如上图所示，$\vec x$表示有三个元素的卷积向量，$\vec a$表示有4个元素的输入向量。我们将向量$\vec x$转变成矩阵形式<strong>X</strong>，<strong>X</strong>包含很多由不同区域偏移的卷积核$\vec x$。卷积转置的意思是我们乘以相同权重矩阵的转置。</p>
+<p><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_11/12.png" alt="Loading..."></p>
+<p>当步长为2时情况会有些不一样。对应的转置矩阵不再是卷积。</p>
+<p>关于卷积转置有不理解的地方可以参考下CSDN的这篇<a href="https://blog.csdn.net/u013250416/article/details/78247818?locationNum=5&amp;fps=1" target="_blank" rel="external">[深度学习]转置卷积(Transposed Convolution)</a>或是知乎的<a href="https://www.zhihu.com/question/43609045" target="_blank" rel="external">如何理解深度学习中的deconvolution networks？</a>。</p>
+<h1 id="分类与定位"><a href="#分类与定位" class="headerlink" title="分类与定位"></a>分类与定位</h1><p>我们不只预测图像的类别（如猫），同时绘制一个bounding box将该类别（猫）包裹进去。与目标检测不同的是分类与定位会提前知道有一个（或更多）物体是我们需要寻找的，且只产生一个bounding box。<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_11/13.png" alt="Loading..."><br>与前面章节所讲解的图像分类类似，这里我们通过AlexNet最后的FC（$4096\times1000$）得到类别的scores。此外，我们新增另一个FC（$4096\times4$），输出维度4代表了bounding box的$x,y$坐标，宽度和高度。于是网络会产生两个不同的输出，一个是类别的scores，一个是bounding box的四个属性，其中<strong>前者是分类问题，后者是回归问题</strong>。</p>
+<p>训练此网络时，我们有两组损失，使用softmax Loss计算类别的损失，使用L2 Loss计算bounding box的损失，我们对两组损失加权求和得到最终的网络Loss。</p>
+<h2 id="姿态估计"><a href="#姿态估计" class="headerlink" title="姿态估计"></a>姿态估计</h2><p><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_11/14.png" alt="Loading..."><br>上图为14关节点的样本示例，来定义人的姿态。</p>
+<p><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_11/15.png" alt="Loading..."><br>输入这张人像后将输出14组参数，逐一给出这14个关节点的$x，y$坐标，然后用回归损失（L2损失、L1损失等）来评估这14个点的预测表现。</p>
+<h1 id="目标检测"><a href="#目标检测" class="headerlink" title="目标检测"></a>目标检测</h1><p>目标检测主要研究的是，假设我们已有一些类别已知，我们输入一幅图像，每当在图像中出现其中某一类对象时，围绕对象绘制一个框并预测对象所属类别。与分类定位任务的区别在于每一张输入图像对象的数量是不定的。</p>
+<h2 id="Object-Detection-as-Regression"><a href="#Object-Detection-as-Regression" class="headerlink" title="Object Detection as Regression"></a>Object Detection as Regression</h2><p><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_11/16.png" alt="Loading..."><br>从上图可以看出每幅图像经过网络后需要输出目标bounding box的四个参数信息，然而三幅图的输出参数数量都是不相同的，因此将目标检测问题等同于回归问题来考虑是十分棘手的。</p>
+<h2 id="Object-Detection-as-Classification-Sliding-Window"><a href="#Object-Detection-as-Classification-Sliding-Window" class="headerlink" title="Object Detection as Classification: Sliding Window"></a>Object Detection as Classification: Sliding Window</h2><p><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_11/17.png" alt="Loading..."><br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_11/18.png" alt="Loading..."><br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_11/19.png" alt="Loading..."><br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_11/20.png" alt="Loading..."><br>滑动窗口方法类似于图像分割方法中将图像切分为一小块一小块，我们将图像块输入到卷积神经网络中，之后网络会对输入的图像块进行分类决策。</p>
+<p>此方法的问题在于你该如何选择图像块，因为图像中对象的数量、尺寸与位置都不确定。（一般不会用此方法。）</p>
+<h2 id="Object-Detection-as-Classification-Region-Proposals"><a href="#Object-Detection-as-Classification-Region-Proposals" class="headerlink" title="Object Detection as Classification: Region Proposals"></a>Object Detection as Classification: Region Proposals</h2><p><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_11/21.png" alt="Loading..."><br>通常我们使用的是一种称为<strong>候选区域</strong>的方法。对给定的输入图像，候选区域网络会在目标可能出现的地方绘制上千个框，我们可以将这一步理解为做一些定位操作，也就是寻找图像的边界并且尝试绘制可以包含闭合边界的矩形框。区域选择网络会在输入图像中寻找点状的候选区域，然后给我们一些候选的区域，也就是对象可能出现的区域。</p>
+<p>一种常见的区域选择方法是selective search，会给你2000个备选区域（而不是上图的1000），CPU运行2s后输入图像会被切分成2000个可能包含目标体的区域。</p>
+<p>我们一般会先使用候选区域网络找到物体可能存在的备选区域，再用卷积神经网络对这些备选区域进行分类。</p>
+<h3 id="R-CNN"><a href="#R-CNN" class="headerlink" title="R-CNN"></a>R-CNN</h3><p><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_11/22.png" alt="Loading..."><br>给定输入图像，我们运行一些区域选择网络，去找到备选区域（也称之为兴趣区域ROI），selective search寻找到大约2000个兴趣区域。其中一个问题是这些输入中的区域可能有不同的尺寸，但都要在同一个卷积神经网络中运行做分类。由于全连接层的特性，我们希望所有的输入尺寸一致，因此我们需要处理这些区域，将输入尺寸调整为固定尺寸，使之与下游网络输入相匹配，输入到卷积神经网络中，然后使用SVM基于样本做分类，预测出对应的类别。</p>
+<p>另外，R-CNN也可以用于回归预测，校正bounding box的参数，预测边界框四个参数的补偿与修正值。</p>
+<p>存在问题：</p>
+<ul>
+<li>训练阶段十分耗时（84h），需独立训练2000个区域，且图像特征的存储极占空间；</li>
+<li>测试阶段也十分耗时（30s/幅）；</li>
+<li>区域选择算法不是一种学习算法，参数固定。</li>
+</ul>
+<h3 id="Fast-R-CNN"><a href="#Fast-R-CNN" class="headerlink" title="Fast R-CNN"></a>Fast R-CNN</h3><p><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_11/23.png" alt="Loading..."><br>现在不再按兴趣区域处理，而是将整幅图像通过一些卷积层，得到整个图像的高分辨率特征映射。然后我们仍会用一些备选区域选择算法，但并不是使用固定算法（如selective search），我们将这些备选区域投影到卷积特征映射（feature map），之后从卷积特征映射中提取属于备选区域的卷积块，而不是直接截取备选区域的像素。通过对整个图像进行处理，我们可以重用很多卷积计算。另外，如果我们在下游有很多全连接层，这些全连接层的输入应该是固定尺寸的，所以我们需要对从卷积映射提取的图像块进行reshape（用可微的方法）。这里我们使用被称之为ROI 池化层的网络层（ROI Pooling layer）。之后数据经过FC得到预测分类结果以及对包围盒的线性回归补偿。</p>
+<p>Fast R-CNN训练过程如下：<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_11/24.png" alt="Loading..."><br>当我们训练这个的时候，在BP阶段我们有一个多任务损失，我们可以基于全局反向传播同时学习。</p>
+<h3 id="ROI-Pooling"><a href="#ROI-Pooling" class="headerlink" title="ROI Pooling"></a>ROI Pooling</h3><p><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_11/25.png" alt="Loading..."><br>ROI池化有点像最大池化，其主要作用包括以下两点：</p>
+<ul>
+<li>缩小region proposal的尺寸，加速FC层的训练速度；</li>
+<li>将数据尺寸reshape为固定的大小，以确保能够进入之后的FC进行训练，实现end-to-end training。</li>
+</ul>
+<p>ROI pooling层有两个输入：</p>
+<ul>
+<li>一个从具有多个卷积核池化的深度网络中训练得到的feature map矩阵；</li>
+<li>一个表示了所有感兴趣区域的ROI矩阵（维度为$N\times5$），$N$表示ROI的数目，第1列表示区域的index，其余4列表示区域左上角和右下角坐标。</li>
+</ul>
+<p>如上图所示，原图像尺寸为$3\times640\times480$，输出数据尺寸为$512\times7\times7$。经过卷积层后数据尺寸变为$512\times20\times15$的feature map，感兴趣区域大小为$512\times18\times8$并投影到feature map二维平面中的某一部分，之后我们需要将$18\times8$的区域划分成$7\times7=49$个sections，在每一个sections中取最大元素（此处类似max pooling），最终得到进入FC前尺寸为$512\times7\times7$的数据。（ROI Pooling有不明了的地方可参考<a href="https://blog.csdn.net/auto1993/article/details/78514071" target="_blank" rel="external">这里</a>。）</p>
+<h3 id="Faster-R-CNN"><a href="#Faster-R-CNN" class="headerlink" title="Faster R-CNN"></a>Faster R-CNN</h3><p><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_11/26.png" alt="Loading..."><br>用固定的函数计算备选区域成为提升计算性能的瓶颈，因此我们让网络自身去做这个。同样的，我们在卷积层中运行整个输入图像去获取特征映射（feature map）来表示整个高清晰度图像。然后这里有一个分离备选区域的网络工作于卷积特征的上层，在网络内部预测自己的备选区域，当我们有了这些备选区域后，后续工作就和fast R-CNN一样了。</p>
+<p>模型最终Loss包含四个Loss，对应了模型需要完成的四个任务。<br>区域选择网络需要完成两件事情：</p>
+<ul>
+<li>他们是否是待识别物体；</li>
+<li>对包围盒进行校正。</li>
+</ul>
+<p>最后FC层网络还需要再做上述的这两件事。</p>
+<h2 id="Detection-without-Proposals-YOLO-SSD"><a href="#Detection-without-Proposals-YOLO-SSD" class="headerlink" title="Detection without Proposals: YOLO / SSD"></a>Detection without Proposals: YOLO / SSD</h2><p><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_11/27.png" alt="Loading..."><br>该方法尝试将目标检测作为回归问题处理。给出输入图像，将输入图像分成数个（如$7\times7$）网格。在每一个网格中，你可以想象一系列的基本边界框（如图所示，绘制了三个基本边界框）。我们需要对每一个网格和每一个基本边界框预测几种参数，一是预测边界框偏移，从而预测出边界框与目标物体的位置偏差；二是预测目标对应类别的classification scores，每个边界框会对应一个类别分数。</p>
+<p>最后我们得到如上图所示的输出：$7\times7\times(5\times B+C)$，我们有B个基本边界框，每个边界框对应5个值，分别对应边界框4个参数的差值和我们的置信度；C对应C个目标类别（包括背景类）。我们可以把这种目标检测看做输入一张图像，输出一个三维张量。</p>
+<p>基于候选框的网络，正如faster R-CNN中所使用的，最终会寻找出一系列比较接近的图像网格的边界框，另外一些基于候选框的网络除了预测类别之外，还会对预测框做回归。</p>
+<p>在faster R-CNN中我们将目标区域的选择看做是一个端到端的回归问题，然后我们对提出的区域分别进行处理。但是在SSD中，我们只做第一步，通过一个前馈网络一次进行所有的目标检测。</p>
+<p>目标检测中各式各样的variables：<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_11/28.png" alt="Loading..."></p>
+<h1 id="实例分割"><a href="#实例分割" class="headerlink" title="实例分割"></a>实例分割</h1><p>实例分割指的是，给定一张输入图像，我们想预测出一个图像中某个目标的类别和目标的位置。与目标检测不同之处在于实例分割不是预测出每个目标的边框，而是想要预测出每个物体的整个分割区域，即预测输入图像的哪些元素对应着预测物体。这有点像是语义分割和目标检测的融合。</p>
+<h2 id="Mask-R-CNN"><a href="#Mask-R-CNN" class="headerlink" title="Mask R-CNN"></a>Mask R-CNN</h2><p><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_11/29.png" alt="Loading..."><br>我们将整张图像输入到卷积网络和训练好的候选框生成网络中，得到训练好的候选区域后，我们将这些候选区域投影到卷积特征上（到这一步之前都和faster R-CNN类似）。但现在不只是进行分类预测类别或回归预测边界框，我们同时希望对每一个候选区域预测出一个分割区域。如上图所示的下面一个分支会对输入候选框中的像素进行分类，确定这是不是属于某个物体。</p>
+<p>可以看出Mask R-CNN是前述几种模型的整合。</p>
+<p>Mask R-CNN也能用于姿态估计：<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_11/30.png" alt="Loading..."><br>通过回归预测人体每一个关节点的坐标，我们可以进行姿态估计。我们可以使用Mask R-CNN做目标识别、姿态估计和实例分割，唯一需要修改的部分是对于每一个候选框额外添加一个分支。</p>
 
       
     </div>
@@ -622,8 +647,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/28/CS231n Lecture 9 CNN Architectures Summary/" rel="next" title="CS231n Lecture 9 CNN Architectures Summary">
-                <i class="fa fa-chevron-left"></i> CS231n Lecture 9 CNN Architectures Summary
+              <a href="/2018/10/01/CS231n Lecture 10 Recurrent Neural Networks/" rel="next" title="CS231n Lecture 10 Recurrent Neural Networks">
+                <i class="fa fa-chevron-left"></i> CS231n Lecture 10 Recurrent Neural Networks
               </a>
             
           </div>
@@ -631,10 +656,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/10/05/CS231n Lecture 11 Detection and Segmentation/" rel="prev" title="CS231n Lecture 11 Detection and Segmentation">
-                CS231n Lecture 11 Detection and Segmentation <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -773,7 +794,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#RNN网络结构"><span class="nav-number">1.</span> <span class="nav-text">RNN网络结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Many-to-many"><span class="nav-number">1.1.</span> <span class="nav-text">Many to many</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Many-to-one"><span class="nav-number">1.2.</span> <span class="nav-text">Many to one</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#One-to-many"><span class="nav-number">1.3.</span> <span class="nav-text">One to many</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sequence-to-sequence"><span class="nav-number">1.4.</span> <span class="nav-text">Sequence to sequence</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#示例：字符级别语言模型"><span class="nav-number">2.</span> <span class="nav-text">示例：字符级别语言模型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#RNN的可解释性"><span class="nav-number">3.</span> <span class="nav-text">RNN的可解释性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#图像标注问题"><span class="nav-number">4.</span> <span class="nav-text">图像标注问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Attention机制"><span class="nav-number">5.</span> <span class="nav-text">Attention机制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#视觉问答：RNNs-with-Attention"><span class="nav-number">6.</span> <span class="nav-text">视觉问答：RNNs with Attention</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Multilayers-RNNs"><span class="nav-number">7.</span> <span class="nav-text">Multilayers RNNs</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Vanilla-RNN-梯度流"><span class="nav-number">8.</span> <span class="nav-text">Vanilla RNN 梯度流</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#长短期记忆网络（LSTM）"><span class="nav-number">9.</span> <span class="nav-text">长短期记忆网络（LSTM）</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text"></span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#语义分割（Semantic-Segmentation）"><span class="nav-number"></span> <span class="nav-text">语义分割（Semantic Segmentation）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Semantic-Segmentation-Idea-Sliding-Window"><span class="nav-number">1.</span> <span class="nav-text">Semantic Segmentation Idea: Sliding Window</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Semantic-Segmentation-Idea-Fully-Convolutional"><span class="nav-number">2.</span> <span class="nav-text">Semantic Segmentation Idea: Fully Convolutional</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Semantic-Segmentation-Idea-downsampling-upsampling"><span class="nav-number">3.</span> <span class="nav-text">Semantic Segmentation Idea: downsampling+upsampling</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#上采样（upsampling）：去池化（unpooling）"><span class="nav-number">3.1.</span> <span class="nav-text">上采样（upsampling）：去池化（unpooling）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#上采样（upsampling）：卷积转置（Transpose-Convolution）"><span class="nav-number">3.2.</span> <span class="nav-text">上采样（upsampling）：卷积转置（Transpose Convolution）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分类与定位"><span class="nav-number"></span> <span class="nav-text">分类与定位</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#姿态估计"><span class="nav-number">1.</span> <span class="nav-text">姿态估计</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#目标检测"><span class="nav-number"></span> <span class="nav-text">目标检测</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Object-Detection-as-Regression"><span class="nav-number">1.</span> <span class="nav-text">Object Detection as Regression</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object-Detection-as-Classification-Sliding-Window"><span class="nav-number">2.</span> <span class="nav-text">Object Detection as Classification: Sliding Window</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object-Detection-as-Classification-Region-Proposals"><span class="nav-number">3.</span> <span class="nav-text">Object Detection as Classification: Region Proposals</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#R-CNN"><span class="nav-number">3.1.</span> <span class="nav-text">R-CNN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Fast-R-CNN"><span class="nav-number">3.2.</span> <span class="nav-text">Fast R-CNN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ROI-Pooling"><span class="nav-number">3.3.</span> <span class="nav-text">ROI Pooling</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Faster-R-CNN"><span class="nav-number">3.4.</span> <span class="nav-text">Faster R-CNN</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Detection-without-Proposals-YOLO-SSD"><span class="nav-number">4.</span> <span class="nav-text">Detection without Proposals: YOLO / SSD</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实例分割"><span class="nav-number"></span> <span class="nav-text">实例分割</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Mask-R-CNN"><span class="nav-number">1.</span> <span class="nav-text">Mask R-CNN</span></a></li></ol></div>
             
 
           </div>
