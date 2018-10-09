@@ -153,7 +153,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_9/17.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_9/18.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_9/19.png">
-<meta property="og:updated_time" content="2018-10-01T08:30:56.658Z">
+<meta property="og:updated_time" content="2018-10-09T11:54:03.942Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CS231n Lecture 9 CNN Architectures Summary">
 <meta name="twitter:description" content="Lecture 9主要讲了一些经典的、比较流行的网络结构，详细讲解了AlexNet、ZFNet、VGGNet、GoogleNet和ResNet。">
@@ -529,28 +529,28 @@
 <li>CONV3,4,5：Use 384,384,256 filters, instead of 512,1024,512 filters.</li>
 </ul>
 <h1 id="VGGNet"><a href="#VGGNet" class="headerlink" title="VGGNet"></a>VGGNet</h1><p>VGGNet网络结构图如下图所示：<br><img src="https://raw.githubusercontent.com/KunBB/MarkdownPhotos/master/CS231n_9/3.png" alt="Loading..."></p>
-<h2 id="VGG16网络详细信息如下"><a href="#VGG16网络详细信息如下" class="headerlink" title="VGG16网络详细信息如下"></a>VGG16网络详细信息如下</h2><p><font color="gray">INPUT</font>: [224x224x3] memory: 224x224x3=150K params: 0  </p>
-<p><font color="red">CONV3-64</font>: [224x224x64] memory: 224x224x64=3.2M params: (3x3x3)x64 = 1,728  </p>
-<p><font color="red">CONV3-64</font>: [224x224x64] memory: 224x224x64=3.2M params: (3x3x64)x64 = 36,864  </p>
-<p><font color="blue">POOL2</font>: [112x112x64] memory: 112x112x64=800K params: 0  </p>
-<p><font color="red">CONV3-128</font>: [112x112x128] memory: 112x112x128=1.6M params: (3x3x64)x128 = 73,728  </p>
-<p><font color="red">CONV3-128</font>: [112x112x128] memory: 112x112x128=1.6M params: (3x3x128)x128 = 147,456  </p>
-<p><font color="blue">POOL2</font>: [56x56x128] memory: 56x56x128=400K params: 0  </p>
-<p><font color="red">CONV3-256</font>: [56x56x256] memory: 56x56x256=800K params: (3x3x128)x256 = 294,912  </p>
-<p><font color="red">CONV3-256</font>: [56x56x256] memory: 56x56x256=800K params: (3x3x256)x256 = 589,824  </p>
-<p><font color="red">CONV3-256</font>: [56x56x256] memory: 56x56x256=800K params: (3x3x256)x256 = 589,824  </p>
-<p><font color="blue">POOL2</font>: [28x28x256] memory: 28x28x256=200K params: 0  </p>
-<p><font color="red">CONV3-512</font>: [28x28x512] memory: 28x28x512=400K params: (3x3x256)x512 = 1,179,648  </p>
-<p><font color="red">CONV3-512</font>: [28x28x512] memory: 28x28x512=400K params: (3x3x512)x512 = 2,359,296  </p>
-<p><font color="red">CONV3-512</font>: [28x28x512] memory: 28x28x512=400K params: (3x3x512)x512 = 2,359,296  </p>
-<p><font color="blue">POOL2</font>: [14x14x512] memory: 14x14x512=100K params: 0  </p>
-<p><font color="red">CONV3-512</font>: [14x14x512] memory: 14x14x512=100K params: (3x3x512)x512 = 2,359,296  </p>
-<p><font color="red">CONV3-512</font>: [14x14x512] memory: 14x14x512=100K params: (3x3x512)x512 = 2,359,296  </p>
-<p><font color="red">CONV3-512</font>: [14x14x512] memory: 14x14x512=100K params: (3x3x512)x512 = 2,359,296  </p>
-<p><font color="blue">POOL2</font>: [7x7x512] memory: 7x7x512=25K params: 0  </p>
-<p><font color="orange">FC</font>: [1x1x4096] memory: 4096 params: 7x7x512x4096 = 102,760,448  </p>
-<p><font color="orange">FC</font>: [1x1x4096] memory: 4096 params: 4096x4096 = 16,777,216  </p>
-<p><font color="orange">FC</font>: [1x1x1000] memory: 1000 params: 4096x1000 = 4,096,000  </p>
+<h2 id="VGG16网络详细信息如下"><a href="#VGG16网络详细信息如下" class="headerlink" title="VGG16网络详细信息如下"></a>VGG16网络详细信息如下</h2><p><font color="gray">INPUT</font>: [224x224x3] memory: 224x224x3=150K params: 0</p>
+<p><font color="red">CONV3-64</font>: [224x224x64] memory: 224x224x64=3.2M params: (3x3x3)x64 = 1,728</p>
+<p><font color="red">CONV3-64</font>: [224x224x64] memory: 224x224x64=3.2M params: (3x3x64)x64 = 36,864</p>
+<p><font color="blue">POOL2</font>: [112x112x64] memory: 112x112x64=800K params: 0</p>
+<p><font color="red">CONV3-128</font>: [112x112x128] memory: 112x112x128=1.6M params: (3x3x64)x128 = 73,728</p>
+<p><font color="red">CONV3-128</font>: [112x112x128] memory: 112x112x128=1.6M params: (3x3x128)x128 = 147,456</p>
+<p><font color="blue">POOL2</font>: [56x56x128] memory: 56x56x128=400K params: 0</p>
+<p><font color="red">CONV3-256</font>: [56x56x256] memory: 56x56x256=800K params: (3x3x128)x256 = 294,912</p>
+<p><font color="red">CONV3-256</font>: [56x56x256] memory: 56x56x256=800K params: (3x3x256)x256 = 589,824</p>
+<p><font color="red">CONV3-256</font>: [56x56x256] memory: 56x56x256=800K params: (3x3x256)x256 = 589,824</p>
+<p><font color="blue">POOL2</font>: [28x28x256] memory: 28x28x256=200K params: 0</p>
+<p><font color="red">CONV3-512</font>: [28x28x512] memory: 28x28x512=400K params: (3x3x256)x512 = 1,179,648</p>
+<p><font color="red">CONV3-512</font>: [28x28x512] memory: 28x28x512=400K params: (3x3x512)x512 = 2,359,296</p>
+<p><font color="red">CONV3-512</font>: [28x28x512] memory: 28x28x512=400K params: (3x3x512)x512 = 2,359,296</p>
+<p><font color="blue">POOL2</font>: [14x14x512] memory: 14x14x512=100K params: 0</p>
+<p><font color="red">CONV3-512</font>: [14x14x512] memory: 14x14x512=100K params: (3x3x512)x512 = 2,359,296</p>
+<p><font color="red">CONV3-512</font>: [14x14x512] memory: 14x14x512=100K params: (3x3x512)x512 = 2,359,296</p>
+<p><font color="red">CONV3-512</font>: [14x14x512] memory: 14x14x512=100K params: (3x3x512)x512 = 2,359,296</p>
+<p><font color="blue">POOL2</font>: [7x7x512] memory: 7x7x512=25K params: 0</p>
+<p><font color="orange">FC</font>: [1x1x4096] memory: 4096 params: 7x7x512x4096 = 102,760,448</p>
+<p><font color="orange">FC</font>: [1x1x4096] memory: 4096 params: 4096x4096 = 16,777,216</p>
+<p><font color="orange">FC</font>: [1x1x1000] memory: 1000 params: 4096x1000 = 4,096,000</p>
 <h2 id="VGGNet网络特点"><a href="#VGGNet网络特点" class="headerlink" title="VGGNet网络特点"></a>VGGNet网络特点</h2><ul>
 <li>更小的filters，更深的网络；</li>
 <li>Only 3x3 CONV stride 1, pad 1 and 2x2 MAX POOL stride 2；</li>
@@ -760,7 +760,7 @@
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
